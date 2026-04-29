@@ -1,13 +1,6 @@
 ﻿using SistemaVotaciones.BLL;
 using SistemaVotaciones.Entidades;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SistemaVotaciones.UI
@@ -17,6 +10,7 @@ namespace SistemaVotaciones.UI
         public FrmLogin()
         {
             InitializeComponent();
+            txtPassword.PasswordChar = '*';
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
@@ -37,18 +31,44 @@ namespace SistemaVotaciones.UI
                 return;
             }
 
-            MessageBox.Show("Bienvenido " + usuario.Username);
-
             if (usuario.IdRol == 1)
             {
-                // Luego abriremos el menú administrador
-                MessageBox.Show("Entrando como administrador.");
+                FrmMenuAdmin menuAdmin = new FrmMenuAdmin(usuario);
+                menuAdmin.Show();
+                this.Hide();
             }
             else if (usuario.IdRol == 2)
             {
-                // Luego abriremos el menú votante
-                MessageBox.Show("Entrando como votante.");
+                FrmMenuVotante menuVotante = new FrmMenuVotante(usuario);
+                menuVotante.Show();
+                this.Hide();
             }
+            else
+            {
+                MessageBox.Show("El usuario no tiene un rol válido.");
+            }
+        }
+
+        private void lblUsuario_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void lblContraseña_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void txtPassword_TextChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void txtUsuario_TextChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void btnRegistrar_Click(object sender, EventArgs e)
+        {
+            FrmRegistroUsuario frm = new FrmRegistroUsuario();
+            frm.ShowDialog();
         }
     }
 }

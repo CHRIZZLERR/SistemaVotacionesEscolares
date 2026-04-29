@@ -19,5 +19,15 @@ namespace SistemaVotaciones.BLL
 
             return usuario;
         }
+
+        public int ObtenerIdPadron(string nivel, string grado, string seccion, string modalidad)
+        {
+            return usuarioDAL.ObtenerIdPadron(nivel, grado, seccion, modalidad);
+        }
+
+        public bool RegistrarUsuario(Usuario usuario)
+        {
+            return usuarioDAL.RegistrarUsuario(usuario);
+        }
     }
 }
