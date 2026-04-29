@@ -1,0 +1,23 @@
+﻿using SistemaVotaciones.DAL;
+using SistemaVotaciones.Entidades;
+
+namespace SistemaVotaciones.BLL
+{
+    public class UsuarioBLL
+    {
+        private UsuarioDAL usuarioDAL = new UsuarioDAL();
+
+        public Usuario Login(string username, string password)
+        {
+            Usuario usuario = usuarioDAL.ObtenerUsuario(username, password);
+
+            if (usuario == null)
+                return null;
+
+            if (!usuario.EstadoUsuario)
+                return null;
+
+            return usuario;
+        }
+    }
+}
