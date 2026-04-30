@@ -46,6 +46,26 @@ namespace SistemaVotaciones.DAL
             }
         }
 
+        public bool ExisteUsuario(string username, string matricula)
+        {
+            using (SqlConnection conn = conexion.ObtenerConexion())
+            {
+                conn.Open();
+
+                string query = @"SELECT COUNT(*) 
+                                 FROM Usuarios 
+                                 WHERE Username=@Username OR Matricula=@Matricula";
+
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@Username", username);
+                cmd.Parameters.AddWithValue("@Matricula", matricula);
+
+                int cantidad = (int)cmd.ExecuteScalar();
+
+                return cantidad > 0;
+            }
+        }
+
         public int ObtenerIdPadron(string nivel, string grado, string seccion, string modalidad)
         {
             using (SqlConnection conn = conexion.ObtenerConexion())
@@ -97,7 +117,6 @@ namespace SistemaVotaciones.DAL
                 cmd.Parameters.AddWithValue("@Modalidad", usuario.Modalidad);
                 cmd.Parameters.AddWithValue("@Username", usuario.Username);
                 cmd.Parameters.AddWithValue("@Password", usuario.Password);
-
                 cmd.Parameters.AddWithValue("@IdRol", 2);
                 cmd.Parameters.AddWithValue("@IdPadron", usuario.IdPadron);
                 cmd.Parameters.AddWithValue("@EstadoUsuario", true);

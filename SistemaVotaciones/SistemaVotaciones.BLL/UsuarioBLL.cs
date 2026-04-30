@@ -20,6 +20,11 @@ namespace SistemaVotaciones.BLL
             return usuario;
         }
 
+        public bool ExisteUsuario(string username, string matricula)
+        {
+            return usuarioDAL.ExisteUsuario(username, matricula);
+        }
+
         public int ObtenerIdPadron(string nivel, string grado, string seccion, string modalidad)
         {
             return usuarioDAL.ObtenerIdPadron(nivel, grado, seccion, modalidad);

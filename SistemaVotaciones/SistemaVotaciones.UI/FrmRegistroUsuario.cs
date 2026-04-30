@@ -58,6 +58,15 @@ namespace SistemaVotaciones.UI
 
             UsuarioBLL bll = new UsuarioBLL();
 
+            string matricula = txtMatricula.Text.Trim();
+            string username = txtUsuario.Text.Trim();
+
+            if (bll.ExisteUsuario(username, matricula))
+            {
+                MessageBox.Show("Ya existe un usuario con esa matrícula o nombre de usuario.");
+                return;
+            }
+
             int idPadron = bll.ObtenerIdPadron(
                 cmbNivel.Text,
                 cmbGrado.Text,
@@ -73,16 +82,14 @@ namespace SistemaVotaciones.UI
 
             Usuario usuario = new Usuario
             {
-                Matricula = txtMatricula.Text.Trim(),
+                Matricula = matricula,
                 NombreCompleto = txtNombre.Text.Trim(),
-                Username = txtUsuario.Text.Trim(),
+                Username = username,
                 Password = txtPassword.Text.Trim(),
-
                 Nivel = cmbNivel.Text,
                 Grado = cmbGrado.Text,
                 Seccion = cmbSeccion.Text,
                 Modalidad = cmbModalidad.Text,
-
                 IdPadron = idPadron
             };
 
@@ -96,8 +103,6 @@ namespace SistemaVotaciones.UI
                 MessageBox.Show("Error al registrar usuario.");
             }
         }
-
-        // 🔹 EVENTOS VACÍOS (para que no te den errores del Designer)
 
         private void lblUsuario_Click(object sender, EventArgs e) { }
         private void lblPassword_Click(object sender, EventArgs e) { }
