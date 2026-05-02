@@ -16,7 +16,8 @@ namespace SistemaVotaciones.UI
 
         private void btnPlanchas_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Aquí se abrirá el módulo de planchas.");
+            FrmPlanchas frm = new FrmPlanchas();
+            frm.ShowDialog();
         }
 
         private void btnCerrarSesion_Click(object sender, EventArgs e)

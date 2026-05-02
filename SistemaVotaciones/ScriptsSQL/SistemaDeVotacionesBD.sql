@@ -151,3 +151,36 @@ GO
 
 
 select  * from Votaciones;
+
+
+ALTER TABLE Planchas
+ADD IdAdminPlancha INT NULL;
+GO
+
+ALTER TABLE Planchas
+ADD CONSTRAINT FK_Planchas_Admin
+FOREIGN KEY (IdAdminPlancha) REFERENCES Usuarios(IdUsuario);
+GO
+
+
+INSERT INTO Roles (NombreRol)
+VALUES ('AdministradorPlancha');
+
+
+
+SELECT IdUsuario, NombreCompleto, Username, IdRol
+FROM Usuarios
+WHERE IdRol = 3;
+
+
+
+INSERT INTO Usuarios (
+    Matricula, NombreCompleto, Nivel, Grado, Seccion, Modalidad,
+    Username, Password, IdRol, IdPadron, EstadoUsuario, YaVoto
+)
+VALUES
+('2001', 'Admin Plancha 1', 'Secundaria', '5to', 'B', 'Informática',
+ 'adminp1', '1234', 3, 2, 1, 0),
+
+('2002', 'Admin Plancha 2', 'Secundaria', '5to', 'B', 'Informática',
+ 'adminp2', '1234', 3, 2, 1, 0);
