@@ -38,7 +38,8 @@ namespace SistemaVotaciones.UI
 
         private void btnVotaciones_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Aquí se abrirá el módulo de votaciones.");
+            FrmVotaciones frm = new FrmVotaciones();
+            frm.ShowDialog();
         }
 
         private void btnPadrones_Click(object sender, EventArgs e)

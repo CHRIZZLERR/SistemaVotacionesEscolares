@@ -37,18 +37,117 @@ CREATE TABLE Usuarios (
     FOREIGN KEY (IdPadron) REFERENCES PadronesElectorales(IdPadron)
 );
 
-INSERT INTO Roles (NombreRol)
-VALUES ('Administrador'), ('Votante');
+    INSERT INTO Roles (NombreRol)
+    VALUES ('Administrador'), ('Votante');
 
-INSERT INTO PadronesElectorales (Nivel, Grado, Seccion, Modalidad, NombrePadron)
-VALUES 
-('Primaria', '1ro', 'A', 'Académico', 'Primaria 1ro A'),
-('Secundaria', '5to', 'B', 'Informática', 'Secundaria 5to B Informática');
+    INSERT INTO PadronesElectorales (Nivel, Grado, Seccion, Modalidad, NombrePadron)
+    VALUES 
+    ('Primaria', '1ro', 'A', 'Académico', 'Primaria 1ro A'),
+    ('Secundaria', '5to', 'B', 'Informática', 'Secundaria 5to B Informática');
 
-INSERT INTO Usuarios (
-Matricula, NombreCompleto, Nivel, Grado, Seccion, Modalidad,
-Username, Password, IdRol, IdPadron, EstadoUsuario, YaVoto)
-VALUES (
-'0001', 'Administrador General', 'Admin', '0', 'A', 'N/A',
-'admin', '1234', 1, 1, 1, 0
+    INSERT INTO Usuarios (
+    Matricula, NombreCompleto, Nivel, Grado, Seccion, Modalidad,
+    Username, Password, IdRol, IdPadron, EstadoUsuario, YaVoto)
+    VALUES (
+    '0001', 'Administrador General', 'Admin', '0', 'A', 'N/A',
+    'admin', '1234', 1, 1, 1, 0
+    );
+
+    USE SistemaVotacionesDB;
+GO
+
+SELECT * FROM Usuarios;
+
+
+USE SistemaVotacionesDB;
+GO
+
+-- 1. Votaciones
+CREATE TABLE Votaciones (
+    IdVotacion INT PRIMARY KEY IDENTITY,
+    NombreVotacion VARCHAR(100) NOT NULL,
+    IdPadron INT NOT NULL,
+    FechaInicio DATETIME NOT NULL,
+    FechaFin DATETIME NOT NULL,
+    EstadoVotacion VARCHAR(20) NOT NULL,
+
+    FOREIGN KEY (IdPadron) REFERENCES PadronesElectorales(IdPadron)
 );
+GO
+
+-- 2. Planchas
+CREATE TABLE Planchas (
+    IdPlancha INT PRIMARY KEY IDENTITY,
+    NombrePlancha VARCHAR(100) NOT NULL,
+    Color VARCHAR(50),
+    Lema VARCHAR(200),
+    IdPadron INT NOT NULL,
+    EstadoPlancha BIT NOT NULL,
+
+    FOREIGN KEY (IdPadron) REFERENCES PadronesElectorales(IdPadron)
+);
+GO
+
+-- 3. Cargos oficiales
+CREATE TABLE Cargos (
+    IdCargo INT PRIMARY KEY IDENTITY,
+    NombreCargo VARCHAR(100) NOT NULL,
+    Descripcion VARCHAR(150),
+    Orden INT NOT NULL
+);
+GO
+
+-- 4. Integrantes de plancha
+CREATE TABLE IntegrantesPlancha (
+    IdIntegrante INT PRIMARY KEY IDENTITY,
+    IdPlancha INT NOT NULL,
+    IdUsuario INT NOT NULL,
+    IdCargo INT NOT NULL,
+
+    FOREIGN KEY (IdPlancha) REFERENCES Planchas(IdPlancha),
+    FOREIGN KEY (IdUsuario) REFERENCES Usuarios(IdUsuario),
+    FOREIGN KEY (IdCargo) REFERENCES Cargos(IdCargo)
+);
+GO
+
+-- 5. Votos
+CREATE TABLE Votos (
+    IdVoto INT PRIMARY KEY IDENTITY,
+    IdUsuario INT NOT NULL,
+    IdVotacion INT NOT NULL,
+    IdPlancha INT NULL,
+    EsNulo BIT NOT NULL,
+    FechaVoto DATETIME NOT NULL,
+
+    FOREIGN KEY (IdUsuario) REFERENCES Usuarios(IdUsuario),
+    FOREIGN KEY (IdVotacion) REFERENCES Votaciones(IdVotacion),
+    FOREIGN KEY (IdPlancha) REFERENCES Planchas(IdPlancha)
+);
+GO
+
+-- 6. Insertar cargos oficiales
+INSERT INTO Cargos (NombreCargo, Descripcion, Orden)
+VALUES
+('Presidente', 'Presidente de la plancha', 1),
+('Vicepresidente', 'Vicepresidente de la plancha', 2),
+('Secretario', 'Secretario de la plancha', 3),
+('Tesorero', 'Tesorero de la plancha', 4),
+('Vocal 1', 'Coordinador de estudios', 5),
+('Vocal 2', 'Coordinador de orden y disciplina', 6),
+('Vocal 3', 'Coordinador de ornato y limpieza', 7),
+('Vocal 4', 'Coordinador de apoyo a la tecnología', 8),
+('Vocal 5', 'Coordinador de festejo', 9);
+GO
+
+-- 7. Verificar tablas
+    SELECT TABLE_NAME
+    FROM INFORMATION_SCHEMA.TABLES
+    WHERE TABLE_TYPE = 'BASE TABLE';
+    GO
+
+-- 8. Verificar cargos
+SELECT * FROM Cargos;
+GO
+
+
+select  * from Votaciones;
