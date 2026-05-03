@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrmIntegrantesPlancha.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmIntegrantesPlancha.Designer.cs">
+      <DependentUpon>FrmIntegrantesPlancha.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -84,6 +90,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FrmIntegrantesPlancha.resx">
+      <DependentUpon>FrmIntegrantesPlancha.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </EmbeddedResource>

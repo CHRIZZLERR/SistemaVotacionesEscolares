@@ -52,5 +52,16 @@ namespace SistemaVotaciones.UI
         {
             MessageBox.Show("Aquí se abrirá el módulo de usuarios.");
         }
+
+        private void btnIntegrantesPlancha_Click(object sender, EventArgs e)
+        {
+            FrmIntegrantesPlancha frm = new FrmIntegrantesPlancha();
+            frm.ShowDialog();
+        }
+
+        private void FrmMenuAdmin_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -35,15 +35,17 @@
             this.btnVotaciones = new System.Windows.Forms.Button();
             this.btnPadrones = new System.Windows.Forms.Button();
             this.btnUsuarios = new System.Windows.Forms.Button();
+            this.btnIntegrantesPlancha = new System.Windows.Forms.Button();
+            this.lblManuAdmin = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnCerrarSesion
             // 
             this.btnCerrarSesion.Font = new System.Drawing.Font("Glacial Indifference", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCerrarSesion.Location = new System.Drawing.Point(534, 315);
+            this.btnCerrarSesion.Location = new System.Drawing.Point(788, 415);
             this.btnCerrarSesion.Margin = new System.Windows.Forms.Padding(4);
             this.btnCerrarSesion.Name = "btnCerrarSesion";
-            this.btnCerrarSesion.Size = new System.Drawing.Size(220, 59);
+            this.btnCerrarSesion.Size = new System.Drawing.Size(209, 35);
             this.btnCerrarSesion.TabIndex = 13;
             this.btnCerrarSesion.Text = "Cerrar Sesion";
             this.btnCerrarSesion.UseVisualStyleBackColor = true;
@@ -52,7 +54,7 @@
             // btnPlanchas
             // 
             this.btnPlanchas.Font = new System.Drawing.Font("Glacial Indifference", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPlanchas.Location = new System.Drawing.Point(534, 194);
+            this.btnPlanchas.Location = new System.Drawing.Point(752, 194);
             this.btnPlanchas.Margin = new System.Windows.Forms.Padding(4);
             this.btnPlanchas.Name = "btnPlanchas";
             this.btnPlanchas.Size = new System.Drawing.Size(220, 59);
@@ -64,7 +66,7 @@
             // btnReportes
             // 
             this.btnReportes.Font = new System.Drawing.Font("Glacial Indifference", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReportes.Location = new System.Drawing.Point(289, 315);
+            this.btnReportes.Location = new System.Drawing.Point(265, 282);
             this.btnReportes.Margin = new System.Windows.Forms.Padding(4);
             this.btnReportes.Name = "btnReportes";
             this.btnReportes.Size = new System.Drawing.Size(220, 59);
@@ -76,7 +78,7 @@
             // btnResultados
             // 
             this.btnResultados.Font = new System.Drawing.Font("Glacial Indifference", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnResultados.Location = new System.Drawing.Point(47, 315);
+            this.btnResultados.Location = new System.Drawing.Point(37, 282);
             this.btnResultados.Margin = new System.Windows.Forms.Padding(4);
             this.btnResultados.Name = "btnResultados";
             this.btnResultados.Size = new System.Drawing.Size(220, 59);
@@ -88,7 +90,7 @@
             // btnVotaciones
             // 
             this.btnVotaciones.Font = new System.Drawing.Font("Glacial Indifference", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVotaciones.Location = new System.Drawing.Point(289, 194);
+            this.btnVotaciones.Location = new System.Drawing.Point(507, 194);
             this.btnVotaciones.Margin = new System.Windows.Forms.Padding(4);
             this.btnVotaciones.Name = "btnVotaciones";
             this.btnVotaciones.Size = new System.Drawing.Size(220, 59);
@@ -100,7 +102,7 @@
             // btnPadrones
             // 
             this.btnPadrones.Font = new System.Drawing.Font("Glacial Indifference", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPadrones.Location = new System.Drawing.Point(47, 194);
+            this.btnPadrones.Location = new System.Drawing.Point(265, 194);
             this.btnPadrones.Margin = new System.Windows.Forms.Padding(4);
             this.btnPadrones.Name = "btnPadrones";
             this.btnPadrones.Size = new System.Drawing.Size(220, 59);
@@ -112,20 +114,44 @@
             // btnUsuarios
             // 
             this.btnUsuarios.Font = new System.Drawing.Font("Glacial Indifference", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUsuarios.Location = new System.Drawing.Point(229, 59);
+            this.btnUsuarios.Location = new System.Drawing.Point(37, 194);
             this.btnUsuarios.Margin = new System.Windows.Forms.Padding(4);
             this.btnUsuarios.Name = "btnUsuarios";
-            this.btnUsuarios.Size = new System.Drawing.Size(363, 83);
+            this.btnUsuarios.Size = new System.Drawing.Size(220, 59);
             this.btnUsuarios.TabIndex = 7;
             this.btnUsuarios.Text = "Usuarios";
             this.btnUsuarios.UseVisualStyleBackColor = true;
             this.btnUsuarios.Click += new System.EventHandler(this.btnUsuarios_Click);
             // 
+            // btnIntegrantesPlancha
+            // 
+            this.btnIntegrantesPlancha.Font = new System.Drawing.Font("Glacial Indifference", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnIntegrantesPlancha.Location = new System.Drawing.Point(507, 282);
+            this.btnIntegrantesPlancha.Margin = new System.Windows.Forms.Padding(4);
+            this.btnIntegrantesPlancha.Name = "btnIntegrantesPlancha";
+            this.btnIntegrantesPlancha.Size = new System.Drawing.Size(465, 59);
+            this.btnIntegrantesPlancha.TabIndex = 14;
+            this.btnIntegrantesPlancha.Text = "Integrantes de Plancha";
+            this.btnIntegrantesPlancha.UseVisualStyleBackColor = true;
+            this.btnIntegrantesPlancha.Click += new System.EventHandler(this.btnIntegrantesPlancha_Click);
+            // 
+            // lblManuAdmin
+            // 
+            this.lblManuAdmin.AutoSize = true;
+            this.lblManuAdmin.Font = new System.Drawing.Font("Glacial Indifference", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblManuAdmin.Location = new System.Drawing.Point(199, 9);
+            this.lblManuAdmin.Name = "lblManuAdmin";
+            this.lblManuAdmin.Size = new System.Drawing.Size(609, 115);
+            this.lblManuAdmin.TabIndex = 15;
+            this.lblManuAdmin.Text = "Admin Menu";
+            // 
             // FrmMenuAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1010, 463);
+            this.Controls.Add(this.lblManuAdmin);
+            this.Controls.Add(this.btnIntegrantesPlancha);
             this.Controls.Add(this.btnCerrarSesion);
             this.Controls.Add(this.btnPlanchas);
             this.Controls.Add(this.btnReportes);
@@ -135,7 +161,9 @@
             this.Controls.Add(this.btnUsuarios);
             this.Name = "FrmMenuAdmin";
             this.Text = "FrmMenuAdmin";
+            this.Load += new System.EventHandler(this.FrmMenuAdmin_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -148,5 +176,7 @@
         private System.Windows.Forms.Button btnVotaciones;
         private System.Windows.Forms.Button btnPadrones;
         private System.Windows.Forms.Button btnUsuarios;
+        private System.Windows.Forms.Button btnIntegrantesPlancha;
+        private System.Windows.Forms.Label lblManuAdmin;
     }
 }
