@@ -29,7 +29,8 @@ namespace SistemaVotaciones.UI
 
         private void btnReportes_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Aquí se abrirá el módulo de reportes.");
+            FrmReportes frm = new FrmReportes();
+            frm.ShowDialog();
         }
 
         private void btnResultados_Click(object sender, EventArgs e)

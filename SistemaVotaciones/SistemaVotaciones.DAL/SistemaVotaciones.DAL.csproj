@@ -46,6 +46,7 @@
     <Compile Include="IntegrantePlanchaDAL.cs" />
     <Compile Include="PlanchaDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReporteDAL.cs" />
     <Compile Include="ResultadoDAL.cs" />
     <Compile Include="UsuarioDAL.cs" />
     <Compile Include="VotacionDAL.cs" />

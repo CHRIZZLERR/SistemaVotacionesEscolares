@@ -1,0 +1,544 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2008/01/reportdefinition"
+        xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+
+	<DataSources>
+		<DataSource Name="DataSourceGeneralVotos">
+			<ConnectionProperties>
+				<DataProvider>System.Data.DataSet</DataProvider>
+				<ConnectString />
+			</ConnectionProperties>
+			<rd:DataSourceID>11111111-1111-1111-1111-111111111111</rd:DataSourceID>
+		</DataSource>
+	</DataSources>
+
+	<DataSets>
+		<DataSet Name="DataSetGeneralVotos">
+			<Fields>
+				<Field Name="IdVoto">
+					<DataField>IdVoto</DataField>
+					<rd:TypeName>System.Int32</rd:TypeName>
+				</Field>
+				<Field Name="Votante">
+					<DataField>Votante</DataField>
+					<rd:TypeName>System.String</rd:TypeName>
+				</Field>
+				<Field Name="Matricula">
+					<DataField>Matricula</DataField>
+					<rd:TypeName>System.String</rd:TypeName>
+				</Field>
+				<Field Name="NombrePadron">
+					<DataField>NombrePadron</DataField>
+					<rd:TypeName>System.String</rd:TypeName>
+				</Field>
+				<Field Name="Plancha">
+					<DataField>Plancha</DataField>
+					<rd:TypeName>System.String</rd:TypeName>
+				</Field>
+				<Field Name="EsNulo">
+					<DataField>EsNulo</DataField>
+					<rd:TypeName>System.String</rd:TypeName>
+				</Field>
+				<Field Name="FechaVoto">
+					<DataField>FechaVoto</DataField>
+					<rd:TypeName>System.DateTime</rd:TypeName>
+				</Field>
+			</Fields>
+			<Query>
+				<DataSourceName>DataSourceGeneralVotos</DataSourceName>
+				<CommandText />
+			</Query>
+		</DataSet>
+	</DataSets>
+
+	<Body>
+		<ReportItems>
+
+			<Textbox Name="txtTitulo">
+				<CanGrow>true</CanGrow>
+				<KeepTogether>true</KeepTogether>
+				<Paragraphs>
+					<Paragraph>
+						<TextRuns>
+							<TextRun>
+								<Value>Reporte General de Votos</Value>
+								<Style>
+									<FontSize>18pt</FontSize>
+									<FontWeight>Bold</FontWeight>
+								</Style>
+							</TextRun>
+						</TextRuns>
+						<Style>
+							<TextAlign>Center</TextAlign>
+						</Style>
+					</Paragraph>
+				</Paragraphs>
+				<Top>0.15in</Top>
+				<Left>0.1in</Left>
+				<Height>0.4in</Height>
+				<Width>7.4in</Width>
+				<Style>
+					<Border>
+						<Style>None</Style>
+					</Border>
+				</Style>
+			</Textbox>
+
+			<Tablix Name="TablaGeneralVotos">
+				<TablixBody>
+					<TablixColumns>
+						<TablixColumn>
+							<Width>0.55in</Width>
+						</TablixColumn>
+						<TablixColumn>
+							<Width>1.45in</Width>
+						</TablixColumn>
+						<TablixColumn>
+							<Width>0.85in</Width>
+						</TablixColumn>
+						<TablixColumn>
+							<Width>1.45in</Width>
+						</TablixColumn>
+						<TablixColumn>
+							<Width>1.2in</Width>
+						</TablixColumn>
+						<TablixColumn>
+							<Width>0.65in</Width>
+						</TablixColumn>
+						<TablixColumn>
+							<Width>1.2in</Width>
+						</TablixColumn>
+					</TablixColumns>
+
+					<TablixRows>
+						<TablixRow>
+							<Height>0.3in</Height>
+							<TablixCells>
+
+								<TablixCell>
+									<CellContents>
+										<Textbox Name="HeaderId">
+											<CanGrow>true</CanGrow>
+											<KeepTogether>true</KeepTogether>
+											<Paragraphs>
+												<Paragraph>
+													<TextRuns>
+														<TextRun>
+															<Value>ID</Value>
+															<Style>
+																<FontWeight>Bold</FontWeight>
+															</Style>
+														</TextRun>
+													</TextRuns>
+												</Paragraph>
+											</Paragraphs>
+											<Style>
+												<BackgroundColor>LightGray</BackgroundColor>
+												<Border>
+													<Style>Solid</Style>
+												</Border>
+											</Style>
+										</Textbox>
+									</CellContents>
+								</TablixCell>
+
+								<TablixCell>
+									<CellContents>
+										<Textbox Name="HeaderVotante">
+											<CanGrow>true</CanGrow>
+											<KeepTogether>true</KeepTogether>
+											<Paragraphs>
+												<Paragraph>
+													<TextRuns>
+														<TextRun>
+															<Value>Votante</Value>
+															<Style>
+																<FontWeight>Bold</FontWeight>
+															</Style>
+														</TextRun>
+													</TextRuns>
+												</Paragraph>
+											</Paragraphs>
+											<Style>
+												<BackgroundColor>LightGray</BackgroundColor>
+												<Border>
+													<Style>Solid</Style>
+												</Border>
+											</Style>
+										</Textbox>
+									</CellContents>
+								</TablixCell>
+
+								<TablixCell>
+									<CellContents>
+										<Textbox Name="HeaderMatricula">
+											<CanGrow>true</CanGrow>
+											<KeepTogether>true</KeepTogether>
+											<Paragraphs>
+												<Paragraph>
+													<TextRuns>
+														<TextRun>
+															<Value>Matrícula</Value>
+															<Style>
+																<FontWeight>Bold</FontWeight>
+															</Style>
+														</TextRun>
+													</TextRuns>
+												</Paragraph>
+											</Paragraphs>
+											<Style>
+												<BackgroundColor>LightGray</BackgroundColor>
+												<Border>
+													<Style>Solid</Style>
+												</Border>
+											</Style>
+										</Textbox>
+									</CellContents>
+								</TablixCell>
+
+								<TablixCell>
+									<CellContents>
+										<Textbox Name="HeaderPadron">
+											<CanGrow>true</CanGrow>
+											<KeepTogether>true</KeepTogether>
+											<Paragraphs>
+												<Paragraph>
+													<TextRuns>
+														<TextRun>
+															<Value>Padrón</Value>
+															<Style>
+																<FontWeight>Bold</FontWeight>
+															</Style>
+														</TextRun>
+													</TextRuns>
+												</Paragraph>
+											</Paragraphs>
+											<Style>
+												<BackgroundColor>LightGray</BackgroundColor>
+												<Border>
+													<Style>Solid</Style>
+												</Border>
+											</Style>
+										</Textbox>
+									</CellContents>
+								</TablixCell>
+
+								<TablixCell>
+									<CellContents>
+										<Textbox Name="HeaderPlancha">
+											<CanGrow>true</CanGrow>
+											<KeepTogether>true</KeepTogether>
+											<Paragraphs>
+												<Paragraph>
+													<TextRuns>
+														<TextRun>
+															<Value>Plancha</Value>
+															<Style>
+																<FontWeight>Bold</FontWeight>
+															</Style>
+														</TextRun>
+													</TextRuns>
+												</Paragraph>
+											</Paragraphs>
+											<Style>
+												<BackgroundColor>LightGray</BackgroundColor>
+												<Border>
+													<Style>Solid</Style>
+												</Border>
+											</Style>
+										</Textbox>
+									</CellContents>
+								</TablixCell>
+
+								<TablixCell>
+									<CellContents>
+										<Textbox Name="HeaderNulo">
+											<CanGrow>true</CanGrow>
+											<KeepTogether>true</KeepTogether>
+											<Paragraphs>
+												<Paragraph>
+													<TextRuns>
+														<TextRun>
+															<Value>Nulo</Value>
+															<Style>
+																<FontWeight>Bold</FontWeight>
+															</Style>
+														</TextRun>
+													</TextRuns>
+												</Paragraph>
+											</Paragraphs>
+											<Style>
+												<BackgroundColor>LightGray</BackgroundColor>
+												<Border>
+													<Style>Solid</Style>
+												</Border>
+											</Style>
+										</Textbox>
+									</CellContents>
+								</TablixCell>
+
+								<TablixCell>
+									<CellContents>
+										<Textbox Name="HeaderFecha">
+											<CanGrow>true</CanGrow>
+											<KeepTogether>true</KeepTogether>
+											<Paragraphs>
+												<Paragraph>
+													<TextRuns>
+														<TextRun>
+															<Value>Fecha</Value>
+															<Style>
+																<FontWeight>Bold</FontWeight>
+															</Style>
+														</TextRun>
+													</TextRuns>
+												</Paragraph>
+											</Paragraphs>
+											<Style>
+												<BackgroundColor>LightGray</BackgroundColor>
+												<Border>
+													<Style>Solid</Style>
+												</Border>
+											</Style>
+										</Textbox>
+									</CellContents>
+								</TablixCell>
+
+							</TablixCells>
+						</TablixRow>
+
+						<TablixRow>
+							<Height>0.25in</Height>
+							<TablixCells>
+
+								<TablixCell>
+									<CellContents>
+										<Textbox Name="TxtIdVoto">
+											<CanGrow>true</CanGrow>
+											<KeepTogether>true</KeepTogether>
+											<Paragraphs>
+												<Paragraph>
+													<TextRuns>
+														<TextRun>
+															<Value>=Fields!IdVoto.Value</Value>
+															<Style />
+														</TextRun>
+													</TextRuns>
+												</Paragraph>
+											</Paragraphs>
+											<Style>
+												<Border>
+													<Style>Solid</Style>
+												</Border>
+											</Style>
+										</Textbox>
+									</CellContents>
+								</TablixCell>
+
+								<TablixCell>
+									<CellContents>
+										<Textbox Name="TxtVotante">
+											<CanGrow>true</CanGrow>
+											<KeepTogether>true</KeepTogether>
+											<Paragraphs>
+												<Paragraph>
+													<TextRuns>
+														<TextRun>
+															<Value>=Fields!Votante.Value</Value>
+															<Style />
+														</TextRun>
+													</TextRuns>
+												</Paragraph>
+											</Paragraphs>
+											<Style>
+												<Border>
+													<Style>Solid</Style>
+												</Border>
+											</Style>
+										</Textbox>
+									</CellContents>
+								</TablixCell>
+
+								<TablixCell>
+									<CellContents>
+										<Textbox Name="TxtMatricula">
+											<CanGrow>true</CanGrow>
+											<KeepTogether>true</KeepTogether>
+											<Paragraphs>
+												<Paragraph>
+													<TextRuns>
+														<TextRun>
+															<Value>=Fields!Matricula.Value</Value>
+															<Style />
+														</TextRun>
+													</TextRuns>
+												</Paragraph>
+											</Paragraphs>
+											<Style>
+												<Border>
+													<Style>Solid</Style>
+												</Border>
+											</Style>
+										</Textbox>
+									</CellContents>
+								</TablixCell>
+
+								<TablixCell>
+									<CellContents>
+										<Textbox Name="TxtNombrePadron">
+											<CanGrow>true</CanGrow>
+											<KeepTogether>true</KeepTogether>
+											<Paragraphs>
+												<Paragraph>
+													<TextRuns>
+														<TextRun>
+															<Value>=Fields!NombrePadron.Value</Value>
+															<Style />
+														</TextRun>
+													</TextRuns>
+												</Paragraph>
+											</Paragraphs>
+											<Style>
+												<Border>
+													<Style>Solid</Style>
+												</Border>
+											</Style>
+										</Textbox>
+									</CellContents>
+								</TablixCell>
+
+								<TablixCell>
+									<CellContents>
+										<Textbox Name="TxtPlancha">
+											<CanGrow>true</CanGrow>
+											<KeepTogether>true</KeepTogether>
+											<Paragraphs>
+												<Paragraph>
+													<TextRuns>
+														<TextRun>
+															<Value>=Fields!Plancha.Value</Value>
+															<Style />
+														</TextRun>
+													</TextRuns>
+												</Paragraph>
+											</Paragraphs>
+											<Style>
+												<Border>
+													<Style>Solid</Style>
+												</Border>
+											</Style>
+										</Textbox>
+									</CellContents>
+								</TablixCell>
+
+								<TablixCell>
+									<CellContents>
+										<Textbox Name="TxtEsNulo">
+											<CanGrow>true</CanGrow>
+											<KeepTogether>true</KeepTogether>
+											<Paragraphs>
+												<Paragraph>
+													<TextRuns>
+														<TextRun>
+															<Value>=Fields!EsNulo.Value</Value>
+															<Style />
+														</TextRun>
+													</TextRuns>
+												</Paragraph>
+											</Paragraphs>
+											<Style>
+												<Border>
+													<Style>Solid</Style>
+												</Border>
+											</Style>
+										</Textbox>
+									</CellContents>
+								</TablixCell>
+
+								<TablixCell>
+									<CellContents>
+										<Textbox Name="TxtFechaVoto">
+											<CanGrow>true</CanGrow>
+											<KeepTogether>true</KeepTogether>
+											<Paragraphs>
+												<Paragraph>
+													<TextRuns>
+														<TextRun>
+															<Value>=Format(Fields!FechaVoto.Value, "dd/MM/yyyy HH:mm")</Value>
+															<Style />
+														</TextRun>
+													</TextRuns>
+												</Paragraph>
+											</Paragraphs>
+											<Style>
+												<Border>
+													<Style>Solid</Style>
+												</Border>
+											</Style>
+										</Textbox>
+									</CellContents>
+								</TablixCell>
+
+							</TablixCells>
+						</TablixRow>
+					</TablixRows>
+				</TablixBody>
+
+				<TablixColumnHierarchy>
+					<TablixMembers>
+						<TablixMember />
+						<TablixMember />
+						<TablixMember />
+						<TablixMember />
+						<TablixMember />
+						<TablixMember />
+						<TablixMember />
+					</TablixMembers>
+				</TablixColumnHierarchy>
+
+				<TablixRowHierarchy>
+					<TablixMembers>
+						<TablixMember>
+							<KeepWithGroup>After</KeepWithGroup>
+							<RepeatOnNewPage>true</RepeatOnNewPage>
+						</TablixMember>
+						<TablixMember>
+							<Group Name="DetalleGeneralVotos" />
+						</TablixMember>
+					</TablixMembers>
+				</TablixRowHierarchy>
+
+				<DataSetName>DataSetGeneralVotos</DataSetName>
+				<Top>0.75in</Top>
+				<Left>0.1in</Left>
+				<Height>0.55in</Height>
+				<Width>7.3in</Width>
+				<Style>
+					<Border>
+						<Style>None</Style>
+					</Border>
+				</Style>
+			</Tablix>
+
+		</ReportItems>
+		<Height>2in</Height>
+		<Style />
+	</Body>
+
+	<Width>7.6in</Width>
+
+	<Page>
+		<PageHeight>11in</PageHeight>
+		<PageWidth>8.5in</PageWidth>
+		<LeftMargin>0.5in</LeftMargin>
+		<RightMargin>0.5in</RightMargin>
+		<TopMargin>0.5in</TopMargin>
+		<BottomMargin>0.5in</BottomMargin>
+		<Style />
+	</Page>
+
+	<AutoRefresh>0</AutoRefresh>
+	<rd:ReportUnitType>Inch</rd:ReportUnitType>
+	<rd:ReportID>22222222-2222-2222-2222-222222222222</rd:ReportID>
+
+</Report>
