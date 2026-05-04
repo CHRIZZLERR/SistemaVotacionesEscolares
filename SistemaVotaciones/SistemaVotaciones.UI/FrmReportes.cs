@@ -25,6 +25,7 @@ namespace SistemaVotaciones.UI
         {
             cmbTipoReporte.Items.Clear();
             cmbTipoReporte.Items.Add("Reporte general de votos");
+            cmbTipoReporte.Items.Add("Reporte integrantes de plancha");
             cmbTipoReporte.SelectedIndex = 0;
         }
 
@@ -61,7 +62,44 @@ namespace SistemaVotaciones.UI
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al generar el reporte:\n" + ex.Message);
+                MessageBox.Show("Error al generar el reporte general de votos:\n" + ex.Message);
+            }
+        }
+
+        private void GenerarReporteIntegrantesPlancha()
+        {
+            try
+            {
+                reportViewer1.Reset();
+                reportViewer1.ProcessingMode = ProcessingMode.Local;
+
+                string rutaReporte = Path.Combine(
+                    Application.StartupPath,
+                    "Reportes",
+                    "ReporteIntegrantesPlancha.rdlc"
+                );
+
+                if (!File.Exists(rutaReporte))
+                {
+                    MessageBox.Show("No se encontró el archivo del reporte:\n" + rutaReporte);
+                    return;
+                }
+
+                reportViewer1.LocalReport.ReportPath = rutaReporte;
+
+                ReportDataSource dataSource = new ReportDataSource(
+                    "DataSetIntegrantesPlancha",
+                    bll.ReporteIntegrantesPlancha()
+                );
+
+                reportViewer1.LocalReport.DataSources.Clear();
+                reportViewer1.LocalReport.DataSources.Add(dataSource);
+
+                reportViewer1.RefreshReport();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al generar el reporte de integrantes de plancha:\n" + ex.Message);
             }
         }
 
@@ -75,6 +113,10 @@ namespace SistemaVotaciones.UI
             if (cmbTipoReporte.Text == "Reporte general de votos")
             {
                 GenerarReporteGeneralVotos();
+            }
+            else if (cmbTipoReporte.Text == "Reporte integrantes de plancha")
+            {
+                GenerarReporteIntegrantesPlancha();
             }
             else
             {

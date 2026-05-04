@@ -52,7 +52,7 @@
             this.cmbTipoReporte.FormattingEnabled = true;
             this.cmbTipoReporte.Location = new System.Drawing.Point(296, 174);
             this.cmbTipoReporte.Name = "cmbTipoReporte";
-            this.cmbTipoReporte.Size = new System.Drawing.Size(232, 28);
+            this.cmbTipoReporte.Size = new System.Drawing.Size(415, 28);
             this.cmbTipoReporte.TabIndex = 5;
             this.cmbTipoReporte.SelectedIndexChanged += new System.EventHandler(this.cmbTipoReporte_SelectedIndexChanged);
             // 

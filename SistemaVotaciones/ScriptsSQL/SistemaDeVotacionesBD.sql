@@ -287,3 +287,24 @@ VALUES
 SELECT IdUsuario, Username, YaVoto
 FROM Usuarios
 WHERE Username = 'Jael01';
+
+
+
+
+
+
+
+
+USE SistemaVotacionesDB;
+GO
+
+SELECT 
+    P.NombrePlancha,
+    C.NombreCargo,
+    U.NombreCompleto,
+    U.Matricula
+FROM IntegrantesPlancha IP
+INNER JOIN Planchas P ON IP.IdPlancha = P.IdPlancha
+INNER JOIN Cargos C ON IP.IdCargo = C.IdCargo
+INNER JOIN Usuarios U ON IP.IdUsuario = U.IdUsuario
+ORDER BY P.NombrePlancha, C.Orden;
