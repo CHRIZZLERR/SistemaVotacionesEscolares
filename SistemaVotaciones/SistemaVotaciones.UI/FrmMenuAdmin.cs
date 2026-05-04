@@ -47,7 +47,8 @@ namespace SistemaVotaciones.UI
 
         private void btnPadrones_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Aquí se abrirá el módulo de padrones.");
+            FrmPadrones frm = new FrmPadrones();
+            frm.ShowDialog();
         }
 
         private void btnUsuarios_Click(object sender, EventArgs e)
