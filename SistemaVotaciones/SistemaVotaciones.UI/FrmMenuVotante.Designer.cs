@@ -75,6 +75,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmMenuVotante";
             this.Text = "FrmMenuVotante";
+            this.Load += new System.EventHandler(this.FrmMenuVotante_Load);
             this.ResumeLayout(false);
 
         }

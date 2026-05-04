@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConexionDB.cs" />
+    <Compile Include="InfoVotacionDAL.cs" />
     <Compile Include="IntegrantePlanchaDAL.cs" />
     <Compile Include="PadronDAL.cs" />
     <Compile Include="PlanchaDAL.cs" />
