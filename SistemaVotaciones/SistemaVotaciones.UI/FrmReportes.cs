@@ -26,6 +26,8 @@ namespace SistemaVotaciones.UI
             cmbTipoReporte.Items.Clear();
             cmbTipoReporte.Items.Add("Reporte general de votos");
             cmbTipoReporte.Items.Add("Reporte integrantes de plancha");
+            cmbTipoReporte.Items.Add("Reporte plancha ganadora");
+            cmbTipoReporte.Items.Add("Reporte general de usuarios");
             cmbTipoReporte.SelectedIndex = 0;
         }
 
@@ -103,6 +105,80 @@ namespace SistemaVotaciones.UI
             }
         }
 
+        private void GenerarReportePlanchaGanadora()
+        {
+            try
+            {
+                reportViewer1.Reset();
+                reportViewer1.ProcessingMode = ProcessingMode.Local;
+
+                string rutaReporte = Path.Combine(
+                    Application.StartupPath,
+                    "Reportes",
+                    "ReportePlanchaGanadora.rdlc"
+                );
+
+                if (!File.Exists(rutaReporte))
+                {
+                    MessageBox.Show("No se encontró el archivo del reporte:\n" + rutaReporte);
+                    return;
+                }
+
+                reportViewer1.LocalReport.ReportPath = rutaReporte;
+
+                ReportDataSource dataSource = new ReportDataSource(
+                    "DataSetPlanchaGanadora",
+                    bll.ReportePlanchaGanadora()
+                );
+
+                reportViewer1.LocalReport.DataSources.Clear();
+                reportViewer1.LocalReport.DataSources.Add(dataSource);
+
+                reportViewer1.RefreshReport();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al generar el reporte de plancha ganadora:\n" + ex.Message);
+            }
+        }
+
+        private void GenerarReporteUsuarios()
+        {
+            try
+            {
+                reportViewer1.Reset();
+                reportViewer1.ProcessingMode = ProcessingMode.Local;
+
+                string rutaReporte = Path.Combine(
+                    Application.StartupPath,
+                    "Reportes",
+                    "ReporteUsuarios.rdlc"
+                );
+
+                if (!File.Exists(rutaReporte))
+                {
+                    MessageBox.Show("No se encontró el archivo del reporte:\n" + rutaReporte);
+                    return;
+                }
+
+                reportViewer1.LocalReport.ReportPath = rutaReporte;
+
+                ReportDataSource dataSource = new ReportDataSource(
+                    "DataSetUsuarios",
+                    bll.ReporteUsuarios()
+                );
+
+                reportViewer1.LocalReport.DataSources.Clear();
+                reportViewer1.LocalReport.DataSources.Add(dataSource);
+
+                reportViewer1.RefreshReport();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al generar el reporte general de usuarios:\n" + ex.Message);
+            }
+        }
+
         private void reportViewer1_Load(object sender, EventArgs e)
         {
 
@@ -117,6 +193,14 @@ namespace SistemaVotaciones.UI
             else if (cmbTipoReporte.Text == "Reporte integrantes de plancha")
             {
                 GenerarReporteIntegrantesPlancha();
+            }
+            else if (cmbTipoReporte.Text == "Reporte plancha ganadora")
+            {
+                GenerarReportePlanchaGanadora();
+            }
+            else if (cmbTipoReporte.Text == "Reporte general de usuarios")
+            {
+                GenerarReporteUsuarios();
             }
             else
             {

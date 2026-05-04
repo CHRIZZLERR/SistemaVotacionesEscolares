@@ -1,0 +1,324 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2008/01/reportdefinition"
+        xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+
+  <DataSources>
+    <DataSource Name="DataSourceUsuarios">
+      <ConnectionProperties>
+        <DataProvider>System.Data.DataSet</DataProvider>
+        <ConnectString />
+      </ConnectionProperties>
+      <rd:DataSourceID>55555555-5555-5555-5555-555555555555</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
+
+  <DataSets>
+    <DataSet Name="DataSetUsuarios">
+      <Fields>
+        <Field Name="Matricula">
+          <DataField>Matricula</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="NombreCompleto">
+          <DataField>NombreCompleto</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Username">
+          <DataField>Username</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="NombreRol">
+          <DataField>NombreRol</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="NombrePadron">
+          <DataField>NombrePadron</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Estado">
+          <DataField>Estado</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="YaVoto">
+          <DataField>YaVoto</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>DataSourceUsuarios</DataSourceName>
+        <CommandText />
+      </Query>
+    </DataSet>
+  </DataSets>
+
+  <Body>
+    <ReportItems>
+
+      <Textbox Name="txtTitulo">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Reporte General de Usuarios</Value>
+                <Style>
+                  <FontSize>18pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <Top>0.15in</Top>
+        <Left>0.1in</Left>
+        <Height>0.4in</Height>
+        <Width>7.4in</Width>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Textbox>
+
+      <Tablix Name="TablaUsuarios">
+        <TablixBody>
+          <TablixColumns>
+            <TablixColumn><Width>0.85in</Width></TablixColumn>
+            <TablixColumn><Width>1.55in</Width></TablixColumn>
+            <TablixColumn><Width>1in</Width></TablixColumn>
+            <TablixColumn><Width>1.05in</Width></TablixColumn>
+            <TablixColumn><Width>1.45in</Width></TablixColumn>
+            <TablixColumn><Width>0.7in</Width></TablixColumn>
+            <TablixColumn><Width>0.7in</Width></TablixColumn>
+          </TablixColumns>
+
+          <TablixRows>
+            <TablixRow>
+              <Height>0.3in</Height>
+              <TablixCells>
+
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="HeaderMatricula">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs><Paragraph><TextRuns><TextRun><Value>Matrícula</Value><Style><FontWeight>Bold</FontWeight></Style></TextRun></TextRuns></Paragraph></Paragraphs>
+                      <Style><BackgroundColor>LightGray</BackgroundColor><Border><Style>Solid</Style></Border></Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="HeaderNombre">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs><Paragraph><TextRuns><TextRun><Value>Nombre</Value><Style><FontWeight>Bold</FontWeight></Style></TextRun></TextRuns></Paragraph></Paragraphs>
+                      <Style><BackgroundColor>LightGray</BackgroundColor><Border><Style>Solid</Style></Border></Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="HeaderUsuario">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs><Paragraph><TextRuns><TextRun><Value>Usuario</Value><Style><FontWeight>Bold</FontWeight></Style></TextRun></TextRuns></Paragraph></Paragraphs>
+                      <Style><BackgroundColor>LightGray</BackgroundColor><Border><Style>Solid</Style></Border></Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="HeaderRol">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs><Paragraph><TextRuns><TextRun><Value>Rol</Value><Style><FontWeight>Bold</FontWeight></Style></TextRun></TextRuns></Paragraph></Paragraphs>
+                      <Style><BackgroundColor>LightGray</BackgroundColor><Border><Style>Solid</Style></Border></Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="HeaderPadron">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs><Paragraph><TextRuns><TextRun><Value>Padrón</Value><Style><FontWeight>Bold</FontWeight></Style></TextRun></TextRuns></Paragraph></Paragraphs>
+                      <Style><BackgroundColor>LightGray</BackgroundColor><Border><Style>Solid</Style></Border></Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="HeaderEstado">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs><Paragraph><TextRuns><TextRun><Value>Estado</Value><Style><FontWeight>Bold</FontWeight></Style></TextRun></TextRuns></Paragraph></Paragraphs>
+                      <Style><BackgroundColor>LightGray</BackgroundColor><Border><Style>Solid</Style></Border></Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="HeaderYaVoto">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs><Paragraph><TextRuns><TextRun><Value>Ya votó</Value><Style><FontWeight>Bold</FontWeight></Style></TextRun></TextRuns></Paragraph></Paragraphs>
+                      <Style><BackgroundColor>LightGray</BackgroundColor><Border><Style>Solid</Style></Border></Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+
+              </TablixCells>
+            </TablixRow>
+
+            <TablixRow>
+              <Height>0.25in</Height>
+              <TablixCells>
+
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="TxtMatricula">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs><Paragraph><TextRuns><TextRun><Value>=Fields!Matricula.Value</Value><Style /></TextRun></TextRuns></Paragraph></Paragraphs>
+                      <Style><Border><Style>Solid</Style></Border></Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="TxtNombreCompleto">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs><Paragraph><TextRuns><TextRun><Value>=Fields!NombreCompleto.Value</Value><Style /></TextRun></TextRuns></Paragraph></Paragraphs>
+                      <Style><Border><Style>Solid</Style></Border></Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="TxtUsername">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs><Paragraph><TextRuns><TextRun><Value>=Fields!Username.Value</Value><Style /></TextRun></TextRuns></Paragraph></Paragraphs>
+                      <Style><Border><Style>Solid</Style></Border></Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="TxtRol">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs><Paragraph><TextRuns><TextRun><Value>=Fields!NombreRol.Value</Value><Style /></TextRun></TextRuns></Paragraph></Paragraphs>
+                      <Style><Border><Style>Solid</Style></Border></Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="TxtPadron">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs><Paragraph><TextRuns><TextRun><Value>=Fields!NombrePadron.Value</Value><Style /></TextRun></TextRuns></Paragraph></Paragraphs>
+                      <Style><Border><Style>Solid</Style></Border></Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="TxtEstado">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs><Paragraph><TextRuns><TextRun><Value>=Fields!Estado.Value</Value><Style /></TextRun></TextRuns></Paragraph></Paragraphs>
+                      <Style><Border><Style>Solid</Style></Border></Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="TxtYaVoto">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs><Paragraph><TextRuns><TextRun><Value>=Fields!YaVoto.Value</Value><Style /></TextRun></TextRuns></Paragraph></Paragraphs>
+                      <Style><Border><Style>Solid</Style></Border></Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+
+              </TablixCells>
+            </TablixRow>
+          </TablixRows>
+        </TablixBody>
+
+        <TablixColumnHierarchy>
+          <TablixMembers>
+            <TablixMember />
+            <TablixMember />
+            <TablixMember />
+            <TablixMember />
+            <TablixMember />
+            <TablixMember />
+            <TablixMember />
+          </TablixMembers>
+        </TablixColumnHierarchy>
+
+        <TablixRowHierarchy>
+          <TablixMembers>
+            <TablixMember>
+              <KeepWithGroup>After</KeepWithGroup>
+              <RepeatOnNewPage>true</RepeatOnNewPage>
+            </TablixMember>
+            <TablixMember>
+              <Group Name="DetalleUsuarios" />
+            </TablixMember>
+          </TablixMembers>
+        </TablixRowHierarchy>
+
+        <DataSetName>DataSetUsuarios</DataSetName>
+        <Top>0.75in</Top>
+        <Left>0.1in</Left>
+        <Height>0.55in</Height>
+        <Width>7.3in</Width>
+        <Style><Border><Style>None</Style></Border></Style>
+      </Tablix>
+
+    </ReportItems>
+
+    <Height>2in</Height>
+    <Style />
+  </Body>
+
+  <Width>7.6in</Width>
+
+  <Page>
+    <PageHeight>11in</PageHeight>
+    <PageWidth>8.5in</PageWidth>
+    <LeftMargin>0.5in</LeftMargin>
+    <RightMargin>0.5in</RightMargin>
+    <TopMargin>0.5in</TopMargin>
+    <BottomMargin>0.5in</BottomMargin>
+    <Style />
+  </Page>
+
+  <AutoRefresh>0</AutoRefresh>
+  <rd:ReportUnitType>Inch</rd:ReportUnitType>
+  <rd:ReportID>55555555-5555-5555-5555-555555555555</rd:ReportID>
+
+</Report>
