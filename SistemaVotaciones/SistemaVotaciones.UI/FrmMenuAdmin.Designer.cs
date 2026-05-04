@@ -144,6 +144,7 @@
             this.lblManuAdmin.Size = new System.Drawing.Size(609, 115);
             this.lblManuAdmin.TabIndex = 15;
             this.lblManuAdmin.Text = "Admin Menu";
+            this.lblManuAdmin.Click += new System.EventHandler(this.lblManuAdmin_Click);
             // 
             // FrmMenuAdmin
             // 

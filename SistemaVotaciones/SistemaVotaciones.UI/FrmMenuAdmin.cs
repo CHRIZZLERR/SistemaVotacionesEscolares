@@ -34,7 +34,8 @@ namespace SistemaVotaciones.UI
 
         private void btnResultados_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Aquí se abrirá el módulo de resultados.");
+            FrmResultados frm = new FrmResultados();
+            frm.ShowDialog();
         }
 
         private void btnVotaciones_Click(object sender, EventArgs e)
@@ -60,6 +61,11 @@ namespace SistemaVotaciones.UI
         }
 
         private void FrmMenuAdmin_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblManuAdmin_Click(object sender, EventArgs e)
         {
 
         }
