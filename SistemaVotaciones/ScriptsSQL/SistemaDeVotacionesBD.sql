@@ -184,3 +184,106 @@ VALUES
 
 ('2002', 'Admin Plancha 2', 'Secundaria', '5to', 'B', 'Informática',
  'adminp2', '1234', 3, 2, 1, 0);
+
+
+
+ USE SistemaVotacionesDB;
+GO
+
+SELECT * FROM Votaciones;
+
+
+
+
+USE SistemaVotacionesDB;
+GO
+
+SELECT IdUsuario, NombreCompleto, Username, IdPadron, YaVoto
+FROM Usuarios
+WHERE Username = 'TU_USUARIO_VOTANTE';
+
+SELECT IdVotacion, NombreVotacion, IdPadron, FechaInicio, FechaFin, EstadoVotacion
+FROM Votaciones;
+
+SELECT IdPlancha, NombrePlancha, IdPadron, EstadoPlancha
+FROM Planchas;
+
+
+
+UPDATE Votaciones
+SET EstadoVotacion = 'Abierta',
+    FechaInicio = DATEADD(MINUTE, -10, GETDATE()),
+    FechaFin = DATEADD(HOUR, 2, GETDATE())
+WHERE IdPadron = 2;
+
+
+SELECT * FROM Planchas WHERE IdPadron = 2;
+
+
+
+INSERT INTO Planchas
+(NombrePlancha, Color, Lema, IdPadron, EstadoPlancha, IdAdminPlancha)
+VALUES
+('Plancha Azul', 'Azul', 'Unidos por el cambio', 2, 1, NULL);
+
+
+
+
+
+USE SistemaVotacionesDB;
+GO
+
+-- 1. Ver usuarios votantes
+SELECT 
+    IdUsuario,
+    NombreCompleto,
+    Username,
+    IdRol,
+    IdPadron,
+    YaVoto
+FROM Usuarios
+ORDER BY IdUsuario;
+
+-- 2. Ver votaciones
+SELECT 
+    IdVotacion,
+    NombreVotacion,
+    IdPadron,
+    FechaInicio,
+    FechaFin,
+    EstadoVotacion,
+    GETDATE() AS FechaActualSQL
+FROM Votaciones;
+
+-- 3. Ver planchas
+SELECT 
+    IdPlancha,
+    NombrePlancha,
+    IdPadron,
+    EstadoPlancha
+FROM Planchas;
+
+-- 4. Ver padrones
+SELECT *
+FROM PadronesElectorales;
+
+
+
+
+INSERT INTO Votaciones
+(NombreVotacion, IdPadron, FechaInicio, FechaFin, EstadoVotacion)
+VALUES
+('Elecciones Primaria 1ro A', 1, DATEADD(MINUTE, -30, GETDATE()), DATEADD(HOUR, 5, GETDATE()), 'Abierta');
+
+INSERT INTO Planchas
+(NombrePlancha, Color, Lema, IdPadron, EstadoPlancha, IdAdminPlancha)
+VALUES
+('Plancha Primaria Azul', 'Azul', 'Unidos por el cambio', 1, 1, NULL);
+
+
+
+
+
+SELECT IdUsuario, Username, YaVoto
+FROM Usuarios
+WHERE Username = 'Jael01';

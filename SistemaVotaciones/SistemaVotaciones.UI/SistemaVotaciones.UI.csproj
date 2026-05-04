@@ -88,6 +88,12 @@
     <Compile Include="FrmVotaciones.Designer.cs">
       <DependentUpon>FrmVotaciones.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmVotar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmVotar.Designer.cs">
+      <DependentUpon>FrmVotar.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FrmIntegrantesPlancha.resx">
@@ -110,6 +116,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmVotaciones.resx">
       <DependentUpon>FrmVotaciones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmVotar.resx">
+      <DependentUpon>FrmVotar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

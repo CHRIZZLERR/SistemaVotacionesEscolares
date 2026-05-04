@@ -34,7 +34,8 @@ namespace SistemaVotaciones.UI
                 return;
             }
 
-            MessageBox.Show("Aquí se abrirá el módulo para votar.");
+            FrmVotar frm = new FrmVotar(usuarioActual);
+            frm.ShowDialog();
         }
     }
 }
