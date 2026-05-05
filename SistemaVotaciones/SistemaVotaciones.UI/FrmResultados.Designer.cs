@@ -142,6 +142,7 @@
             this.Controls.Add(this.lblTotalVotos);
             this.Name = "FrmResultados";
             this.Text = "FrmResultados";
+            this.Load += new System.EventHandler(this.FrmResultados_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvResultados)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -28,31 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtNombrePadron = new System.Windows.Forms.TextBox();
             this.lblNombrePadron = new System.Windows.Forms.Label();
             this.lblNivel = new System.Windows.Forms.Label();
             this.lblGrado = new System.Windows.Forms.Label();
             this.lblSeccion = new System.Windows.Forms.Label();
             this.lblModalidad = new System.Windows.Forms.Label();
-            this.txtGrado = new System.Windows.Forms.TextBox();
-            this.txtSeccion = new System.Windows.Forms.TextBox();
-            this.txtModalidad = new System.Windows.Forms.TextBox();
             this.cmbNivel = new System.Windows.Forms.ComboBox();
             this.btnCrear = new System.Windows.Forms.Button();
             this.btnCerrar = new System.Windows.Forms.Button();
             this.dgvPadrones = new System.Windows.Forms.DataGridView();
             this.lblTituloPadrones = new System.Windows.Forms.Label();
+            this.txtNombrePadron = new System.Windows.Forms.TextBox();
+            this.cmbGrado = new System.Windows.Forms.ComboBox();
+            this.cmbSeccion = new System.Windows.Forms.ComboBox();
+            this.cmbModalidad = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPadrones)).BeginInit();
             this.SuspendLayout();
-            // 
-            // txtNombrePadron
-            // 
-            this.txtNombrePadron.Location = new System.Drawing.Point(282, 188);
-            this.txtNombrePadron.Multiline = true;
-            this.txtNombrePadron.Name = "txtNombrePadron";
-            this.txtNombrePadron.Size = new System.Drawing.Size(285, 38);
-            this.txtNombrePadron.TabIndex = 7;
-            this.txtNombrePadron.TextChanged += new System.EventHandler(this.txtNombrePadron_TextChanged);
             // 
             // lblNombrePadron
             // 
@@ -109,33 +100,6 @@
             this.lblModalidad.Text = "Modalidad:";
             this.lblModalidad.Click += new System.EventHandler(this.lblModalidad_Click);
             // 
-            // txtGrado
-            // 
-            this.txtGrado.Location = new System.Drawing.Point(158, 377);
-            this.txtGrado.Multiline = true;
-            this.txtGrado.Name = "txtGrado";
-            this.txtGrado.Size = new System.Drawing.Size(409, 38);
-            this.txtGrado.TabIndex = 13;
-            this.txtGrado.TextChanged += new System.EventHandler(this.txtGrado_TextChanged);
-            // 
-            // txtSeccion
-            // 
-            this.txtSeccion.Location = new System.Drawing.Point(169, 470);
-            this.txtSeccion.Multiline = true;
-            this.txtSeccion.Name = "txtSeccion";
-            this.txtSeccion.Size = new System.Drawing.Size(398, 38);
-            this.txtSeccion.TabIndex = 14;
-            this.txtSeccion.TextChanged += new System.EventHandler(this.txtSeccion_TextChanged);
-            // 
-            // txtModalidad
-            // 
-            this.txtModalidad.Location = new System.Drawing.Point(207, 567);
-            this.txtModalidad.Multiline = true;
-            this.txtModalidad.Name = "txtModalidad";
-            this.txtModalidad.Size = new System.Drawing.Size(360, 38);
-            this.txtModalidad.TabIndex = 15;
-            this.txtModalidad.TextChanged += new System.EventHandler(this.txtModalidad_TextChanged);
-            // 
             // cmbNivel
             // 
             this.cmbNivel.FormattingEnabled = true;
@@ -189,19 +153,55 @@
             this.lblTituloPadrones.Text = "Padrones";
             this.lblTituloPadrones.Click += new System.EventHandler(this.lblTituloPadrones_Click);
             // 
+            // txtNombrePadron
+            // 
+            this.txtNombrePadron.Location = new System.Drawing.Point(282, 188);
+            this.txtNombrePadron.Multiline = true;
+            this.txtNombrePadron.Name = "txtNombrePadron";
+            this.txtNombrePadron.Size = new System.Drawing.Size(285, 38);
+            this.txtNombrePadron.TabIndex = 7;
+            this.txtNombrePadron.TextChanged += new System.EventHandler(this.txtNombrePadron_TextChanged);
+            // 
+            // cmbGrado
+            // 
+            this.cmbGrado.FormattingEnabled = true;
+            this.cmbGrado.Location = new System.Drawing.Point(149, 388);
+            this.cmbGrado.Name = "cmbGrado";
+            this.cmbGrado.Size = new System.Drawing.Size(418, 28);
+            this.cmbGrado.TabIndex = 21;
+            this.cmbGrado.SelectedIndexChanged += new System.EventHandler(this.cmbGrado_SelectedIndexChanged);
+            // 
+            // cmbSeccion
+            // 
+            this.cmbSeccion.FormattingEnabled = true;
+            this.cmbSeccion.Location = new System.Drawing.Point(170, 480);
+            this.cmbSeccion.Name = "cmbSeccion";
+            this.cmbSeccion.Size = new System.Drawing.Size(397, 28);
+            this.cmbSeccion.TabIndex = 22;
+            this.cmbSeccion.SelectedIndexChanged += new System.EventHandler(this.cmbSeccion_SelectedIndexChanged);
+            // 
+            // cmbModalidad
+            // 
+            this.cmbModalidad.FormattingEnabled = true;
+            this.cmbModalidad.Location = new System.Drawing.Point(207, 578);
+            this.cmbModalidad.Name = "cmbModalidad";
+            this.cmbModalidad.Size = new System.Drawing.Size(360, 28);
+            this.cmbModalidad.TabIndex = 23;
+            this.cmbModalidad.SelectedIndexChanged += new System.EventHandler(this.cmbModalidad_SelectedIndexChanged);
+            // 
             // FrmPadrones
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1726, 723);
+            this.Controls.Add(this.cmbModalidad);
+            this.Controls.Add(this.cmbSeccion);
+            this.Controls.Add(this.cmbGrado);
             this.Controls.Add(this.lblTituloPadrones);
             this.Controls.Add(this.dgvPadrones);
             this.Controls.Add(this.btnCerrar);
             this.Controls.Add(this.btnCrear);
             this.Controls.Add(this.cmbNivel);
-            this.Controls.Add(this.txtModalidad);
-            this.Controls.Add(this.txtSeccion);
-            this.Controls.Add(this.txtGrado);
             this.Controls.Add(this.lblModalidad);
             this.Controls.Add(this.lblSeccion);
             this.Controls.Add(this.lblGrado);
@@ -218,20 +218,19 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox txtNombrePadron;
         private System.Windows.Forms.Label lblNombrePadron;
         private System.Windows.Forms.Label lblNivel;
         private System.Windows.Forms.Label lblGrado;
         private System.Windows.Forms.Label lblSeccion;
         private System.Windows.Forms.Label lblModalidad;
-        private System.Windows.Forms.TextBox txtGrado;
-        private System.Windows.Forms.TextBox txtSeccion;
-        private System.Windows.Forms.TextBox txtModalidad;
         private System.Windows.Forms.ComboBox cmbNivel;
         private System.Windows.Forms.Button btnCrear;
         private System.Windows.Forms.Button btnCerrar;
         private System.Windows.Forms.DataGridView dgvPadrones;
         private System.Windows.Forms.Label lblTituloPadrones;
+        private System.Windows.Forms.TextBox txtNombrePadron;
+        private System.Windows.Forms.ComboBox cmbGrado;
+        private System.Windows.Forms.ComboBox cmbSeccion;
+        private System.Windows.Forms.ComboBox cmbModalidad;
     }
 }

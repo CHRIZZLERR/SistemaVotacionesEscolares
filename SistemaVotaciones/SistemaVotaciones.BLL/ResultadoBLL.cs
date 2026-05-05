@@ -1,5 +1,6 @@
 ﻿using System.Data;
 using SistemaVotaciones.DAL;
+using SistemaVotaciones.Entidades;
 
 namespace SistemaVotaciones.BLL
 {
@@ -7,14 +8,14 @@ namespace SistemaVotaciones.BLL
     {
         private ResultadoDAL dal = new ResultadoDAL();
 
-        public int TotalVotos()
+        public int TotalVotos(Usuario usuarioActual)
         {
-            return dal.TotalVotos();
+            return dal.TotalVotos(usuarioActual);
         }
 
-        public int TotalVotosNulos()
+        public int TotalVotosNulos(Usuario usuarioActual)
         {
-            return dal.TotalVotosNulos();
+            return dal.TotalVotosNulos(usuarioActual);
         }
 
         public int TotalVotantes()
@@ -22,14 +23,14 @@ namespace SistemaVotaciones.BLL
             return dal.TotalVotantes();
         }
 
-        public DataTable ResultadosPorPlancha()
+        public DataTable ResultadosPorPlancha(Usuario usuarioActual)
         {
-            return dal.ResultadosPorPlancha();
+            return dal.ResultadosPorPlancha(usuarioActual);
         }
 
-        public string PlanchaGanadora()
+        public string PlanchaGanadora(Usuario usuarioActual)
         {
-            return dal.PlanchaGanadora();
+            return dal.PlanchaGanadora(usuarioActual);
         }
     }
 }

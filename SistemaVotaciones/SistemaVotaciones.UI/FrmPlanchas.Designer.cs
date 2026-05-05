@@ -209,6 +209,7 @@
             this.Controls.Add(this.lblNombrePlancha);
             this.Name = "FrmPlanchas";
             this.Text = "FrmPlanchas";
+            this.Load += new System.EventHandler(this.FrmPlanchas_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPlanchas)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

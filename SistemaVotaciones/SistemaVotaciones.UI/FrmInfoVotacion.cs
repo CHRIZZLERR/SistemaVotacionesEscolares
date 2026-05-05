@@ -12,6 +12,10 @@ namespace SistemaVotaciones.UI
         private Usuario usuarioActual;
         private InfoVotacionBLL bll = new InfoVotacionBLL();
 
+        private Panel panelPrincipal;
+        private Label lblTituloNuevo;
+        private Label lblSubtituloNuevo;
+
         public FrmInfoVotacion()
         {
             InitializeComponent();
@@ -21,18 +25,217 @@ namespace SistemaVotaciones.UI
         {
             InitializeComponent();
             usuarioActual = usuario;
-
-            ConfigurarLabelsFijos();
-            CargarInformacion();
-
-            // Esto se ejecuta cuando el formulario ya se mostró,
-            // así los valores se colocan bien después de los dos puntos.
-            this.Shown += FrmInfoVotacion_Shown;
         }
 
-        private void FrmInfoVotacion_Shown(object sender, EventArgs e)
+        private void FrmInfoVotacion_Load(object sender, EventArgs e)
         {
-            AlinearValores();
+            AplicarDiseno();
+            ConfigurarLabelsFijos();
+            CargarInformacion();
+        }
+
+        private void AplicarDiseno()
+        {
+            OcultarTitulosViejos();
+
+            this.Text = "Información de Votación - Sistema de Votaciones";
+            this.StartPosition = FormStartPosition.CenterScreen;
+            this.Size = new Size(900, 650);
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.BackColor = Color.FromArgb(8, 18, 55);
+
+            CrearPanelPrincipal();
+            CrearEncabezado();
+            ConfigurarLabels();
+            ConfigurarBoton();
+        }
+
+        private void OcultarTitulosViejos()
+        {
+            foreach (Control control in this.Controls)
+            {
+                if (control is Label label)
+                {
+                    label.Visible = false;
+                }
+            }
+        }
+
+        private void CrearPanelPrincipal()
+        {
+            panelPrincipal = new Panel();
+            panelPrincipal.BackColor = Color.FromArgb(245, 248, 255);
+            panelPrincipal.Location = new Point(35, 30);
+            panelPrincipal.Size = new Size(810, 555);
+            panelPrincipal.BorderStyle = BorderStyle.None;
+            this.Controls.Add(panelPrincipal);
+            panelPrincipal.BringToFront();
+        }
+
+        private void CrearEncabezado()
+        {
+            Panel panelHeader = new Panel();
+            panelHeader.BackColor = Color.FromArgb(10, 38, 95);
+            panelHeader.Location = new Point(0, 0);
+            panelHeader.Size = new Size(810, 105);
+            panelPrincipal.Controls.Add(panelHeader);
+
+            lblTituloNuevo = new Label();
+            lblTituloNuevo.Text = "Información de Votación";
+            lblTituloNuevo.Font = new Font("Segoe UI", 25, FontStyle.Bold);
+            lblTituloNuevo.ForeColor = Color.White;
+            lblTituloNuevo.BackColor = Color.Transparent;
+            lblTituloNuevo.TextAlign = ContentAlignment.MiddleCenter;
+            lblTituloNuevo.AutoSize = false;
+            lblTituloNuevo.Location = new Point(20, 20);
+            lblTituloNuevo.Size = new Size(770, 45);
+            panelHeader.Controls.Add(lblTituloNuevo);
+
+            lblSubtituloNuevo = new Label();
+            lblSubtituloNuevo.Text = "Consulta el estado actual de tu proceso electoral";
+            lblSubtituloNuevo.Font = new Font("Segoe UI", 10, FontStyle.Bold);
+            lblSubtituloNuevo.ForeColor = Color.FromArgb(255, 215, 90);
+            lblSubtituloNuevo.BackColor = Color.Transparent;
+            lblSubtituloNuevo.TextAlign = ContentAlignment.MiddleCenter;
+            lblSubtituloNuevo.AutoSize = false;
+            lblSubtituloNuevo.Location = new Point(20, 65);
+            lblSubtituloNuevo.Size = new Size(770, 25);
+            panelHeader.Controls.Add(lblSubtituloNuevo);
+        }
+
+        private void ConfigurarLabels()
+        {
+            AgregarLabelsAlPanel();
+
+            int xLabel = 70;
+            int xValor = 315;
+            int y = 140;
+            int espacio = 45;
+
+            ConfigurarLabelTitulo(lblNombreVotacion, "Votación:");
+            ConfigurarLabelValor(lblValorVotacion);
+
+            ConfigurarLabelTitulo(lblPadron, "Padrón:");
+            ConfigurarLabelValor(lblValorPadron);
+
+            ConfigurarLabelTitulo(lblEstado, "Estado:");
+            ConfigurarLabelValor(lblValorEstado);
+
+            ConfigurarLabelTitulo(lblFechaInicio, "Fecha inicio:");
+            ConfigurarLabelValor(lblValorFechaInicio);
+
+            ConfigurarLabelTitulo(lblFechaFin, "Fecha fin:");
+            ConfigurarLabelValor(lblValorFechaFin);
+
+            ConfigurarLabelTitulo(lblTiempoRestante, "Tiempo restante:");
+            ConfigurarLabelValor(lblValorTiempoRestante);
+
+            ConfigurarLabelTitulo(lblCantidadPlanchas, "Planchas disponibles:");
+            ConfigurarLabelValor(lblValorCantidadPlanchas);
+
+            ConfigurarLabelTitulo(lblEstadoVoto, "Estado de voto:");
+            ConfigurarLabelValor(lblValorEstadoVoto);
+
+            PosicionarFila(lblNombreVotacion, lblValorVotacion, xLabel, xValor, y);
+            PosicionarFila(lblPadron, lblValorPadron, xLabel, xValor, y + espacio);
+            PosicionarFila(lblEstado, lblValorEstado, xLabel, xValor, y + espacio * 2);
+            PosicionarFila(lblFechaInicio, lblValorFechaInicio, xLabel, xValor, y + espacio * 3);
+            PosicionarFila(lblFechaFin, lblValorFechaFin, xLabel, xValor, y + espacio * 4);
+            PosicionarFila(lblTiempoRestante, lblValorTiempoRestante, xLabel, xValor, y + espacio * 5);
+            PosicionarFila(lblCantidadPlanchas, lblValorCantidadPlanchas, xLabel, xValor, y + espacio * 6);
+            PosicionarFila(lblEstadoVoto, lblValorEstadoVoto, xLabel, xValor, y + espacio * 7);
+        }
+
+        private void AgregarLabelsAlPanel()
+        {
+            panelPrincipal.Controls.Add(lblNombreVotacion);
+            panelPrincipal.Controls.Add(lblValorVotacion);
+
+            panelPrincipal.Controls.Add(lblPadron);
+            panelPrincipal.Controls.Add(lblValorPadron);
+
+            panelPrincipal.Controls.Add(lblEstado);
+            panelPrincipal.Controls.Add(lblValorEstado);
+
+            panelPrincipal.Controls.Add(lblFechaInicio);
+            panelPrincipal.Controls.Add(lblValorFechaInicio);
+
+            panelPrincipal.Controls.Add(lblFechaFin);
+            panelPrincipal.Controls.Add(lblValorFechaFin);
+
+            panelPrincipal.Controls.Add(lblTiempoRestante);
+            panelPrincipal.Controls.Add(lblValorTiempoRestante);
+
+            panelPrincipal.Controls.Add(lblCantidadPlanchas);
+            panelPrincipal.Controls.Add(lblValorCantidadPlanchas);
+
+            panelPrincipal.Controls.Add(lblEstadoVoto);
+            panelPrincipal.Controls.Add(lblValorEstadoVoto);
+        }
+
+        private void PosicionarFila(Label titulo, Label valor, int xLabel, int xValor, int y)
+        {
+            titulo.Visible = true;
+            valor.Visible = true;
+
+            titulo.Location = new Point(xLabel, y);
+            titulo.Size = new Size(230, 30);
+
+            valor.Location = new Point(xValor, y);
+            valor.Size = new Size(430, 30);
+        }
+
+        private void ConfigurarLabelTitulo(Label label, string texto)
+        {
+            label.Text = texto;
+            label.Font = new Font("Segoe UI", 11, FontStyle.Bold);
+            label.ForeColor = Color.FromArgb(10, 38, 95);
+            label.BackColor = Color.Transparent;
+            label.TextAlign = ContentAlignment.MiddleLeft;
+            label.AutoSize = false;
+        }
+
+        private void ConfigurarLabelValor(Label label)
+        {
+            label.Font = new Font("Segoe UI", 11, FontStyle.Regular);
+            label.ForeColor = Color.FromArgb(40, 50, 70);
+            label.BackColor = Color.Transparent;
+            label.TextAlign = ContentAlignment.MiddleLeft;
+            label.AutoSize = false;
+        }
+
+        private void ConfigurarBoton()
+        {
+            panelPrincipal.Controls.Add(btnCerrar);
+
+            btnCerrar.Visible = true;
+            btnCerrar.Text = "Cerrar";
+            btnCerrar.Location = new Point(560, 485);
+            btnCerrar.Size = new Size(180, 45);
+
+            EstiloBotonCerrar(btnCerrar);
+            btnCerrar.BringToFront();
+        }
+
+        private void EstiloBotonCerrar(Button boton)
+        {
+            boton.FlatStyle = FlatStyle.Flat;
+            boton.FlatAppearance.BorderSize = 0;
+            boton.BackColor = Color.FromArgb(185, 28, 28);
+            boton.ForeColor = Color.White;
+            boton.Font = new Font("Segoe UI", 10, FontStyle.Bold);
+            boton.Cursor = Cursors.Hand;
+
+            boton.MouseEnter += (s, e) =>
+            {
+                boton.BackColor = Color.FromArgb(220, 38, 38);
+            };
+
+            boton.MouseLeave += (s, e) =>
+            {
+                boton.BackColor = Color.FromArgb(185, 28, 28);
+            };
         }
 
         private void ConfigurarLabelsFijos()
@@ -45,62 +248,6 @@ namespace SistemaVotaciones.UI
             lblTiempoRestante.Text = "Tiempo restante:";
             lblCantidadPlanchas.Text = "Planchas disponibles:";
             lblEstadoVoto.Text = "Estado de voto:";
-
-            lblNombreVotacion.AutoSize = true;
-            lblPadron.AutoSize = true;
-            lblEstado.AutoSize = true;
-            lblFechaInicio.AutoSize = true;
-            lblFechaFin.AutoSize = true;
-            lblTiempoRestante.AutoSize = true;
-            lblCantidadPlanchas.AutoSize = true;
-            lblEstadoVoto.AutoSize = true;
-
-            lblValorVotacion.AutoSize = true;
-            lblValorPadron.AutoSize = true;
-            lblValorEstado.AutoSize = true;
-            lblValorFechaInicio.AutoSize = true;
-            lblValorFechaFin.AutoSize = true;
-            lblValorTiempoRestante.AutoSize = true;
-            lblValorCantidadPlanchas.AutoSize = true;
-            lblValorEstadoVoto.AutoSize = true;
-
-            lblNombreVotacion.Font = new Font(lblNombreVotacion.Font, FontStyle.Bold);
-            lblPadron.Font = new Font(lblPadron.Font, FontStyle.Bold);
-            lblEstado.Font = new Font(lblEstado.Font, FontStyle.Bold);
-            lblFechaInicio.Font = new Font(lblFechaInicio.Font, FontStyle.Bold);
-            lblFechaFin.Font = new Font(lblFechaFin.Font, FontStyle.Bold);
-            lblTiempoRestante.Font = new Font(lblTiempoRestante.Font, FontStyle.Bold);
-            lblCantidadPlanchas.Font = new Font(lblCantidadPlanchas.Font, FontStyle.Bold);
-            lblEstadoVoto.Font = new Font(lblEstadoVoto.Font, FontStyle.Bold);
-        }
-
-        private void AlinearValores()
-        {
-            int espacio = 8;
-
-            lblValorVotacion.Left = lblNombreVotacion.Right + espacio;
-            lblValorVotacion.Top = lblNombreVotacion.Top;
-
-            lblValorPadron.Left = lblPadron.Right + espacio;
-            lblValorPadron.Top = lblPadron.Top;
-
-            lblValorEstado.Left = lblEstado.Right + espacio;
-            lblValorEstado.Top = lblEstado.Top;
-
-            lblValorFechaInicio.Left = lblFechaInicio.Right + espacio;
-            lblValorFechaInicio.Top = lblFechaInicio.Top;
-
-            lblValorFechaFin.Left = lblFechaFin.Right + espacio;
-            lblValorFechaFin.Top = lblFechaFin.Top;
-
-            lblValorTiempoRestante.Left = lblTiempoRestante.Right + espacio;
-            lblValorTiempoRestante.Top = lblTiempoRestante.Top;
-
-            lblValorCantidadPlanchas.Left = lblCantidadPlanchas.Right + espacio;
-            lblValorCantidadPlanchas.Top = lblCantidadPlanchas.Top;
-
-            lblValorEstadoVoto.Left = lblEstadoVoto.Right + espacio;
-            lblValorEstadoVoto.Top = lblEstadoVoto.Top;
         }
 
         private void CargarInformacion()
@@ -150,7 +297,7 @@ namespace SistemaVotaciones.UI
             {
                 TimeSpan falta = fechaInicio - DateTime.Now;
 
-                lblValorTiempoRestante.Text = "La votación aún no inicia. Faltan " +
+                lblValorTiempoRestante.Text = "Aún no inicia. Faltan " +
                                                falta.Hours + " horas y " +
                                                falta.Minutes + " minutos";
             }
@@ -209,89 +356,38 @@ namespace SistemaVotaciones.UI
             this.Close();
         }
 
-        private void lblNombreVotacion_Click(object sender, EventArgs e)
-        {
+        private void lblNombreVotacion_Click(object sender, EventArgs e) { }
 
-        }
+        private void lblEstadoVoto_Click(object sender, EventArgs e) { }
 
-        private void lblEstadoVoto_Click(object sender, EventArgs e)
-        {
+        private void lblCantidadPlanchas_Click(object sender, EventArgs e) { }
 
-        }
+        private void lblTiempoRestante_Click(object sender, EventArgs e) { }
 
-        private void lblCantidadPlanchas_Click(object sender, EventArgs e)
-        {
+        private void lblFechaFin_Click(object sender, EventArgs e) { }
 
-        }
+        private void lblFechaInicio_Click(object sender, EventArgs e) { }
 
-        private void lblTiempoRestante_Click(object sender, EventArgs e)
-        {
+        private void lblEstado_Click(object sender, EventArgs e) { }
 
-        }
+        private void lblPadron_Click(object sender, EventArgs e) { }
 
-        private void lblFechaFin_Click(object sender, EventArgs e)
-        {
+        private void lblTitulo_Click(object sender, EventArgs e) { }
 
-        }
+        private void lblValorCantidadPlanchas_Click(object sender, EventArgs e) { }
 
-        private void lblFechaInicio_Click(object sender, EventArgs e)
-        {
+        private void lblValorTiempoRestante_Click(object sender, EventArgs e) { }
 
-        }
+        private void lblValorFechaFin_Click(object sender, EventArgs e) { }
 
-        private void lblEstado_Click(object sender, EventArgs e)
-        {
+        private void lblValorFechaInicio_Click(object sender, EventArgs e) { }
 
-        }
+        private void lblValorEstado_Click(object sender, EventArgs e) { }
 
-        private void lblPadron_Click(object sender, EventArgs e)
-        {
+        private void lblValorPadron_Click(object sender, EventArgs e) { }
 
-        }
+        private void lblValorVotacion_Click(object sender, EventArgs e) { }
 
-        private void lblTitulo_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblValorCantidadPlanchas_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblValorTiempoRestante_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblValorFechaFin_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblValorFechaInicio_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblValorEstado_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblValorPadron_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblValorVotacion_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblValorEstadoVoto_Click(object sender, EventArgs e)
-        {
-
-        }
+        private void lblValorEstadoVoto_Click(object sender, EventArgs e) { }
     }
 }

@@ -271,6 +271,7 @@
             this.Controls.Add(this.lblTitulo);
             this.Name = "FrmInfoVotacion";
             this.Text = "FrmInfoVotacion";
+            this.Load += new System.EventHandler(this.FrmInfoVotacion_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

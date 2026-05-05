@@ -153,6 +153,7 @@
             this.Controls.Add(this.lblTitulo);
             this.Name = "FrmVotar";
             this.Text = "FrmVotar";
+            this.Load += new System.EventHandler(this.FrmVotar_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvIntegrantes)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

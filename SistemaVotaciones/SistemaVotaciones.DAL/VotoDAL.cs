@@ -15,18 +15,19 @@ namespace SistemaVotaciones.DAL
             {
                 conn.Open();
 
-                string query = @"SELECT TOP 1 
-                                IdVotacion,
-                                NombreVotacion,
-                                IdPadron,
-                                FechaInicio,
-                                FechaFin,
-                                EstadoVotacion
-                                FROM Votaciones
-                                WHERE IdPadron = @IdPadron
-                                AND EstadoVotacion = 'Abierta'
-                                AND GETDATE() BETWEEN FechaInicio AND FechaFin
-                                ORDER BY IdVotacion DESC";
+                string query = @"
+                SELECT TOP 1 
+                    IdVotacion,
+                    NombreVotacion,
+                    IdPadron,
+                    FechaInicio,
+                    FechaFin,
+                    EstadoVotacion
+                FROM Votaciones
+                WHERE IdPadron = @IdPadron
+                AND EstadoVotacion = 'Abierta'
+                AND GETDATE() BETWEEN FechaInicio AND FechaFin
+                ORDER BY IdVotacion DESC";
 
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@IdPadron", idPadron);
@@ -45,10 +46,17 @@ namespace SistemaVotaciones.DAL
             {
                 conn.Open();
 
-                string query = @"SELECT IdPlancha, NombrePlancha
-                                 FROM Planchas
-                                 WHERE IdPadron = @IdPadron
-                                 AND EstadoPlancha = 1";
+                string query = @"
+                SELECT 
+                    IdPlancha,
+                    NombrePlancha,
+                    ISNULL(Color, '') AS Color,
+                    ISNULL(Lema, '') AS Lema,
+                    ISNULL(ImagenPath, '') AS ImagenPath
+                FROM Planchas
+                WHERE IdPadron = @IdPadron
+                AND EstadoPlancha = 1
+                ORDER BY NombrePlancha";
 
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@IdPadron", idPadron);
@@ -67,14 +75,15 @@ namespace SistemaVotaciones.DAL
             {
                 conn.Open();
 
-                string query = @"SELECT 
-                                C.NombreCargo AS Cargo,
-                                U.NombreCompleto AS Integrante
-                                FROM IntegrantesPlancha IP
-                                INNER JOIN Cargos C ON IP.IdCargo = C.IdCargo
-                                INNER JOIN Usuarios U ON IP.IdUsuario = U.IdUsuario
-                                WHERE IP.IdPlancha = @IdPlancha
-                                ORDER BY C.Orden";
+                string query = @"
+                SELECT 
+                    C.NombreCargo AS Cargo,
+                    U.NombreCompleto AS Integrante
+                FROM IntegrantesPlancha IP
+                INNER JOIN Cargos C ON IP.IdCargo = C.IdCargo
+                INNER JOIN Usuarios U ON IP.IdUsuario = U.IdUsuario
+                WHERE IP.IdPlancha = @IdPlancha
+                ORDER BY C.Orden";
 
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@IdPlancha", idPlancha);
@@ -97,7 +106,8 @@ namespace SistemaVotaciones.DAL
 
                 try
                 {
-                    string queryVoto = @"INSERT INTO Votos
+                    string queryVoto = @"
+                    INSERT INTO Votos
                     (IdUsuario, IdVotacion, IdPlancha, EsNulo, FechaVoto)
                     VALUES
                     (@IdUsuario, @IdVotacion, @IdPlancha, @EsNulo, @FechaVoto)";
@@ -117,9 +127,10 @@ namespace SistemaVotaciones.DAL
 
                     cmdVoto.ExecuteNonQuery();
 
-                    string queryUsuario = @"UPDATE Usuarios
-                                            SET YaVoto = 1
-                                            WHERE IdUsuario = @IdUsuario";
+                    string queryUsuario = @"
+                    UPDATE Usuarios
+                    SET YaVoto = 1
+                    WHERE IdUsuario = @IdUsuario";
 
                     SqlCommand cmdUsuario = new SqlCommand(queryUsuario, conn, transaccion);
                     cmdUsuario.Parameters.AddWithValue("@IdUsuario", voto.IdUsuario);

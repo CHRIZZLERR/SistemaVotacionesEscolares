@@ -111,6 +111,7 @@
             this.lblTitulo.Size = new System.Drawing.Size(624, 67);
             this.lblTitulo.TabIndex = 18;
             this.lblTitulo.Text = "Sistema de Votaciones";
+            this.lblTitulo.Click += new System.EventHandler(this.lblTitulo_Click);
             // 
             // FrmLogin
             // 

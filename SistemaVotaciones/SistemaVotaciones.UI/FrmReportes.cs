@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 using Microsoft.Reporting.WinForms;
@@ -10,6 +11,10 @@ namespace SistemaVotaciones.UI
     {
         private ReporteBLL bll = new ReporteBLL();
 
+        private Panel panelPrincipal;
+        private Label lblTituloNuevo;
+        private Label lblSubtituloNuevo;
+
         public FrmReportes()
         {
             InitializeComponent();
@@ -17,8 +22,167 @@ namespace SistemaVotaciones.UI
 
         private void FrmReportes_Load(object sender, EventArgs e)
         {
+            AplicarDiseno();
             CargarTiposReporte();
             reportViewer1.RefreshReport();
+        }
+
+        private void AplicarDiseno()
+        {
+            OcultarControlesViejos();
+
+            this.Text = "Reportes - Sistema de Votaciones";
+            this.StartPosition = FormStartPosition.CenterScreen;
+            this.Size = new Size(1120, 720);
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.BackColor = Color.FromArgb(8, 18, 55);
+
+            CrearPanelPrincipal();
+            CrearEncabezado();
+            ConfigurarControles();
+            ConfigurarReportViewer();
+        }
+
+        private void OcultarControlesViejos()
+        {
+            foreach (Control control in this.Controls)
+            {
+                if (control is Label label)
+                {
+                    label.Visible = false;
+                }
+            }
+        }
+
+        private void CrearPanelPrincipal()
+        {
+            panelPrincipal = new Panel();
+            panelPrincipal.BackColor = Color.FromArgb(245, 248, 255);
+            panelPrincipal.Location = new Point(35, 30);
+            panelPrincipal.Size = new Size(1040, 625);
+            panelPrincipal.BorderStyle = BorderStyle.None;
+            this.Controls.Add(panelPrincipal);
+            panelPrincipal.BringToFront();
+        }
+
+        private void CrearEncabezado()
+        {
+            Panel panelHeader = new Panel();
+            panelHeader.BackColor = Color.FromArgb(10, 38, 95);
+            panelHeader.Location = new Point(0, 0);
+            panelHeader.Size = new Size(1040, 105);
+            panelPrincipal.Controls.Add(panelHeader);
+
+            lblTituloNuevo = new Label();
+            lblTituloNuevo.Text = "Reportes del Sistema";
+            lblTituloNuevo.Font = new Font("Segoe UI", 25, FontStyle.Bold);
+            lblTituloNuevo.ForeColor = Color.White;
+            lblTituloNuevo.BackColor = Color.Transparent;
+            lblTituloNuevo.TextAlign = ContentAlignment.MiddleCenter;
+            lblTituloNuevo.AutoSize = false;
+            lblTituloNuevo.Location = new Point(20, 20);
+            lblTituloNuevo.Size = new Size(1000, 45);
+            panelHeader.Controls.Add(lblTituloNuevo);
+
+            lblSubtituloNuevo = new Label();
+            lblSubtituloNuevo.Text = "Genera reportes oficiales de votos, usuarios, planchas e integrantes";
+            lblSubtituloNuevo.Font = new Font("Segoe UI", 10, FontStyle.Bold);
+            lblSubtituloNuevo.ForeColor = Color.FromArgb(255, 215, 90);
+            lblSubtituloNuevo.BackColor = Color.Transparent;
+            lblSubtituloNuevo.TextAlign = ContentAlignment.MiddleCenter;
+            lblSubtituloNuevo.AutoSize = false;
+            lblSubtituloNuevo.Location = new Point(20, 65);
+            lblSubtituloNuevo.Size = new Size(1000, 25);
+            panelHeader.Controls.Add(lblSubtituloNuevo);
+        }
+
+        private void ConfigurarControles()
+        {
+            panelPrincipal.Controls.Add(lblTipoReporte);
+            panelPrincipal.Controls.Add(cmbTipoReporte);
+            panelPrincipal.Controls.Add(btnGenerar);
+            panelPrincipal.Controls.Add(btnCerrar);
+
+            lblTipoReporte.Visible = true;
+            cmbTipoReporte.Visible = true;
+            btnGenerar.Visible = true;
+            btnCerrar.Visible = true;
+
+            lblTipoReporte.Text = "Tipo de reporte";
+            lblTipoReporte.Font = new Font("Segoe UI", 11, FontStyle.Bold);
+            lblTipoReporte.ForeColor = Color.FromArgb(10, 38, 95);
+            lblTipoReporte.BackColor = Color.Transparent;
+            lblTipoReporte.Location = new Point(35, 130);
+            lblTipoReporte.Size = new Size(180, 28);
+
+            cmbTipoReporte.Font = new Font("Segoe UI", 10, FontStyle.Regular);
+            cmbTipoReporte.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbTipoReporte.Location = new Point(35, 160);
+            cmbTipoReporte.Size = new Size(420, 30);
+
+            btnGenerar.Text = "Generar reporte";
+            btnGenerar.Location = new Point(485, 153);
+            btnGenerar.Size = new Size(190, 42);
+            EstiloBoton(btnGenerar);
+
+            btnCerrar.Text = "Cerrar";
+            btnCerrar.Location = new Point(830, 153);
+            btnCerrar.Size = new Size(170, 42);
+            EstiloBotonCerrar(btnCerrar);
+        }
+
+        private void ConfigurarReportViewer()
+        {
+            panelPrincipal.Controls.Add(reportViewer1);
+
+            reportViewer1.Visible = true;
+            reportViewer1.Location = new Point(35, 220);
+            reportViewer1.Size = new Size(965, 370);
+            reportViewer1.BorderStyle = BorderStyle.FixedSingle;
+            reportViewer1.BackColor = Color.White;
+
+            reportViewer1.BringToFront();
+        }
+
+        private void EstiloBoton(Button boton)
+        {
+            boton.FlatStyle = FlatStyle.Flat;
+            boton.FlatAppearance.BorderSize = 0;
+            boton.BackColor = Color.FromArgb(21, 101, 192);
+            boton.ForeColor = Color.White;
+            boton.Font = new Font("Segoe UI", 10, FontStyle.Bold);
+            boton.Cursor = Cursors.Hand;
+
+            boton.MouseEnter += (s, e) =>
+            {
+                boton.BackColor = Color.FromArgb(25, 118, 210);
+            };
+
+            boton.MouseLeave += (s, e) =>
+            {
+                boton.BackColor = Color.FromArgb(21, 101, 192);
+            };
+        }
+
+        private void EstiloBotonCerrar(Button boton)
+        {
+            boton.FlatStyle = FlatStyle.Flat;
+            boton.FlatAppearance.BorderSize = 0;
+            boton.BackColor = Color.FromArgb(185, 28, 28);
+            boton.ForeColor = Color.White;
+            boton.Font = new Font("Segoe UI", 10, FontStyle.Bold);
+            boton.Cursor = Cursors.Hand;
+
+            boton.MouseEnter += (s, e) =>
+            {
+                boton.BackColor = Color.FromArgb(220, 38, 38);
+            };
+
+            boton.MouseLeave += (s, e) =>
+            {
+                boton.BackColor = Color.FromArgb(185, 28, 28);
+            };
         }
 
         private void CargarTiposReporte()
@@ -179,11 +343,6 @@ namespace SistemaVotaciones.UI
             }
         }
 
-        private void reportViewer1_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnGenerar_Click(object sender, EventArgs e)
         {
             if (cmbTipoReporte.Text == "Reporte general de votos")
@@ -211,6 +370,11 @@ namespace SistemaVotaciones.UI
         private void btnCerrar_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void reportViewer1_Load(object sender, EventArgs e)
+        {
+
         }
 
         private void cmbTipoReporte_SelectedIndexChanged(object sender, EventArgs e)

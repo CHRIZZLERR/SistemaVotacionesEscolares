@@ -218,17 +218,17 @@ namespace SistemaVotaciones.UI
             btnReportes.Location = new Point(inicioX, inicioY + (alto + espacioY) * 2);
             btnReportes.Size = new Size(ancho, alto);
 
-            btnCerrarSesion.Location = new Point(610, 405);
-            btnCerrarSesion.Size = new Size(245, 55);
+            btnCerrarSesion.Location = new Point(770, 445);
+            btnCerrarSesion.Size = new Size(160, 42);
         }
 
         private void OrganizarBotonesAdminPlancha()
         {
             int ancho = 340;
-            int alto = 60;
+            int alto = 55;
             int x = 305;
-            int y = 210;
-            int espacio = 24;
+            int y = 200;
+            int espacio = 20;
 
             btnUsuarios.Location = new Point(x, y);
             btnUsuarios.Size = new Size(ancho, alto);
@@ -239,8 +239,10 @@ namespace SistemaVotaciones.UI
             btnResultados.Location = new Point(x, y + (alto + espacio) * 2);
             btnResultados.Size = new Size(ancho, alto);
 
-            btnCerrarSesion.Location = new Point(x, y + (alto + espacio) * 3 + 12);
-            btnCerrarSesion.Size = new Size(ancho, 55);
+            btnCerrarSesion.Location = new Point(x, y + (alto + espacio) * 3 + 10);
+            btnCerrarSesion.Size = new Size(ancho, 50);
+
+            btnCerrarSesion.BringToFront();
         }
 
         private void ConfigurarMenuPorRol()
