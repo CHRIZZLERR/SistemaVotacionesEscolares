@@ -251,6 +251,7 @@
             this.Controls.Add(this.txtMatricula);
             this.Name = "FrmRegistroUsuario";
             this.Text = "FrmRegistroUsuario";
+            this.Load += new System.EventHandler(this.FrmRegistroUsuario_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

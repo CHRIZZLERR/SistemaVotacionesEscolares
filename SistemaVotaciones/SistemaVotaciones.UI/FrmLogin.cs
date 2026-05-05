@@ -23,7 +23,10 @@ namespace SistemaVotaciones.UI
 
             UsuarioBLL usuarioBLL = new UsuarioBLL();
 
-            Usuario usuario = usuarioBLL.Login(txtUsuario.Text.Trim(), txtPassword.Text.Trim());
+            Usuario usuario = usuarioBLL.Login(
+                txtUsuario.Text.Trim(),
+                txtPassword.Text.Trim()
+            );
 
             if (usuario == null)
             {
@@ -43,32 +46,52 @@ namespace SistemaVotaciones.UI
                 menuVotante.Show();
                 this.Hide();
             }
+            else if (usuario.IdRol == 3)
+            {
+                FrmMenuAdmin menuAdmin = new FrmMenuAdmin(usuario);
+                menuAdmin.Show();
+                this.Hide();
+            }
+            else if (usuario.IdRol == 4)
+            {
+                MessageBox.Show("Este usuario pertenece a una plancha como candidato, por lo tanto no puede emitir votos.");
+                return;
+            }
             else
             {
                 MessageBox.Show("El usuario no tiene un rol válido.");
             }
         }
 
-        private void lblUsuario_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void lblContraseña_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void txtPassword_TextChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void txtUsuario_TextChanged(object sender, EventArgs e)
-        {
-        }
-
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
             FrmRegistroUsuario frm = new FrmRegistroUsuario();
             frm.ShowDialog();
+        }
+
+        private void lblUsuario_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblContraseña_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtPassword_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtUsuario_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FrmLogin_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

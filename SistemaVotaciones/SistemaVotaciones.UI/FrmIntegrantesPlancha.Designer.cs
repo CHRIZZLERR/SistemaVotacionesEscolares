@@ -37,6 +37,8 @@
             this.btnAgregar = new System.Windows.Forms.Button();
             this.dgvIntegrantes = new System.Windows.Forms.DataGridView();
             this.btnGuardar = new System.Windows.Forms.Button();
+            this.lblTitulo = new System.Windows.Forms.Label();
+            this.btnCerrar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvIntegrantes)).BeginInit();
             this.SuspendLayout();
             // 
@@ -44,7 +46,7 @@
             // 
             this.lblPlancha.AutoSize = true;
             this.lblPlancha.Font = new System.Drawing.Font("Glacial Indifference", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPlancha.Location = new System.Drawing.Point(26, 81);
+            this.lblPlancha.Location = new System.Drawing.Point(71, 154);
             this.lblPlancha.Name = "lblPlancha";
             this.lblPlancha.Size = new System.Drawing.Size(153, 43);
             this.lblPlancha.TabIndex = 0;
@@ -55,7 +57,7 @@
             // 
             this.lblCargo.AutoSize = true;
             this.lblCargo.Font = new System.Drawing.Font("Glacial Indifference", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCargo.Location = new System.Drawing.Point(26, 170);
+            this.lblCargo.Location = new System.Drawing.Point(71, 243);
             this.lblCargo.Name = "lblCargo";
             this.lblCargo.Size = new System.Drawing.Size(128, 43);
             this.lblCargo.TabIndex = 1;
@@ -66,7 +68,7 @@
             // 
             this.lblUsuario.AutoSize = true;
             this.lblUsuario.Font = new System.Drawing.Font("Glacial Indifference", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUsuario.Location = new System.Drawing.Point(26, 264);
+            this.lblUsuario.Location = new System.Drawing.Point(71, 337);
             this.lblUsuario.Name = "lblUsuario";
             this.lblUsuario.Size = new System.Drawing.Size(144, 43);
             this.lblUsuario.TabIndex = 2;
@@ -76,7 +78,7 @@
             // cmbPlancha
             // 
             this.cmbPlancha.FormattingEnabled = true;
-            this.cmbPlancha.Location = new System.Drawing.Point(177, 96);
+            this.cmbPlancha.Location = new System.Drawing.Point(222, 169);
             this.cmbPlancha.Name = "cmbPlancha";
             this.cmbPlancha.Size = new System.Drawing.Size(199, 28);
             this.cmbPlancha.TabIndex = 3;
@@ -85,7 +87,7 @@
             // cmbCargo
             // 
             this.cmbCargo.FormattingEnabled = true;
-            this.cmbCargo.Location = new System.Drawing.Point(151, 185);
+            this.cmbCargo.Location = new System.Drawing.Point(196, 258);
             this.cmbCargo.Name = "cmbCargo";
             this.cmbCargo.Size = new System.Drawing.Size(225, 28);
             this.cmbCargo.TabIndex = 4;
@@ -94,7 +96,7 @@
             // cmbUsuario
             // 
             this.cmbUsuario.FormattingEnabled = true;
-            this.cmbUsuario.Location = new System.Drawing.Point(166, 279);
+            this.cmbUsuario.Location = new System.Drawing.Point(211, 352);
             this.cmbUsuario.Name = "cmbUsuario";
             this.cmbUsuario.Size = new System.Drawing.Size(210, 28);
             this.cmbUsuario.TabIndex = 5;
@@ -103,7 +105,7 @@
             // btnAgregar
             // 
             this.btnAgregar.Font = new System.Drawing.Font("Glacial Indifference", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAgregar.Location = new System.Drawing.Point(34, 348);
+            this.btnAgregar.Location = new System.Drawing.Point(79, 421);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(344, 41);
             this.btnAgregar.TabIndex = 6;
@@ -114,7 +116,7 @@
             // dgvIntegrantes
             // 
             this.dgvIntegrantes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvIntegrantes.Location = new System.Drawing.Point(444, 96);
+            this.dgvIntegrantes.Location = new System.Drawing.Point(489, 169);
             this.dgvIntegrantes.Name = "dgvIntegrantes";
             this.dgvIntegrantes.RowHeadersWidth = 62;
             this.dgvIntegrantes.RowTemplate.Height = 28;
@@ -125,19 +127,42 @@
             // btnGuardar
             // 
             this.btnGuardar.Font = new System.Drawing.Font("Glacial Indifference", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGuardar.Location = new System.Drawing.Point(444, 348);
+            this.btnGuardar.Location = new System.Drawing.Point(489, 421);
             this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(936, 41);
+            this.btnGuardar.Size = new System.Drawing.Size(407, 41);
             this.btnGuardar.TabIndex = 8;
             this.btnGuardar.Text = "Guardar Integrantes";
             this.btnGuardar.UseVisualStyleBackColor = true;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
+            // lblTitulo
+            // 
+            this.lblTitulo.AutoSize = true;
+            this.lblTitulo.Font = new System.Drawing.Font("Glacial Indifference", 28F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitulo.Location = new System.Drawing.Point(67, 26);
+            this.lblTitulo.Name = "lblTitulo";
+            this.lblTitulo.Size = new System.Drawing.Size(589, 67);
+            this.lblTitulo.TabIndex = 19;
+            this.lblTitulo.Text = "Integrantes  Planchas";
+            // 
+            // btnCerrar
+            // 
+            this.btnCerrar.Font = new System.Drawing.Font("Glacial Indifference", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCerrar.Location = new System.Drawing.Point(1249, 421);
+            this.btnCerrar.Name = "btnCerrar";
+            this.btnCerrar.Size = new System.Drawing.Size(176, 45);
+            this.btnCerrar.TabIndex = 20;
+            this.btnCerrar.Text = "Cerrar";
+            this.btnCerrar.UseVisualStyleBackColor = true;
+            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
+            // 
             // FrmIntegrantesPlancha
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1569, 450);
+            this.ClientSize = new System.Drawing.Size(1569, 550);
+            this.Controls.Add(this.btnCerrar);
+            this.Controls.Add(this.lblTitulo);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.dgvIntegrantes);
             this.Controls.Add(this.btnAgregar);
@@ -167,5 +192,7 @@
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.DataGridView dgvIntegrantes;
         private System.Windows.Forms.Button btnGuardar;
+        private System.Windows.Forms.Label lblTitulo;
+        private System.Windows.Forms.Button btnCerrar;
     }
 }

@@ -14,7 +14,11 @@ namespace SistemaVotaciones.DAL
             {
                 conn.Open();
 
-                string query = "SELECT * FROM Usuarios WHERE Username=@user AND Password=@pass";
+                string query = @"
+                SELECT TOP 1 *
+                FROM Usuarios
+                WHERE Username = @user
+                AND Password = @pass";
 
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@user", username);
@@ -52,9 +56,11 @@ namespace SistemaVotaciones.DAL
             {
                 conn.Open();
 
-                string query = @"SELECT COUNT(*) 
-                                 FROM Usuarios 
-                                 WHERE Username=@Username OR Matricula=@Matricula";
+                string query = @"
+                SELECT COUNT(*)
+                FROM Usuarios
+                WHERE Username = @Username
+                OR Matricula = @Matricula";
 
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@Username", username);
@@ -72,12 +78,13 @@ namespace SistemaVotaciones.DAL
             {
                 conn.Open();
 
-                string query = @"SELECT IdPadron 
-                                 FROM PadronesElectorales
-                                 WHERE Nivel=@nivel 
-                                 AND Grado=@grado 
-                                 AND Seccion=@seccion 
-                                 AND Modalidad=@modalidad";
+                string query = @"
+                SELECT TOP 1 IdPadron
+                FROM PadronesElectorales
+                WHERE Nivel = @nivel
+                AND Grado = @grado
+                AND Seccion = @seccion
+                AND Modalidad = @modalidad";
 
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@nivel", nivel);
@@ -100,7 +107,8 @@ namespace SistemaVotaciones.DAL
             {
                 conn.Open();
 
-                string query = @"INSERT INTO Usuarios
+                string query = @"
+                INSERT INTO Usuarios
                 (Matricula, NombreCompleto, Nivel, Grado, Seccion, Modalidad,
                  Username, Password, IdRol, IdPadron, EstadoUsuario, YaVoto)
                 VALUES
@@ -117,8 +125,13 @@ namespace SistemaVotaciones.DAL
                 cmd.Parameters.AddWithValue("@Modalidad", usuario.Modalidad);
                 cmd.Parameters.AddWithValue("@Username", usuario.Username);
                 cmd.Parameters.AddWithValue("@Password", usuario.Password);
+
+                // Todo usuario registrado desde este formulario será Votante.
                 cmd.Parameters.AddWithValue("@IdRol", 2);
+
                 cmd.Parameters.AddWithValue("@IdPadron", usuario.IdPadron);
+
+                // Todo usuario nuevo queda activo y sin votar.
                 cmd.Parameters.AddWithValue("@EstadoUsuario", true);
                 cmd.Parameters.AddWithValue("@YaVoto", false);
 

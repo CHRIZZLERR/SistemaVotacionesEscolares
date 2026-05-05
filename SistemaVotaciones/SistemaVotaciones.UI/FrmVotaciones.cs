@@ -110,5 +110,10 @@ namespace SistemaVotaciones.UI
         private void lblInicio_Click(object sender, EventArgs e) { }
 
         private void lblPadron_Click(object sender, EventArgs e) { }
+
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

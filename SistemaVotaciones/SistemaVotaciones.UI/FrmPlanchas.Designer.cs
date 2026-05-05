@@ -40,6 +40,8 @@
             this.cmbAdminPlancha = new System.Windows.Forms.ComboBox();
             this.dgvPlanchas = new System.Windows.Forms.DataGridView();
             this.btnCrearPlancha = new System.Windows.Forms.Button();
+            this.lblTitulo = new System.Windows.Forms.Label();
+            this.btnCerrar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPlanchas)).BeginInit();
             this.SuspendLayout();
             // 
@@ -47,7 +49,7 @@
             // 
             this.lblNombrePlancha.AutoSize = true;
             this.lblNombrePlancha.Font = new System.Drawing.Font("Glacial Indifference", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNombrePlancha.Location = new System.Drawing.Point(10, 126);
+            this.lblNombrePlancha.Location = new System.Drawing.Point(10, 196);
             this.lblNombrePlancha.Name = "lblNombrePlancha";
             this.lblNombrePlancha.Size = new System.Drawing.Size(329, 38);
             this.lblNombrePlancha.TabIndex = 0;
@@ -58,7 +60,7 @@
             // 
             this.lblColor.AutoSize = true;
             this.lblColor.Font = new System.Drawing.Font("Glacial Indifference", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblColor.Location = new System.Drawing.Point(10, 189);
+            this.lblColor.Location = new System.Drawing.Point(10, 259);
             this.lblColor.Name = "lblColor";
             this.lblColor.Size = new System.Drawing.Size(102, 38);
             this.lblColor.TabIndex = 1;
@@ -69,7 +71,7 @@
             // 
             this.lblPadron.AutoSize = true;
             this.lblPadron.Font = new System.Drawing.Font("Glacial Indifference", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPadron.Location = new System.Drawing.Point(10, 330);
+            this.lblPadron.Location = new System.Drawing.Point(10, 400);
             this.lblPadron.Name = "lblPadron";
             this.lblPadron.Size = new System.Drawing.Size(123, 38);
             this.lblPadron.TabIndex = 2;
@@ -80,7 +82,7 @@
             // 
             this.lblAdminPlancha.AutoSize = true;
             this.lblAdminPlancha.Font = new System.Drawing.Font("Glacial Indifference", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAdminPlancha.Location = new System.Drawing.Point(10, 393);
+            this.lblAdminPlancha.Location = new System.Drawing.Point(10, 463);
             this.lblAdminPlancha.Name = "lblAdminPlancha";
             this.lblAdminPlancha.Size = new System.Drawing.Size(379, 38);
             this.lblAdminPlancha.TabIndex = 3;
@@ -91,7 +93,7 @@
             // 
             this.lblLema.AutoSize = true;
             this.lblLema.Font = new System.Drawing.Font("Glacial Indifference", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLema.Location = new System.Drawing.Point(10, 255);
+            this.lblLema.Location = new System.Drawing.Point(10, 325);
             this.lblLema.Name = "lblLema";
             this.lblLema.Size = new System.Drawing.Size(98, 38);
             this.lblLema.TabIndex = 4;
@@ -100,7 +102,7 @@
             // 
             // txtNombrePlancha
             // 
-            this.txtNombrePlancha.Location = new System.Drawing.Point(346, 126);
+            this.txtNombrePlancha.Location = new System.Drawing.Point(346, 196);
             this.txtNombrePlancha.Multiline = true;
             this.txtNombrePlancha.Name = "txtNombrePlancha";
             this.txtNombrePlancha.Size = new System.Drawing.Size(233, 38);
@@ -109,7 +111,7 @@
             // 
             // txtColor
             // 
-            this.txtColor.Location = new System.Drawing.Point(118, 200);
+            this.txtColor.Location = new System.Drawing.Point(118, 270);
             this.txtColor.Multiline = true;
             this.txtColor.Name = "txtColor";
             this.txtColor.Size = new System.Drawing.Size(461, 38);
@@ -118,7 +120,7 @@
             // 
             // txtLema
             // 
-            this.txtLema.Location = new System.Drawing.Point(118, 255);
+            this.txtLema.Location = new System.Drawing.Point(118, 325);
             this.txtLema.Multiline = true;
             this.txtLema.Name = "txtLema";
             this.txtLema.Size = new System.Drawing.Size(461, 38);
@@ -128,7 +130,7 @@
             // cmbPadron
             // 
             this.cmbPadron.FormattingEnabled = true;
-            this.cmbPadron.Location = new System.Drawing.Point(140, 339);
+            this.cmbPadron.Location = new System.Drawing.Point(140, 409);
             this.cmbPadron.Name = "cmbPadron";
             this.cmbPadron.Size = new System.Drawing.Size(439, 28);
             this.cmbPadron.TabIndex = 8;
@@ -137,7 +139,7 @@
             // cmbAdminPlancha
             // 
             this.cmbAdminPlancha.FormattingEnabled = true;
-            this.cmbAdminPlancha.Location = new System.Drawing.Point(395, 403);
+            this.cmbAdminPlancha.Location = new System.Drawing.Point(395, 473);
             this.cmbAdminPlancha.Name = "cmbAdminPlancha";
             this.cmbAdminPlancha.Size = new System.Drawing.Size(184, 28);
             this.cmbAdminPlancha.TabIndex = 9;
@@ -146,7 +148,7 @@
             // dgvPlanchas
             // 
             this.dgvPlanchas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPlanchas.Location = new System.Drawing.Point(606, 126);
+            this.dgvPlanchas.Location = new System.Drawing.Point(606, 196);
             this.dgvPlanchas.Name = "dgvPlanchas";
             this.dgvPlanchas.RowHeadersWidth = 62;
             this.dgvPlanchas.RowTemplate.Height = 28;
@@ -157,19 +159,42 @@
             // btnCrearPlancha
             // 
             this.btnCrearPlancha.Font = new System.Drawing.Font("Glacial Indifference", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCrearPlancha.Location = new System.Drawing.Point(606, 386);
+            this.btnCrearPlancha.Location = new System.Drawing.Point(606, 456);
             this.btnCrearPlancha.Name = "btnCrearPlancha";
-            this.btnCrearPlancha.Size = new System.Drawing.Size(1137, 45);
+            this.btnCrearPlancha.Size = new System.Drawing.Size(446, 45);
             this.btnCrearPlancha.TabIndex = 11;
             this.btnCrearPlancha.Text = "Crear";
             this.btnCrearPlancha.UseVisualStyleBackColor = true;
             this.btnCrearPlancha.Click += new System.EventHandler(this.btnCrearPlancha_Click);
+            // 
+            // lblTitulo
+            // 
+            this.lblTitulo.AutoSize = true;
+            this.lblTitulo.Font = new System.Drawing.Font("Glacial Indifference", 28F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitulo.Location = new System.Drawing.Point(633, 22);
+            this.lblTitulo.Name = "lblTitulo";
+            this.lblTitulo.Size = new System.Drawing.Size(263, 67);
+            this.lblTitulo.TabIndex = 19;
+            this.lblTitulo.Text = "Planchas";
+            // 
+            // btnCerrar
+            // 
+            this.btnCerrar.Font = new System.Drawing.Font("Glacial Indifference", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCerrar.Location = new System.Drawing.Point(1499, 473);
+            this.btnCerrar.Name = "btnCerrar";
+            this.btnCerrar.Size = new System.Drawing.Size(244, 45);
+            this.btnCerrar.TabIndex = 20;
+            this.btnCerrar.Text = "Cerrar";
+            this.btnCerrar.UseVisualStyleBackColor = true;
+            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
             // 
             // FrmPlanchas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1949, 551);
+            this.Controls.Add(this.btnCerrar);
+            this.Controls.Add(this.lblTitulo);
             this.Controls.Add(this.btnCrearPlancha);
             this.Controls.Add(this.dgvPlanchas);
             this.Controls.Add(this.cmbAdminPlancha);
@@ -204,5 +229,7 @@
         private System.Windows.Forms.ComboBox cmbAdminPlancha;
         private System.Windows.Forms.DataGridView dgvPlanchas;
         private System.Windows.Forms.Button btnCrearPlancha;
+        private System.Windows.Forms.Label lblTitulo;
+        private System.Windows.Forms.Button btnCerrar;
     }
 }

@@ -42,7 +42,7 @@
             // 
             this.lblTitulo.AutoSize = true;
             this.lblTitulo.Font = new System.Drawing.Font("Glacial Indifference", 28F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitulo.Location = new System.Drawing.Point(427, 21);
+            this.lblTitulo.Location = new System.Drawing.Point(696, 31);
             this.lblTitulo.Name = "lblTitulo";
             this.lblTitulo.Size = new System.Drawing.Size(256, 67);
             this.lblTitulo.TabIndex = 17;
@@ -52,18 +52,18 @@
             // dgvUsuarios
             // 
             this.dgvUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvUsuarios.Location = new System.Drawing.Point(22, 133);
+            this.dgvUsuarios.Location = new System.Drawing.Point(41, 133);
             this.dgvUsuarios.Name = "dgvUsuarios";
             this.dgvUsuarios.RowHeadersWidth = 62;
             this.dgvUsuarios.RowTemplate.Height = 28;
-            this.dgvUsuarios.Size = new System.Drawing.Size(1024, 301);
+            this.dgvUsuarios.Size = new System.Drawing.Size(1666, 301);
             this.dgvUsuarios.TabIndex = 19;
             this.dgvUsuarios.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUsuarios_CellContentClick);
             // 
             // btnActualizar
             // 
             this.btnActualizar.Font = new System.Drawing.Font("Glacial Indifference", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnActualizar.Location = new System.Drawing.Point(22, 457);
+            this.btnActualizar.Location = new System.Drawing.Point(41, 457);
             this.btnActualizar.Name = "btnActualizar";
             this.btnActualizar.Size = new System.Drawing.Size(189, 45);
             this.btnActualizar.TabIndex = 27;
@@ -74,7 +74,7 @@
             // btnCerrar
             // 
             this.btnCerrar.Font = new System.Drawing.Font("Glacial Indifference", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCerrar.Location = new System.Drawing.Point(973, 591);
+            this.btnCerrar.Location = new System.Drawing.Point(1529, 591);
             this.btnCerrar.Name = "btnCerrar";
             this.btnCerrar.Size = new System.Drawing.Size(159, 45);
             this.btnCerrar.TabIndex = 28;
@@ -85,7 +85,7 @@
             // btnActivar
             // 
             this.btnActivar.Font = new System.Drawing.Font("Glacial Indifference", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnActivar.Location = new System.Drawing.Point(246, 457);
+            this.btnActivar.Location = new System.Drawing.Point(259, 457);
             this.btnActivar.Name = "btnActivar";
             this.btnActivar.Size = new System.Drawing.Size(189, 45);
             this.btnActivar.TabIndex = 29;
@@ -96,7 +96,7 @@
             // btnDesactivar
             // 
             this.btnDesactivar.Font = new System.Drawing.Font("Glacial Indifference", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDesactivar.Location = new System.Drawing.Point(475, 457);
+            this.btnDesactivar.Location = new System.Drawing.Point(472, 457);
             this.btnDesactivar.Name = "btnDesactivar";
             this.btnDesactivar.Size = new System.Drawing.Size(189, 45);
             this.btnDesactivar.TabIndex = 30;
@@ -107,7 +107,7 @@
             // btnReiniciarVoto
             // 
             this.btnReiniciarVoto.Font = new System.Drawing.Font("Glacial Indifference", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReiniciarVoto.Location = new System.Drawing.Point(802, 457);
+            this.btnReiniciarVoto.Location = new System.Drawing.Point(1463, 457);
             this.btnReiniciarVoto.Name = "btnReiniciarVoto";
             this.btnReiniciarVoto.Size = new System.Drawing.Size(244, 45);
             this.btnReiniciarVoto.TabIndex = 31;
@@ -119,7 +119,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1144, 648);
+            this.ClientSize = new System.Drawing.Size(1764, 648);
             this.Controls.Add(this.btnReiniciarVoto);
             this.Controls.Add(this.btnDesactivar);
             this.Controls.Add(this.btnActivar);
@@ -129,6 +129,7 @@
             this.Controls.Add(this.lblTitulo);
             this.Name = "FrmUsuarios";
             this.Text = "FrmUsuarios";
+            this.Load += new System.EventHandler(this.FrmUsuarios_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

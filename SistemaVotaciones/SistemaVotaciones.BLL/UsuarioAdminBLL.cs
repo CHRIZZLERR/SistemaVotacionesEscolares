@@ -1,5 +1,6 @@
 ﻿using System.Data;
 using SistemaVotaciones.DAL;
+using SistemaVotaciones.Entidades;
 
 namespace SistemaVotaciones.BLL
 {
@@ -7,9 +8,9 @@ namespace SistemaVotaciones.BLL
     {
         private UsuarioAdminDAL dal = new UsuarioAdminDAL();
 
-        public DataTable ListarUsuarios()
+        public DataTable ListarUsuarios(Usuario usuarioActual)
         {
-            return dal.ListarUsuarios();
+            return dal.ListarUsuarios(usuarioActual);
         }
 
         public bool ActivarUsuario(int idUsuario)

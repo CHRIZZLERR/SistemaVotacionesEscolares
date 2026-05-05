@@ -13,6 +13,11 @@ namespace SistemaVotaciones.UI
 
             txtPassword.PasswordChar = '*';
 
+            CargarCombosIniciales();
+        }
+
+        private void CargarCombosIniciales()
+        {
             cmbNivel.Items.Clear();
             cmbGrado.Items.Clear();
             cmbSeccion.Items.Clear();
@@ -41,6 +46,33 @@ namespace SistemaVotaciones.UI
             });
         }
 
+        private void ConfigurarModalidadPorNivel()
+        {
+            if (cmbNivel.Text == "Primaria")
+            {
+                cmbModalidad.Items.Clear();
+                cmbModalidad.Items.Add("Académico");
+                cmbModalidad.SelectedIndex = 0;
+                cmbModalidad.Enabled = false;
+            }
+            else if (cmbNivel.Text == "Secundaria")
+            {
+                cmbModalidad.Enabled = true;
+                cmbModalidad.Items.Clear();
+
+                cmbModalidad.Items.AddRange(new string[]
+                {
+                    "Académico",
+                    "Informática",
+                    "Gestión",
+                    "Electrónica",
+                    "Música"
+                });
+
+                cmbModalidad.SelectedIndex = -1;
+            }
+        }
+
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtMatricula.Text) ||
@@ -60,6 +92,13 @@ namespace SistemaVotaciones.UI
 
             string matricula = txtMatricula.Text.Trim();
             string username = txtUsuario.Text.Trim();
+            string nombre = txtNombre.Text.Trim();
+            string password = txtPassword.Text.Trim();
+
+            string nivel = cmbNivel.Text.Trim();
+            string grado = cmbGrado.Text.Trim();
+            string seccion = cmbSeccion.Text.Trim();
+            string modalidad = cmbModalidad.Text.Trim();
 
             if (bll.ExisteUsuario(username, matricula))
             {
@@ -68,10 +107,10 @@ namespace SistemaVotaciones.UI
             }
 
             int idPadron = bll.ObtenerIdPadron(
-                cmbNivel.Text,
-                cmbGrado.Text,
-                cmbSeccion.Text,
-                cmbModalidad.Text
+                nivel,
+                grado,
+                seccion,
+                modalidad
             );
 
             if (idPadron == 0)
@@ -83,25 +122,33 @@ namespace SistemaVotaciones.UI
             Usuario usuario = new Usuario
             {
                 Matricula = matricula,
-                NombreCompleto = txtNombre.Text.Trim(),
+                NombreCompleto = nombre,
                 Username = username,
-                Password = txtPassword.Text.Trim(),
-                Nivel = cmbNivel.Text,
-                Grado = cmbGrado.Text,
-                Seccion = cmbSeccion.Text,
-                Modalidad = cmbModalidad.Text,
+                Password = password,
+                Nivel = nivel,
+                Grado = grado,
+                Seccion = seccion,
+                Modalidad = modalidad,
                 IdPadron = idPadron
+
+                // No ponemos IdRol aquí porque el DAL lo fuerza como Votante.
+                // EstadoUsuario y YaVoto también se controlan en el DAL.
             };
 
             if (bll.RegistrarUsuario(usuario))
             {
-                MessageBox.Show("Usuario registrado correctamente.");
+                MessageBox.Show("Usuario registrado correctamente como votante.");
                 this.Close();
             }
             else
             {
                 MessageBox.Show("Error al registrar usuario.");
             }
+        }
+
+        private void cmbNivel_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ConfigurarModalidadPorNivel();
         }
 
         private void lblUsuario_Click(object sender, EventArgs e) { }
@@ -118,9 +165,13 @@ namespace SistemaVotaciones.UI
         private void txtNombre_TextChanged(object sender, EventArgs e) { }
         private void txtMatricula_TextChanged(object sender, EventArgs e) { }
 
-        private void cmbNivel_SelectedIndexChanged(object sender, EventArgs e) { }
         private void cmbGrado_SelectedIndexChanged(object sender, EventArgs e) { }
         private void cmbSeccion_SelectedIndexChanged(object sender, EventArgs e) { }
         private void cmbModalidad_SelectedIndexChanged(object sender, EventArgs e) { }
+
+        private void FrmRegistroUsuario_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

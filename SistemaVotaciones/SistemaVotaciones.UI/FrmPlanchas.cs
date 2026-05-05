@@ -129,5 +129,10 @@ namespace SistemaVotaciones.UI
         {
 
         }
+
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

@@ -121,7 +121,7 @@
             // 
             this.lblTitutuloResultados.AutoSize = true;
             this.lblTitutuloResultados.Font = new System.Drawing.Font("Glacial Indifference", 26F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitutuloResultados.Location = new System.Drawing.Point(190, 9);
+            this.lblTitutuloResultados.Location = new System.Drawing.Point(479, 9);
             this.lblTitutuloResultados.Name = "lblTitutuloResultados";
             this.lblTitutuloResultados.Size = new System.Drawing.Size(293, 62);
             this.lblTitutuloResultados.TabIndex = 14;
@@ -131,7 +131,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(715, 788);
+            this.ClientSize = new System.Drawing.Size(1177, 788);
             this.Controls.Add(this.lblTitutuloResultados);
             this.Controls.Add(this.btnCerrar);
             this.Controls.Add(this.btnActualizar);
