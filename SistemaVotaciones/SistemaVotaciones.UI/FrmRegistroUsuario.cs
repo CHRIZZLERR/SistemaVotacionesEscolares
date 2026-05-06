@@ -34,6 +34,7 @@ namespace SistemaVotaciones.UI
             this.MaximizeBox = false;
             this.BackColor = Color.FromArgb(8, 18, 55);
 
+            this.Paint -= FrmRegistroUsuario_Paint;
             this.Paint += FrmRegistroUsuario_Paint;
 
             panelPrincipal = new Panel();
@@ -116,6 +117,7 @@ namespace SistemaVotaciones.UI
             panelPrincipal.Controls.Add(txtPassword);
 
             panelPrincipal.Controls.Add(btnRegistrar);
+            panelPrincipal.Controls.Add(btnRegresar);
         }
 
         private void OrganizarCampos()
@@ -175,8 +177,14 @@ namespace SistemaVotaciones.UI
             cmbModalidad.Size = new Size(inputW, inputH);
             txtPassword.Size = new Size(inputW, inputH);
 
-            btnRegistrar.Location = new Point(200, 480);
-            btnRegistrar.Size = new Size(290, 45);
+            btnRegistrar.Location = new Point(120, 480);
+            btnRegistrar.Size = new Size(210, 45);
+
+            btnRegresar.Location = new Point(360, 480);
+            btnRegresar.Size = new Size(210, 45);
+
+            btnRegistrar.BringToFront();
+            btnRegresar.BringToFront();
         }
 
         private void EstilizarControles()
@@ -204,6 +212,9 @@ namespace SistemaVotaciones.UI
 
             btnRegistrar.Text = "Registrar votante";
             EstiloBotonPrincipal(btnRegistrar);
+
+            btnRegresar.Text = "Regresar";
+            EstiloBotonSecundario(btnRegresar);
         }
 
         private void EstiloLabel(Label label, string texto)
@@ -247,6 +258,27 @@ namespace SistemaVotaciones.UI
             boton.MouseLeave += (s, e) =>
             {
                 boton.BackColor = Color.FromArgb(21, 101, 192);
+            };
+        }
+
+        private void EstiloBotonSecundario(Button boton)
+        {
+            boton.FlatStyle = FlatStyle.Flat;
+            boton.FlatAppearance.BorderSize = 1;
+            boton.FlatAppearance.BorderColor = Color.FromArgb(21, 101, 192);
+            boton.BackColor = Color.White;
+            boton.ForeColor = Color.FromArgb(21, 101, 192);
+            boton.Font = new Font("Segoe UI", 11, FontStyle.Bold);
+            boton.Cursor = Cursors.Hand;
+
+            boton.MouseEnter += (s, e) =>
+            {
+                boton.BackColor = Color.FromArgb(225, 238, 255);
+            };
+
+            boton.MouseLeave += (s, e) =>
+            {
+                boton.BackColor = Color.White;
             };
         }
 
@@ -375,6 +407,11 @@ namespace SistemaVotaciones.UI
             {
                 MessageBox.Show("Error al registrar usuario.");
             }
+        }
+
+        private void btnRegresar_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
         private void cmbNivel_SelectedIndexChanged(object sender, EventArgs e)

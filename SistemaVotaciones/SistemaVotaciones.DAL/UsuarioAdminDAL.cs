@@ -98,5 +98,100 @@ namespace SistemaVotaciones.DAL
                 return cmd.ExecuteNonQuery() > 0;
             }
         }
+
+        public DataTable ListarPadrones()
+        {
+            using (SqlConnection conn = conexion.ObtenerConexion())
+            {
+                conn.Open();
+
+                string query = @"
+                SELECT IdPadron, NombrePadron
+                FROM PadronesElectorales
+                ORDER BY NombrePadron";
+
+                SqlDataAdapter da = new SqlDataAdapter(query, conn);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+
+                return dt;
+            }
+        }
+
+        public bool ExisteUsuarioOMatricula(string username, string matricula)
+        {
+            using (SqlConnection conn = conexion.ObtenerConexion())
+            {
+                conn.Open();
+
+                string query = @"
+                SELECT COUNT(*)
+                FROM Usuarios
+                WHERE Username = @Username
+                OR Matricula = @Matricula";
+
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@Username", username);
+                cmd.Parameters.AddWithValue("@Matricula", matricula);
+
+                int cantidad = (int)cmd.ExecuteScalar();
+
+                return cantidad > 0;
+            }
+        }
+
+        public bool CrearAdministradorPlancha(Usuario usuario)
+        {
+            using (SqlConnection conn = conexion.ObtenerConexion())
+            {
+                conn.Open();
+
+                string query = @"
+                INSERT INTO Usuarios
+                (
+                    Matricula,
+                    NombreCompleto,
+                    Nivel,
+                    Grado,
+                    Seccion,
+                    Modalidad,
+                    Username,
+                    Password,
+                    IdRol,
+                    IdPadron,
+                    EstadoUsuario,
+                    YaVoto
+                )
+                VALUES
+                (
+                    @Matricula,
+                    @NombreCompleto,
+                    @Nivel,
+                    @Grado,
+                    @Seccion,
+                    @Modalidad,
+                    @Username,
+                    @Password,
+                    3,
+                    @IdPadron,
+                    1,
+                    0
+                )";
+
+                SqlCommand cmd = new SqlCommand(query, conn);
+
+                cmd.Parameters.AddWithValue("@Matricula", usuario.Matricula);
+                cmd.Parameters.AddWithValue("@NombreCompleto", usuario.NombreCompleto);
+                cmd.Parameters.AddWithValue("@Nivel", usuario.Nivel);
+                cmd.Parameters.AddWithValue("@Grado", usuario.Grado);
+                cmd.Parameters.AddWithValue("@Seccion", usuario.Seccion);
+                cmd.Parameters.AddWithValue("@Modalidad", usuario.Modalidad);
+                cmd.Parameters.AddWithValue("@Username", usuario.Username);
+                cmd.Parameters.AddWithValue("@Password", usuario.Password);
+                cmd.Parameters.AddWithValue("@IdPadron", usuario.IdPadron);
+
+                return cmd.ExecuteNonQuery() > 0;
+            }
+        }
     }
 }

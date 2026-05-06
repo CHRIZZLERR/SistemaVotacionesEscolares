@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
 using SistemaVotaciones.BLL;
@@ -14,6 +15,8 @@ namespace SistemaVotaciones.UI
         private Panel panelPrincipal;
         private Label lblTituloNuevo;
         private Label lblSubtituloNuevo;
+
+        private Button btnCrearAdminPlancha;
 
         public FrmUsuarios()
         {
@@ -39,7 +42,7 @@ namespace SistemaVotaciones.UI
 
             this.Text = "Usuarios - Sistema de Votaciones";
             this.StartPosition = FormStartPosition.CenterScreen;
-            this.Size = new Size(1180, 680);
+            this.Size = new Size(1180, 700);
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.BackColor = Color.FromArgb(8, 18, 55);
@@ -66,7 +69,7 @@ namespace SistemaVotaciones.UI
             panelPrincipal = new Panel();
             panelPrincipal.BackColor = Color.FromArgb(245, 248, 255);
             panelPrincipal.Location = new Point(35, 30);
-            panelPrincipal.Size = new Size(1095, 590);
+            panelPrincipal.Size = new Size(1095, 610);
             panelPrincipal.BorderStyle = BorderStyle.None;
             this.Controls.Add(panelPrincipal);
             panelPrincipal.BringToFront();
@@ -140,11 +143,17 @@ namespace SistemaVotaciones.UI
             panelPrincipal.Controls.Add(btnReiniciarVoto);
             panelPrincipal.Controls.Add(btnCerrar);
 
+            btnCrearAdminPlancha = new Button();
+            btnCrearAdminPlancha.Text = "Crear admin plancha";
+            btnCrearAdminPlancha.Click += btnCrearAdminPlancha_Click;
+            panelPrincipal.Controls.Add(btnCrearAdminPlancha);
+
             btnActualizar.Visible = true;
             btnActivar.Visible = true;
             btnDesactivar.Visible = true;
             btnReiniciarVoto.Visible = true;
             btnCerrar.Visible = true;
+            btnCrearAdminPlancha.Visible = true;
 
             btnActualizar.Text = "Actualizar";
             btnActivar.Text = "Activar";
@@ -154,29 +163,34 @@ namespace SistemaVotaciones.UI
 
             EstiloBoton(btnActualizar);
             EstiloBoton(btnActivar);
+            EstiloBoton(btnCrearAdminPlancha);
             EstiloBotonSecundario(btnDesactivar);
             EstiloBotonSecundario(btnReiniciarVoto);
             EstiloBotonCerrar(btnCerrar);
 
-            btnActualizar.Location = new Point(35, 505);
-            btnActualizar.Size = new Size(170, 45);
+            btnActualizar.Location = new Point(35, 500);
+            btnActualizar.Size = new Size(150, 45);
 
-            btnActivar.Location = new Point(225, 505);
-            btnActivar.Size = new Size(170, 45);
+            btnActivar.Location = new Point(205, 500);
+            btnActivar.Size = new Size(150, 45);
 
-            btnDesactivar.Location = new Point(415, 505);
-            btnDesactivar.Size = new Size(170, 45);
+            btnDesactivar.Location = new Point(375, 500);
+            btnDesactivar.Size = new Size(150, 45);
 
-            btnReiniciarVoto.Location = new Point(605, 505);
-            btnReiniciarVoto.Size = new Size(200, 45);
+            btnReiniciarVoto.Location = new Point(545, 500);
+            btnReiniciarVoto.Size = new Size(170, 45);
 
-            btnCerrar.Location = new Point(890, 505);
-            btnCerrar.Size = new Size(170, 45);
+            btnCrearAdminPlancha.Location = new Point(735, 500);
+            btnCrearAdminPlancha.Size = new Size(170, 45);
+
+            btnCerrar.Location = new Point(925, 500);
+            btnCerrar.Size = new Size(135, 45);
 
             btnActualizar.BringToFront();
             btnActivar.BringToFront();
             btnDesactivar.BringToFront();
             btnReiniciarVoto.BringToFront();
+            btnCrearAdminPlancha.BringToFront();
             btnCerrar.BringToFront();
         }
 
@@ -191,12 +205,14 @@ namespace SistemaVotaciones.UI
 
             boton.MouseEnter += (s, e) =>
             {
-                boton.BackColor = Color.FromArgb(25, 118, 210);
+                if (boton.Enabled)
+                    boton.BackColor = Color.FromArgb(25, 118, 210);
             };
 
             boton.MouseLeave += (s, e) =>
             {
-                boton.BackColor = Color.FromArgb(21, 101, 192);
+                if (boton.Enabled)
+                    boton.BackColor = Color.FromArgb(21, 101, 192);
             };
         }
 
@@ -211,12 +227,14 @@ namespace SistemaVotaciones.UI
 
             boton.MouseEnter += (s, e) =>
             {
-                boton.BackColor = Color.FromArgb(115, 115, 135);
+                if (boton.Enabled)
+                    boton.BackColor = Color.FromArgb(115, 115, 135);
             };
 
             boton.MouseLeave += (s, e) =>
             {
-                boton.BackColor = Color.FromArgb(90, 90, 110);
+                if (boton.Enabled)
+                    boton.BackColor = Color.FromArgb(90, 90, 110);
             };
         }
 
@@ -249,11 +267,15 @@ namespace SistemaVotaciones.UI
             {
                 lblTituloNuevo.Text = "Usuarios de mi Plancha";
                 lblSubtituloNuevo.Text = "Consulta y administra únicamente los integrantes asociados a tu plancha.";
+
+                btnCrearAdminPlancha.Visible = false;
             }
             else
             {
                 lblTituloNuevo.Text = "Administración de Usuarios";
                 lblSubtituloNuevo.Text = "Consulta, activa, desactiva y administra el estado de votación de los usuarios.";
+
+                btnCrearAdminPlancha.Visible = true;
             }
         }
 
@@ -341,6 +363,162 @@ namespace SistemaVotaciones.UI
                 return "";
 
             return dgvUsuarios.CurrentRow.Cells["NombreCompleto"].Value.ToString();
+        }
+
+        private void MostrarFormularioCrearAdminPlancha()
+        {
+            Form frm = new Form();
+            frm.Text = "Crear administrador de plancha";
+            frm.StartPosition = FormStartPosition.CenterParent;
+            frm.Size = new Size(500, 460);
+            frm.FormBorderStyle = FormBorderStyle.FixedDialog;
+            frm.MaximizeBox = false;
+            frm.MinimizeBox = false;
+            frm.BackColor = Color.FromArgb(245, 248, 255);
+
+            Label lblTitulo = new Label();
+            lblTitulo.Text = "Nuevo administrador de plancha";
+            lblTitulo.Font = new Font("Segoe UI", 16, FontStyle.Bold);
+            lblTitulo.ForeColor = Color.FromArgb(10, 38, 95);
+            lblTitulo.TextAlign = ContentAlignment.MiddleCenter;
+            lblTitulo.Location = new Point(20, 20);
+            lblTitulo.Size = new Size(440, 35);
+            frm.Controls.Add(lblTitulo);
+
+            Label lblNombre = CrearLabelDialogo("Nombre completo", 45, 75);
+            TextBox txtNombre = CrearTextBoxDialogo(45, 100);
+
+            Label lblUsuario = CrearLabelDialogo("Usuario", 45, 135);
+            TextBox txtUsuario = CrearTextBoxDialogo(45, 160);
+
+            Label lblPassword = CrearLabelDialogo("Contraseña", 45, 195);
+            TextBox txtPassword = CrearTextBoxDialogo(45, 220);
+            txtPassword.PasswordChar = '*';
+
+            Label lblMatricula = CrearLabelDialogo("Matrícula / Código", 45, 255);
+            TextBox txtMatricula = CrearTextBoxDialogo(45, 280);
+
+            Label lblPadron = CrearLabelDialogo("Padrón de referencia", 45, 315);
+            ComboBox cmbPadron = new ComboBox();
+            cmbPadron.Location = new Point(45, 340);
+            cmbPadron.Size = new Size(395, 30);
+            cmbPadron.Font = new Font("Segoe UI", 10, FontStyle.Regular);
+            cmbPadron.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbPadron.DataSource = bll.ListarPadrones();
+            cmbPadron.DisplayMember = "NombrePadron";
+            cmbPadron.ValueMember = "IdPadron";
+
+            Button btnGuardar = new Button();
+            btnGuardar.Text = "Crear admin";
+            btnGuardar.Location = new Point(45, 385);
+            btnGuardar.Size = new Size(180, 40);
+            EstiloBoton(btnGuardar);
+
+            Button btnCancelar = new Button();
+            btnCancelar.Text = "Cancelar";
+            btnCancelar.Location = new Point(260, 385);
+            btnCancelar.Size = new Size(180, 40);
+            EstiloBotonCerrar(btnCancelar);
+
+            btnCancelar.Click += (s, e) =>
+            {
+                frm.Close();
+            };
+
+            btnGuardar.Click += (s, e) =>
+            {
+                if (string.IsNullOrWhiteSpace(txtNombre.Text) ||
+                    string.IsNullOrWhiteSpace(txtUsuario.Text) ||
+                    string.IsNullOrWhiteSpace(txtPassword.Text) ||
+                    string.IsNullOrWhiteSpace(txtMatricula.Text) ||
+                    cmbPadron.SelectedValue == null)
+                {
+                    MessageBox.Show("Debe completar todos los campos.");
+                    return;
+                }
+
+                if (cmbPadron.SelectedValue is DataRowView)
+                {
+                    return;
+                }
+
+                Usuario nuevoAdmin = new Usuario
+                {
+                    Matricula = txtMatricula.Text.Trim(),
+                    NombreCompleto = txtNombre.Text.Trim(),
+                    Username = txtUsuario.Text.Trim(),
+                    Password = txtPassword.Text.Trim(),
+
+                    Nivel = "Administrativo",
+                    Grado = "N/A",
+                    Seccion = "N/A",
+                    Modalidad = "Administración",
+
+                    IdRol = 3,
+                    IdPadron = Convert.ToInt32(cmbPadron.SelectedValue),
+                    EstadoUsuario = true,
+                    YaVoto = false
+                };
+
+                if (bll.CrearAdministradorPlancha(nuevoAdmin))
+                {
+                    MessageBox.Show("Administrador de plancha creado correctamente.");
+                    frm.Close();
+                    CargarUsuarios();
+                }
+                else
+                {
+                    MessageBox.Show("No se pudo crear el administrador. Puede que el usuario o la matrícula ya existan.");
+                }
+            };
+
+            frm.Controls.Add(lblNombre);
+            frm.Controls.Add(txtNombre);
+            frm.Controls.Add(lblUsuario);
+            frm.Controls.Add(txtUsuario);
+            frm.Controls.Add(lblPassword);
+            frm.Controls.Add(txtPassword);
+            frm.Controls.Add(lblMatricula);
+            frm.Controls.Add(txtMatricula);
+            frm.Controls.Add(lblPadron);
+            frm.Controls.Add(cmbPadron);
+            frm.Controls.Add(btnGuardar);
+            frm.Controls.Add(btnCancelar);
+
+            frm.ShowDialog();
+        }
+
+        private Label CrearLabelDialogo(string texto, int x, int y)
+        {
+            Label label = new Label();
+            label.Text = texto;
+            label.Location = new Point(x, y);
+            label.Size = new Size(300, 22);
+            label.Font = new Font("Segoe UI", 10, FontStyle.Bold);
+            label.ForeColor = Color.FromArgb(10, 38, 95);
+            label.BackColor = Color.Transparent;
+            return label;
+        }
+
+        private TextBox CrearTextBoxDialogo(int x, int y)
+        {
+            TextBox textBox = new TextBox();
+            textBox.Location = new Point(x, y);
+            textBox.Size = new Size(395, 30);
+            textBox.Font = new Font("Segoe UI", 10, FontStyle.Regular);
+            textBox.BorderStyle = BorderStyle.FixedSingle;
+            return textBox;
+        }
+
+        private void btnCrearAdminPlancha_Click(object sender, EventArgs e)
+        {
+            if (usuarioActual == null || usuarioActual.IdRol != 1)
+            {
+                MessageBox.Show("Solo el administrador general puede crear administradores de plancha.");
+                return;
+            }
+
+            MostrarFormularioCrearAdminPlancha();
         }
 
         private void btnActualizar_Click(object sender, EventArgs e)

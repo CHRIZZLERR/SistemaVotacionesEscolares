@@ -27,5 +27,25 @@ namespace SistemaVotaciones.BLL
         {
             return dal.ReiniciarVoto(idUsuario);
         }
+
+        public DataTable ListarPadrones()
+        {
+            return dal.ListarPadrones();
+        }
+
+        public bool ExisteUsuarioOMatricula(string username, string matricula)
+        {
+            return dal.ExisteUsuarioOMatricula(username, matricula);
+        }
+
+        public bool CrearAdministradorPlancha(Usuario usuario)
+        {
+            if (dal.ExisteUsuarioOMatricula(usuario.Username, usuario.Matricula))
+            {
+                return false;
+            }
+
+            return dal.CrearAdministradorPlancha(usuario);
+        }
     }
 }

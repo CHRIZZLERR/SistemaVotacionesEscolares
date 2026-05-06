@@ -45,6 +45,7 @@
             this.lblGrado = new System.Windows.Forms.Label();
             this.lblSeccion = new System.Windows.Forms.Label();
             this.lblModalidad = new System.Windows.Forms.Label();
+            this.btnRegresar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtMatricula
@@ -174,9 +175,9 @@
             // btnRegistrar
             // 
             this.btnRegistrar.Font = new System.Drawing.Font("Glacial Indifference", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRegistrar.Location = new System.Drawing.Point(30, 499);
+            this.btnRegistrar.Location = new System.Drawing.Point(8, 499);
             this.btnRegistrar.Name = "btnRegistrar";
-            this.btnRegistrar.Size = new System.Drawing.Size(344, 56);
+            this.btnRegistrar.Size = new System.Drawing.Size(158, 56);
             this.btnRegistrar.TabIndex = 12;
             this.btnRegistrar.Text = "Registrar";
             this.btnRegistrar.UseVisualStyleBackColor = true;
@@ -227,11 +228,23 @@
             this.lblModalidad.Text = "Modalidad:";
             this.lblModalidad.Click += new System.EventHandler(this.lblModalidad_Click);
             // 
+            // btnRegresar
+            // 
+            this.btnRegresar.Font = new System.Drawing.Font("Glacial Indifference", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRegresar.Location = new System.Drawing.Point(203, 499);
+            this.btnRegresar.Name = "btnRegresar";
+            this.btnRegresar.Size = new System.Drawing.Size(171, 56);
+            this.btnRegresar.TabIndex = 17;
+            this.btnRegresar.Text = "Regresar";
+            this.btnRegresar.UseVisualStyleBackColor = true;
+            this.btnRegresar.Click += new System.EventHandler(this.btnRegresar_Click);
+            // 
             // FrmRegistroUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(431, 567);
+            this.ClientSize = new System.Drawing.Size(577, 567);
+            this.Controls.Add(this.btnRegresar);
             this.Controls.Add(this.cmbModalidad);
             this.Controls.Add(this.cmbSeccion);
             this.Controls.Add(this.cmbGrado);
@@ -276,5 +289,6 @@
         private System.Windows.Forms.Label lblGrado;
         private System.Windows.Forms.Label lblSeccion;
         private System.Windows.Forms.Label lblModalidad;
+        private System.Windows.Forms.Button btnRegresar;
     }
 }
