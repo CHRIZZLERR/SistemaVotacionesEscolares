@@ -15,6 +15,9 @@ namespace SistemaVotaciones.UI
         private Label lblTituloNuevo;
         private Label lblSubtituloNuevo;
 
+        private Button btnExportarPDF;
+        private string nombreReporteActual = "";
+
         public FrmReportes()
         {
             InitializeComponent();
@@ -86,7 +89,7 @@ namespace SistemaVotaciones.UI
             panelHeader.Controls.Add(lblTituloNuevo);
 
             lblSubtituloNuevo = new Label();
-            lblSubtituloNuevo.Text = "Genera reportes oficiales de votos, usuarios, planchas e integrantes";
+            lblSubtituloNuevo.Text = "Genera y exporta reportes oficiales en formato PDF";
             lblSubtituloNuevo.Font = new Font("Segoe UI", 10, FontStyle.Bold);
             lblSubtituloNuevo.ForeColor = Color.FromArgb(255, 215, 90);
             lblSubtituloNuevo.BackColor = Color.Transparent;
@@ -119,12 +122,21 @@ namespace SistemaVotaciones.UI
             cmbTipoReporte.Font = new Font("Segoe UI", 10, FontStyle.Regular);
             cmbTipoReporte.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbTipoReporte.Location = new Point(35, 160);
-            cmbTipoReporte.Size = new Size(420, 30);
+            cmbTipoReporte.Size = new Size(360, 30);
 
             btnGenerar.Text = "Generar reporte";
-            btnGenerar.Location = new Point(485, 153);
-            btnGenerar.Size = new Size(190, 42);
+            btnGenerar.Location = new Point(420, 153);
+            btnGenerar.Size = new Size(170, 42);
             EstiloBoton(btnGenerar);
+
+            btnExportarPDF = new Button();
+            btnExportarPDF.Text = "Exportar PDF";
+            btnExportarPDF.Location = new Point(610, 153);
+            btnExportarPDF.Size = new Size(170, 42);
+            btnExportarPDF.Enabled = false;
+            btnExportarPDF.Click += btnExportarPDF_Click;
+            EstiloBotonExportar(btnExportarPDF);
+            panelPrincipal.Controls.Add(btnExportarPDF);
 
             btnCerrar.Text = "Cerrar";
             btnCerrar.Location = new Point(830, 153);
@@ -162,6 +174,28 @@ namespace SistemaVotaciones.UI
             boton.MouseLeave += (s, e) =>
             {
                 boton.BackColor = Color.FromArgb(21, 101, 192);
+            };
+        }
+
+        private void EstiloBotonExportar(Button boton)
+        {
+            boton.FlatStyle = FlatStyle.Flat;
+            boton.FlatAppearance.BorderSize = 0;
+            boton.BackColor = Color.FromArgb(22, 163, 74);
+            boton.ForeColor = Color.White;
+            boton.Font = new Font("Segoe UI", 10, FontStyle.Bold);
+            boton.Cursor = Cursors.Hand;
+
+            boton.MouseEnter += (s, e) =>
+            {
+                if (boton.Enabled)
+                    boton.BackColor = Color.FromArgb(34, 197, 94);
+            };
+
+            boton.MouseLeave += (s, e) =>
+            {
+                if (boton.Enabled)
+                    boton.BackColor = Color.FromArgb(22, 163, 74);
             };
         }
 
@@ -225,6 +259,9 @@ namespace SistemaVotaciones.UI
                 reportViewer1.LocalReport.DataSources.Add(dataSource);
 
                 reportViewer1.RefreshReport();
+
+                nombreReporteActual = "ReporteGeneralVotos";
+                btnExportarPDF.Enabled = true;
             }
             catch (Exception ex)
             {
@@ -262,6 +299,9 @@ namespace SistemaVotaciones.UI
                 reportViewer1.LocalReport.DataSources.Add(dataSource);
 
                 reportViewer1.RefreshReport();
+
+                nombreReporteActual = "ReporteIntegrantesPlancha";
+                btnExportarPDF.Enabled = true;
             }
             catch (Exception ex)
             {
@@ -299,6 +339,9 @@ namespace SistemaVotaciones.UI
                 reportViewer1.LocalReport.DataSources.Add(dataSource);
 
                 reportViewer1.RefreshReport();
+
+                nombreReporteActual = "ReportePlanchaGanadora";
+                btnExportarPDF.Enabled = true;
             }
             catch (Exception ex)
             {
@@ -336,6 +379,9 @@ namespace SistemaVotaciones.UI
                 reportViewer1.LocalReport.DataSources.Add(dataSource);
 
                 reportViewer1.RefreshReport();
+
+                nombreReporteActual = "ReporteGeneralUsuarios";
+                btnExportarPDF.Enabled = true;
             }
             catch (Exception ex)
             {
@@ -343,8 +389,55 @@ namespace SistemaVotaciones.UI
             }
         }
 
+        private void ExportarReportePDF()
+        {
+            try
+            {
+                if (string.IsNullOrWhiteSpace(nombreReporteActual))
+                {
+                    MessageBox.Show("Primero debe generar un reporte antes de exportarlo.");
+                    return;
+                }
+
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                saveFileDialog.Filter = "Archivo PDF (*.pdf)|*.pdf";
+                saveFileDialog.Title = "Guardar reporte como PDF";
+                saveFileDialog.FileName = nombreReporteActual + "_" + DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".pdf";
+
+                if (saveFileDialog.ShowDialog() != DialogResult.OK)
+                    return;
+
+                string mimeType;
+                string encoding;
+                string fileNameExtension;
+                string[] streams;
+                Warning[] warnings;
+
+                byte[] bytes = reportViewer1.LocalReport.Render(
+                    "PDF",
+                    null,
+                    out mimeType,
+                    out encoding,
+                    out fileNameExtension,
+                    out streams,
+                    out warnings
+                );
+
+                File.WriteAllBytes(saveFileDialog.FileName, bytes);
+
+                MessageBox.Show("Reporte exportado correctamente en PDF.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al exportar el reporte a PDF:\n" + ex.Message);
+            }
+        }
+
         private void btnGenerar_Click(object sender, EventArgs e)
         {
+            btnExportarPDF.Enabled = false;
+            nombreReporteActual = "";
+
             if (cmbTipoReporte.Text == "Reporte general de votos")
             {
                 GenerarReporteGeneralVotos();
@@ -365,6 +458,11 @@ namespace SistemaVotaciones.UI
             {
                 MessageBox.Show("Debe seleccionar un tipo de reporte.");
             }
+        }
+
+        private void btnExportarPDF_Click(object sender, EventArgs e)
+        {
+            ExportarReportePDF();
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)

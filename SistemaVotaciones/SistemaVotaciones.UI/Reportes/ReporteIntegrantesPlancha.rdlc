@@ -1,367 +1,89 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2008/01/reportdefinition"
-        xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
-
-	<DataSources>
-		<DataSource Name="DataSourceIntegrantesPlancha">
-			<ConnectionProperties>
-				<DataProvider>System.Data.DataSet</DataProvider>
-				<ConnectString />
-			</ConnectionProperties>
-			<rd:DataSourceID>33333333-3333-3333-3333-333333333333</rd:DataSourceID>
-		</DataSource>
-	</DataSources>
-
-	<DataSets>
-		<DataSet Name="DataSetIntegrantesPlancha">
-			<Fields>
-				<Field Name="Plancha">
-					<DataField>Plancha</DataField>
-					<rd:TypeName>System.String</rd:TypeName>
-				</Field>
-				<Field Name="Cargo">
-					<DataField>Cargo</DataField>
-					<rd:TypeName>System.String</rd:TypeName>
-				</Field>
-				<Field Name="Integrante">
-					<DataField>Integrante</DataField>
-					<rd:TypeName>System.String</rd:TypeName>
-				</Field>
-				<Field Name="Matricula">
-					<DataField>Matricula</DataField>
-					<rd:TypeName>System.String</rd:TypeName>
-				</Field>
-			</Fields>
-			<Query>
-				<DataSourceName>DataSourceIntegrantesPlancha</DataSourceName>
-				<CommandText />
-			</Query>
-		</DataSet>
-	</DataSets>
-
-	<Body>
-		<ReportItems>
-
-			<Textbox Name="txtTitulo">
-				<CanGrow>true</CanGrow>
-				<KeepTogether>true</KeepTogether>
-				<Paragraphs>
-					<Paragraph>
-						<TextRuns>
-							<TextRun>
-								<Value>Reporte de Integrantes de Plancha</Value>
-								<Style>
-									<FontSize>18pt</FontSize>
-									<FontWeight>Bold</FontWeight>
-								</Style>
-							</TextRun>
-						</TextRuns>
-						<Style>
-							<TextAlign>Center</TextAlign>
-						</Style>
-					</Paragraph>
-				</Paragraphs>
-				<Top>0.15in</Top>
-				<Left>0.1in</Left>
-				<Height>0.4in</Height>
-				<Width>7.4in</Width>
-				<Style>
-					<Border>
-						<Style>None</Style>
-					</Border>
-				</Style>
-			</Textbox>
-
-			<Tablix Name="TablaIntegrantesPlancha">
-				<TablixBody>
-					<TablixColumns>
-						<TablixColumn>
-							<Width>1.8in</Width>
-						</TablixColumn>
-						<TablixColumn>
-							<Width>1.4in</Width>
-						</TablixColumn>
-						<TablixColumn>
-							<Width>2.4in</Width>
-						</TablixColumn>
-						<TablixColumn>
-							<Width>1.2in</Width>
-						</TablixColumn>
-					</TablixColumns>
-
-					<TablixRows>
-						<TablixRow>
-							<Height>0.3in</Height>
-							<TablixCells>
-
-								<TablixCell>
-									<CellContents>
-										<Textbox Name="HeaderPlancha">
-											<CanGrow>true</CanGrow>
-											<KeepTogether>true</KeepTogether>
-											<Paragraphs>
-												<Paragraph>
-													<TextRuns>
-														<TextRun>
-															<Value>Plancha</Value>
-															<Style>
-																<FontWeight>Bold</FontWeight>
-															</Style>
-														</TextRun>
-													</TextRuns>
-												</Paragraph>
-											</Paragraphs>
-											<Style>
-												<BackgroundColor>LightGray</BackgroundColor>
-												<Border>
-													<Style>Solid</Style>
-												</Border>
-											</Style>
-										</Textbox>
-									</CellContents>
-								</TablixCell>
-
-								<TablixCell>
-									<CellContents>
-										<Textbox Name="HeaderCargo">
-											<CanGrow>true</CanGrow>
-											<KeepTogether>true</KeepTogether>
-											<Paragraphs>
-												<Paragraph>
-													<TextRuns>
-														<TextRun>
-															<Value>Cargo</Value>
-															<Style>
-																<FontWeight>Bold</FontWeight>
-															</Style>
-														</TextRun>
-													</TextRuns>
-												</Paragraph>
-											</Paragraphs>
-											<Style>
-												<BackgroundColor>LightGray</BackgroundColor>
-												<Border>
-													<Style>Solid</Style>
-												</Border>
-											</Style>
-										</Textbox>
-									</CellContents>
-								</TablixCell>
-
-								<TablixCell>
-									<CellContents>
-										<Textbox Name="HeaderIntegrante">
-											<CanGrow>true</CanGrow>
-											<KeepTogether>true</KeepTogether>
-											<Paragraphs>
-												<Paragraph>
-													<TextRuns>
-														<TextRun>
-															<Value>Integrante</Value>
-															<Style>
-																<FontWeight>Bold</FontWeight>
-															</Style>
-														</TextRun>
-													</TextRuns>
-												</Paragraph>
-											</Paragraphs>
-											<Style>
-												<BackgroundColor>LightGray</BackgroundColor>
-												<Border>
-													<Style>Solid</Style>
-												</Border>
-											</Style>
-										</Textbox>
-									</CellContents>
-								</TablixCell>
-
-								<TablixCell>
-									<CellContents>
-										<Textbox Name="HeaderMatricula">
-											<CanGrow>true</CanGrow>
-											<KeepTogether>true</KeepTogether>
-											<Paragraphs>
-												<Paragraph>
-													<TextRuns>
-														<TextRun>
-															<Value>Matrícula</Value>
-															<Style>
-																<FontWeight>Bold</FontWeight>
-															</Style>
-														</TextRun>
-													</TextRuns>
-												</Paragraph>
-											</Paragraphs>
-											<Style>
-												<BackgroundColor>LightGray</BackgroundColor>
-												<Border>
-													<Style>Solid</Style>
-												</Border>
-											</Style>
-										</Textbox>
-									</CellContents>
-								</TablixCell>
-
-							</TablixCells>
-						</TablixRow>
-
-						<TablixRow>
-							<Height>0.25in</Height>
-							<TablixCells>
-
-								<TablixCell>
-									<CellContents>
-										<Textbox Name="TxtPlancha">
-											<CanGrow>true</CanGrow>
-											<KeepTogether>true</KeepTogether>
-											<Paragraphs>
-												<Paragraph>
-													<TextRuns>
-														<TextRun>
-															<Value>=Fields!Plancha.Value</Value>
-															<Style />
-														</TextRun>
-													</TextRuns>
-												</Paragraph>
-											</Paragraphs>
-											<Style>
-												<Border>
-													<Style>Solid</Style>
-												</Border>
-											</Style>
-										</Textbox>
-									</CellContents>
-								</TablixCell>
-
-								<TablixCell>
-									<CellContents>
-										<Textbox Name="TxtCargo">
-											<CanGrow>true</CanGrow>
-											<KeepTogether>true</KeepTogether>
-											<Paragraphs>
-												<Paragraph>
-													<TextRuns>
-														<TextRun>
-															<Value>=Fields!Cargo.Value</Value>
-															<Style />
-														</TextRun>
-													</TextRuns>
-												</Paragraph>
-											</Paragraphs>
-											<Style>
-												<Border>
-													<Style>Solid</Style>
-												</Border>
-											</Style>
-										</Textbox>
-									</CellContents>
-								</TablixCell>
-
-								<TablixCell>
-									<CellContents>
-										<Textbox Name="TxtIntegrante">
-											<CanGrow>true</CanGrow>
-											<KeepTogether>true</KeepTogether>
-											<Paragraphs>
-												<Paragraph>
-													<TextRuns>
-														<TextRun>
-															<Value>=Fields!Integrante.Value</Value>
-															<Style />
-														</TextRun>
-													</TextRuns>
-												</Paragraph>
-											</Paragraphs>
-											<Style>
-												<Border>
-													<Style>Solid</Style>
-												</Border>
-											</Style>
-										</Textbox>
-									</CellContents>
-								</TablixCell>
-
-								<TablixCell>
-									<CellContents>
-										<Textbox Name="TxtMatricula">
-											<CanGrow>true</CanGrow>
-											<KeepTogether>true</KeepTogether>
-											<Paragraphs>
-												<Paragraph>
-													<TextRuns>
-														<TextRun>
-															<Value>=Fields!Matricula.Value</Value>
-															<Style />
-														</TextRun>
-													</TextRuns>
-												</Paragraph>
-											</Paragraphs>
-											<Style>
-												<Border>
-													<Style>Solid</Style>
-												</Border>
-											</Style>
-										</Textbox>
-									</CellContents>
-								</TablixCell>
-
-							</TablixCells>
-						</TablixRow>
-					</TablixRows>
-				</TablixBody>
-
-				<TablixColumnHierarchy>
-					<TablixMembers>
-						<TablixMember />
-						<TablixMember />
-						<TablixMember />
-						<TablixMember />
-					</TablixMembers>
-				</TablixColumnHierarchy>
-
-				<TablixRowHierarchy>
-					<TablixMembers>
-						<TablixMember>
-							<KeepWithGroup>After</KeepWithGroup>
-							<RepeatOnNewPage>true</RepeatOnNewPage>
-						</TablixMember>
-						<TablixMember>
-							<Group Name="DetalleIntegrantesPlancha" />
-						</TablixMember>
-					</TablixMembers>
-				</TablixRowHierarchy>
-
-				<DataSetName>DataSetIntegrantesPlancha</DataSetName>
-				<Top>0.75in</Top>
-				<Left>0.3in</Left>
-				<Height>0.55in</Height>
-				<Width>6.8in</Width>
-				<Style>
-					<Border>
-						<Style>None</Style>
-					</Border>
-				</Style>
-			</Tablix>
-
-		</ReportItems>
-		<Height>2in</Height>
-		<Style />
-	</Body>
-
-	<Width>7.6in</Width>
-
-	<Page>
-		<PageHeight>11in</PageHeight>
-		<PageWidth>8.5in</PageWidth>
-		<LeftMargin>0.5in</LeftMargin>
-		<RightMargin>0.5in</RightMargin>
-		<TopMargin>0.5in</TopMargin>
-		<BottomMargin>0.5in</BottomMargin>
-		<Style />
-	</Page>
-
-	<AutoRefresh>0</AutoRefresh>
-	<rd:ReportUnitType>Inch</rd:ReportUnitType>
-	<rd:ReportID>33333333-3333-3333-3333-333333333333</rd:ReportID>
-
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2008/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <DataSources><DataSource Name="DataSourceIntegrantesPlancha"><ConnectionProperties><DataProvider>System.Data.DataSet</DataProvider><ConnectString /></ConnectionProperties><rd:DataSourceID>22222222-2222-2222-2222-222222222222</rd:DataSourceID></DataSource></DataSources>
+  <DataSets><DataSet Name="DataSetIntegrantesPlancha"><Fields><Field Name="Plancha"><DataField>Plancha</DataField><rd:TypeName>System.String</rd:TypeName></Field><Field Name="Cargo"><DataField>Cargo</DataField><rd:TypeName>System.String</rd:TypeName></Field><Field Name="Integrante"><DataField>Integrante</DataField><rd:TypeName>System.String</rd:TypeName></Field><Field Name="Matricula"><DataField>Matricula</DataField><rd:TypeName>System.String</rd:TypeName></Field></Fields><Query><DataSourceName>DataSourceIntegrantesPlancha</DataSourceName><CommandText /></Query></DataSet></DataSets>
+  <Body><ReportItems><Textbox Name="BoxHeader_ReporteIntegrantesPlancha">
+  <CanGrow>false</CanGrow><KeepTogether>true</KeepTogether>
+  <Paragraphs><Paragraph><TextRuns><TextRun><Value></Value><Style><FontFamily>Segoe UI</FontFamily><FontSize>10pt</FontSize><Color>#1F2937</Color><BackgroundColor>#0A265F</BackgroundColor></Style></TextRun></TextRuns><Style><TextAlign>Left</TextAlign></Style></Paragraph></Paragraphs>
+  <Top>0in</Top><Left>0in</Left><Height>1.05in</Height><Width>10.2in</Width>
+  <Style><Border><Color>#0A265F</Color><Style>Solid</Style></Border><PaddingLeft>3pt</PaddingLeft><PaddingRight>3pt</PaddingRight><PaddingTop>2pt</PaddingTop><PaddingBottom>2pt</PaddingBottom><VerticalAlign>Middle</VerticalAlign></Style>
+</Textbox><Textbox Name="TxtSistema_ReporteIntegrantesPlancha">
+  <CanGrow>true</CanGrow><KeepTogether>true</KeepTogether>
+  <Paragraphs><Paragraph><TextRuns><TextRun><Value>SISTEMA DE VOTACIONES ESCOLARES</Value><Style><FontFamily>Segoe UI</FontFamily><FontSize>10pt</FontSize><FontWeight>Bold</FontWeight><Color>#FFD75A</Color></Style></TextRun></TextRuns><Style><TextAlign>Center</TextAlign></Style></Paragraph></Paragraphs>
+  <Top>0.13in</Top><Left>0.25in</Left><Height>0.25in</Height><Width>9.7in</Width>
+  <Style><BackgroundColor>#0A265F</BackgroundColor><Border><Style>None</Style></Border><PaddingLeft>3pt</PaddingLeft><PaddingRight>3pt</PaddingRight><PaddingTop>2pt</PaddingTop><PaddingBottom>2pt</PaddingBottom><VerticalAlign>Middle</VerticalAlign></Style>
+</Textbox><Textbox Name="TxtTitle_ReporteIntegrantesPlancha">
+  <CanGrow>true</CanGrow><KeepTogether>true</KeepTogether>
+  <Paragraphs><Paragraph><TextRuns><TextRun><Value>Reporte de Integrantes por Plancha</Value><Style><FontFamily>Segoe UI</FontFamily><FontSize>20pt</FontSize><FontWeight>Bold</FontWeight><Color>White</Color></Style></TextRun></TextRuns><Style><TextAlign>Center</TextAlign></Style></Paragraph></Paragraphs>
+  <Top>0.38in</Top><Left>0.25in</Left><Height>0.35in</Height><Width>9.7in</Width>
+  <Style><BackgroundColor>#0A265F</BackgroundColor><Border><Style>None</Style></Border><PaddingLeft>3pt</PaddingLeft><PaddingRight>3pt</PaddingRight><PaddingTop>2pt</PaddingTop><PaddingBottom>2pt</PaddingBottom><VerticalAlign>Middle</VerticalAlign></Style>
+</Textbox><Textbox Name="TxtSub_ReporteIntegrantesPlancha">
+  <CanGrow>true</CanGrow><KeepTogether>true</KeepTogether>
+  <Paragraphs><Paragraph><TextRuns><TextRun><Value>Listado de cargos e integrantes registrados en cada plancha</Value><Style><FontFamily>Segoe UI</FontFamily><FontSize>9pt</FontSize><FontWeight>Bold</FontWeight><Color>#DDE7FF</Color></Style></TextRun></TextRuns><Style><TextAlign>Center</TextAlign></Style></Paragraph></Paragraphs>
+  <Top>0.76in</Top><Left>0.25in</Left><Height>0.22in</Height><Width>9.7in</Width>
+  <Style><BackgroundColor>#0A265F</BackgroundColor><Border><Style>None</Style></Border><PaddingLeft>3pt</PaddingLeft><PaddingRight>3pt</PaddingRight><PaddingTop>2pt</PaddingTop><PaddingBottom>2pt</PaddingBottom><VerticalAlign>Middle</VerticalAlign></Style>
+</Textbox><Textbox Name="TxtFecha_ReporteIntegrantesPlancha">
+  <CanGrow>true</CanGrow><KeepTogether>true</KeepTogether>
+  <Paragraphs><Paragraph><TextRuns><TextRun><Value>="Generado: " &amp; Format(Now(), "dd/MM/yyyy hh:mm tt")</Value><Style><FontFamily>Segoe UI</FontFamily><FontSize>9pt</FontSize><FontWeight>Bold</FontWeight><Color>#64748B</Color></Style></TextRun></TextRuns><Style><TextAlign>Left</TextAlign></Style></Paragraph></Paragraphs>
+  <Top>1.20in</Top><Left>0.35in</Left><Height>0.28in</Height><Width>3.4in</Width>
+  <Style><BackgroundColor>#F5F8FF</BackgroundColor><Border><Style>None</Style></Border><PaddingLeft>3pt</PaddingLeft><PaddingRight>3pt</PaddingRight><PaddingTop>2pt</PaddingTop><PaddingBottom>2pt</PaddingBottom><VerticalAlign>Middle</VerticalAlign></Style>
+</Textbox><Textbox Name="TxtDoc_ReporteIntegrantesPlancha">
+  <CanGrow>true</CanGrow><KeepTogether>true</KeepTogether>
+  <Paragraphs><Paragraph><TextRuns><TextRun><Value>Documento generado automáticamente</Value><Style><FontFamily>Segoe UI</FontFamily><FontSize>9pt</FontSize><FontWeight>Bold</FontWeight><Color>#64748B</Color></Style></TextRun></TextRuns><Style><TextAlign>Right</TextAlign></Style></Paragraph></Paragraphs>
+  <Top>1.20in</Top><Left>6.35in</Left><Height>0.28in</Height><Width>3.5in</Width>
+  <Style><BackgroundColor>#F5F8FF</BackgroundColor><Border><Style>None</Style></Border><PaddingLeft>3pt</PaddingLeft><PaddingRight>3pt</PaddingRight><PaddingTop>2pt</PaddingTop><PaddingBottom>2pt</PaddingBottom><VerticalAlign>Middle</VerticalAlign></Style>
+</Textbox><Tablix Name="Tabla_ReporteIntegrantesPlancha">
+  <TablixBody>
+    <TablixColumns><TablixColumn><Width>2.4in</Width></TablixColumn><TablixColumn><Width>2.0in</Width></TablixColumn><TablixColumn><Width>3.3in</Width></TablixColumn><TablixColumn><Width>1.3in</Width></TablixColumn></TablixColumns>
+    <TablixRows>
+      <TablixRow><Height>0.32in</Height><TablixCells><TablixCell><CellContents><Textbox Name="Hdr_Tabla_ReporteIntegrantesPlancha0">
+  <CanGrow>true</CanGrow><KeepTogether>true</KeepTogether>
+  <Paragraphs><Paragraph><TextRuns><TextRun><Value>Plancha</Value><Style><FontFamily>Segoe UI</FontFamily><FontSize>9pt</FontSize><Color>White</Color><FontWeight>Bold</FontWeight></Style></TextRun></TextRuns><Style><TextAlign>Left</TextAlign></Style></Paragraph></Paragraphs>
+  <Style><BackgroundColor>#0A265F</BackgroundColor><Border><Color>#D7DEE8</Color><Style>Solid</Style></Border><PaddingLeft>4pt</PaddingLeft><PaddingRight>4pt</PaddingRight><PaddingTop>3pt</PaddingTop><PaddingBottom>3pt</PaddingBottom><VerticalAlign>Middle</VerticalAlign></Style>
+</Textbox></CellContents></TablixCell><TablixCell><CellContents><Textbox Name="Hdr_Tabla_ReporteIntegrantesPlancha1">
+  <CanGrow>true</CanGrow><KeepTogether>true</KeepTogether>
+  <Paragraphs><Paragraph><TextRuns><TextRun><Value>Cargo</Value><Style><FontFamily>Segoe UI</FontFamily><FontSize>9pt</FontSize><Color>White</Color><FontWeight>Bold</FontWeight></Style></TextRun></TextRuns><Style><TextAlign>Left</TextAlign></Style></Paragraph></Paragraphs>
+  <Style><BackgroundColor>#0A265F</BackgroundColor><Border><Color>#D7DEE8</Color><Style>Solid</Style></Border><PaddingLeft>4pt</PaddingLeft><PaddingRight>4pt</PaddingRight><PaddingTop>3pt</PaddingTop><PaddingBottom>3pt</PaddingBottom><VerticalAlign>Middle</VerticalAlign></Style>
+</Textbox></CellContents></TablixCell><TablixCell><CellContents><Textbox Name="Hdr_Tabla_ReporteIntegrantesPlancha2">
+  <CanGrow>true</CanGrow><KeepTogether>true</KeepTogether>
+  <Paragraphs><Paragraph><TextRuns><TextRun><Value>Integrante</Value><Style><FontFamily>Segoe UI</FontFamily><FontSize>9pt</FontSize><Color>White</Color><FontWeight>Bold</FontWeight></Style></TextRun></TextRuns><Style><TextAlign>Left</TextAlign></Style></Paragraph></Paragraphs>
+  <Style><BackgroundColor>#0A265F</BackgroundColor><Border><Color>#D7DEE8</Color><Style>Solid</Style></Border><PaddingLeft>4pt</PaddingLeft><PaddingRight>4pt</PaddingRight><PaddingTop>3pt</PaddingTop><PaddingBottom>3pt</PaddingBottom><VerticalAlign>Middle</VerticalAlign></Style>
+</Textbox></CellContents></TablixCell><TablixCell><CellContents><Textbox Name="Hdr_Tabla_ReporteIntegrantesPlancha3">
+  <CanGrow>true</CanGrow><KeepTogether>true</KeepTogether>
+  <Paragraphs><Paragraph><TextRuns><TextRun><Value>Matrícula</Value><Style><FontFamily>Segoe UI</FontFamily><FontSize>9pt</FontSize><Color>White</Color><FontWeight>Bold</FontWeight></Style></TextRun></TextRuns><Style><TextAlign>Center</TextAlign></Style></Paragraph></Paragraphs>
+  <Style><BackgroundColor>#0A265F</BackgroundColor><Border><Color>#D7DEE8</Color><Style>Solid</Style></Border><PaddingLeft>4pt</PaddingLeft><PaddingRight>4pt</PaddingRight><PaddingTop>3pt</PaddingTop><PaddingBottom>3pt</PaddingBottom><VerticalAlign>Middle</VerticalAlign></Style>
+</Textbox></CellContents></TablixCell></TablixCells></TablixRow>
+      <TablixRow><Height>0.30in</Height><TablixCells><TablixCell><CellContents><Textbox Name="Txt_Tabla_ReporteIntegrantesPlancha0">
+  <CanGrow>true</CanGrow><KeepTogether>true</KeepTogether>
+  <Paragraphs><Paragraph><TextRuns><TextRun><Value>=Fields!Plancha.Value</Value><Style><FontFamily>Segoe UI</FontFamily><FontSize>8.5pt</FontSize><Color>#1F2937</Color></Style></TextRun></TextRuns><Style><TextAlign>Left</TextAlign></Style></Paragraph></Paragraphs>
+  <Style><BackgroundColor>=IIF(RowNumber(Nothing) Mod 2 = 0, "#F2F4F8", "White")</BackgroundColor><Border><Color>#D7DEE8</Color><Style>Solid</Style></Border><PaddingLeft>4pt</PaddingLeft><PaddingRight>4pt</PaddingRight><PaddingTop>3pt</PaddingTop><PaddingBottom>3pt</PaddingBottom><VerticalAlign>Middle</VerticalAlign></Style>
+</Textbox></CellContents></TablixCell><TablixCell><CellContents><Textbox Name="Txt_Tabla_ReporteIntegrantesPlancha1">
+  <CanGrow>true</CanGrow><KeepTogether>true</KeepTogether>
+  <Paragraphs><Paragraph><TextRuns><TextRun><Value>=Fields!Cargo.Value</Value><Style><FontFamily>Segoe UI</FontFamily><FontSize>8.5pt</FontSize><Color>#1F2937</Color></Style></TextRun></TextRuns><Style><TextAlign>Left</TextAlign></Style></Paragraph></Paragraphs>
+  <Style><BackgroundColor>=IIF(RowNumber(Nothing) Mod 2 = 0, "#F2F4F8", "White")</BackgroundColor><Border><Color>#D7DEE8</Color><Style>Solid</Style></Border><PaddingLeft>4pt</PaddingLeft><PaddingRight>4pt</PaddingRight><PaddingTop>3pt</PaddingTop><PaddingBottom>3pt</PaddingBottom><VerticalAlign>Middle</VerticalAlign></Style>
+</Textbox></CellContents></TablixCell><TablixCell><CellContents><Textbox Name="Txt_Tabla_ReporteIntegrantesPlancha2">
+  <CanGrow>true</CanGrow><KeepTogether>true</KeepTogether>
+  <Paragraphs><Paragraph><TextRuns><TextRun><Value>=Fields!Integrante.Value</Value><Style><FontFamily>Segoe UI</FontFamily><FontSize>8.5pt</FontSize><Color>#1F2937</Color></Style></TextRun></TextRuns><Style><TextAlign>Left</TextAlign></Style></Paragraph></Paragraphs>
+  <Style><BackgroundColor>=IIF(RowNumber(Nothing) Mod 2 = 0, "#F2F4F8", "White")</BackgroundColor><Border><Color>#D7DEE8</Color><Style>Solid</Style></Border><PaddingLeft>4pt</PaddingLeft><PaddingRight>4pt</PaddingRight><PaddingTop>3pt</PaddingTop><PaddingBottom>3pt</PaddingBottom><VerticalAlign>Middle</VerticalAlign></Style>
+</Textbox></CellContents></TablixCell><TablixCell><CellContents><Textbox Name="Txt_Tabla_ReporteIntegrantesPlancha3">
+  <CanGrow>true</CanGrow><KeepTogether>true</KeepTogether>
+  <Paragraphs><Paragraph><TextRuns><TextRun><Value>=Fields!Matricula.Value</Value><Style><FontFamily>Segoe UI</FontFamily><FontSize>8.5pt</FontSize><Color>#1F2937</Color></Style></TextRun></TextRuns><Style><TextAlign>Center</TextAlign></Style></Paragraph></Paragraphs>
+  <Style><BackgroundColor>=IIF(RowNumber(Nothing) Mod 2 = 0, "#F2F4F8", "White")</BackgroundColor><Border><Color>#D7DEE8</Color><Style>Solid</Style></Border><PaddingLeft>4pt</PaddingLeft><PaddingRight>4pt</PaddingRight><PaddingTop>3pt</PaddingTop><PaddingBottom>3pt</PaddingBottom><VerticalAlign>Middle</VerticalAlign></Style>
+</Textbox></CellContents></TablixCell></TablixCells></TablixRow>
+    </TablixRows>
+  </TablixBody>
+  <TablixColumnHierarchy><TablixMembers><TablixMember /><TablixMember /><TablixMember /><TablixMember /></TablixMembers></TablixColumnHierarchy>
+  <TablixRowHierarchy><TablixMembers><TablixMember><KeepWithGroup>After</KeepWithGroup><RepeatOnNewPage>true</RepeatOnNewPage></TablixMember><TablixMember><Group Name="Detail_Tabla_ReporteIntegrantesPlancha" /></TablixMember></TablixMembers></TablixRowHierarchy>
+  <DataSetName>DataSetIntegrantesPlancha</DataSetName>
+  <Top>1.65in</Top><Left>0.35in</Left><Height>0.62in</Height><Width>9.00in</Width>
+  <Style><Border><Style>None</Style></Border></Style>
+</Tablix><Textbox Name="TxtFooter_ReporteIntegrantesPlancha">
+  <CanGrow>true</CanGrow><KeepTogether>true</KeepTogether>
+  <Paragraphs><Paragraph><TextRuns><TextRun><Value>Sistema de Votaciones Escolares  |  Reporte oficial</Value><Style><FontFamily>Segoe UI</FontFamily><FontSize>8pt</FontSize><Color>#64748B</Color><Border><Style>None</Style></Border></Style></TextRun></TextRuns><Style><TextAlign>Center</TextAlign></Style></Paragraph></Paragraphs>
+  <Top>6.95in</Top><Left>0.35in</Left><Height>0.25in</Height><Width>9.5in</Width>
+  <Style><PaddingLeft>3pt</PaddingLeft><PaddingRight>3pt</PaddingRight><PaddingTop>2pt</PaddingTop><PaddingBottom>2pt</PaddingBottom><VerticalAlign>Middle</VerticalAlign></Style>
+</Textbox></ReportItems><Height>7.3in</Height><Style><BackgroundColor>#F5F8FF</BackgroundColor></Style></Body>
+  <Width>10.2in</Width>
+  <Page><PageHeight>8.5in</PageHeight><PageWidth>11in</PageWidth><LeftMargin>0.4in</LeftMargin><RightMargin>0.4in</RightMargin><TopMargin>0.35in</TopMargin><BottomMargin>0.35in</BottomMargin><Style /></Page>
+  <AutoRefresh>0</AutoRefresh><rd:ReportUnitType>Inch</rd:ReportUnitType><rd:ReportID>22222222-2222-2222-2222-222222222222</rd:ReportID>
 </Report>

@@ -1,337 +1,81 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2008/01/reportdefinition"
-        xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
-
-  <DataSources>
-    <DataSource Name="DataSourcePlanchaGanadora">
-      <ConnectionProperties>
-        <DataProvider>System.Data.DataSet</DataProvider>
-        <ConnectString />
-      </ConnectionProperties>
-      <rd:DataSourceID>44444444-4444-4444-4444-444444444444</rd:DataSourceID>
-    </DataSource>
-  </DataSources>
-
-  <DataSets>
-    <DataSet Name="DataSetPlanchaGanadora">
-      <Fields>
-        <Field Name="Plancha">
-          <DataField>Plancha</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Votos">
-          <DataField>Votos</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="Porcentaje">
-          <DataField>Porcentaje</DataField>
-          <rd:TypeName>System.Decimal</rd:TypeName>
-        </Field>
-      </Fields>
-      <Query>
-        <DataSourceName>DataSourcePlanchaGanadora</DataSourceName>
-        <CommandText />
-      </Query>
-    </DataSet>
-  </DataSets>
-
-  <Body>
-    <ReportItems>
-
-      <Textbox Name="txtTitulo">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>Reporte de Plancha Ganadora</Value>
-                <Style>
-                  <FontSize>18pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style>
-              <TextAlign>Center</TextAlign>
-            </Style>
-          </Paragraph>
-        </Paragraphs>
-        <Top>0.15in</Top>
-        <Left>0.1in</Left>
-        <Height>0.4in</Height>
-        <Width>7.4in</Width>
-        <Style>
-          <Border>
-            <Style>None</Style>
-          </Border>
-        </Style>
-      </Textbox>
-
-      <Textbox Name="txtSubtitulo">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>Plancha con mayor cantidad de votos registrados</Value>
-                <Style>
-                  <FontSize>11pt</FontSize>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style>
-              <TextAlign>Center</TextAlign>
-            </Style>
-          </Paragraph>
-        </Paragraphs>
-        <Top>0.58in</Top>
-        <Left>0.1in</Left>
-        <Height>0.25in</Height>
-        <Width>7.4in</Width>
-        <Style>
-          <Border>
-            <Style>None</Style>
-          </Border>
-        </Style>
-      </Textbox>
-
-      <Tablix Name="TablaPlanchaGanadora">
-        <TablixBody>
-          <TablixColumns>
-            <TablixColumn>
-              <Width>3in</Width>
-            </TablixColumn>
-            <TablixColumn>
-              <Width>1.5in</Width>
-            </TablixColumn>
-            <TablixColumn>
-              <Width>1.8in</Width>
-            </TablixColumn>
-          </TablixColumns>
-
-          <TablixRows>
-            <TablixRow>
-              <Height>0.35in</Height>
-              <TablixCells>
-
-                <TablixCell>
-                  <CellContents>
-                    <Textbox Name="HeaderPlancha">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value>Plancha Ganadora</Value>
-                              <Style>
-                                <FontWeight>Bold</FontWeight>
-                              </Style>
-                            </TextRun>
-                          </TextRuns>
-                        </Paragraph>
-                      </Paragraphs>
-                      <Style>
-                        <BackgroundColor>LightGray</BackgroundColor>
-                        <Border>
-                          <Style>Solid</Style>
-                        </Border>
-                      </Style>
-                    </Textbox>
-                  </CellContents>
-                </TablixCell>
-
-                <TablixCell>
-                  <CellContents>
-                    <Textbox Name="HeaderVotos">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value>Votos</Value>
-                              <Style>
-                                <FontWeight>Bold</FontWeight>
-                              </Style>
-                            </TextRun>
-                          </TextRuns>
-                        </Paragraph>
-                      </Paragraphs>
-                      <Style>
-                        <BackgroundColor>LightGray</BackgroundColor>
-                        <Border>
-                          <Style>Solid</Style>
-                        </Border>
-                      </Style>
-                    </Textbox>
-                  </CellContents>
-                </TablixCell>
-
-                <TablixCell>
-                  <CellContents>
-                    <Textbox Name="HeaderPorcentaje">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value>Porcentaje</Value>
-                              <Style>
-                                <FontWeight>Bold</FontWeight>
-                              </Style>
-                            </TextRun>
-                          </TextRuns>
-                        </Paragraph>
-                      </Paragraphs>
-                      <Style>
-                        <BackgroundColor>LightGray</BackgroundColor>
-                        <Border>
-                          <Style>Solid</Style>
-                        </Border>
-                      </Style>
-                    </Textbox>
-                  </CellContents>
-                </TablixCell>
-
-              </TablixCells>
-            </TablixRow>
-
-            <TablixRow>
-              <Height>0.32in</Height>
-              <TablixCells>
-
-                <TablixCell>
-                  <CellContents>
-                    <Textbox Name="TxtPlancha">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value>=Fields!Plancha.Value</Value>
-                              <Style />
-                            </TextRun>
-                          </TextRuns>
-                        </Paragraph>
-                      </Paragraphs>
-                      <Style>
-                        <Border>
-                          <Style>Solid</Style>
-                        </Border>
-                      </Style>
-                    </Textbox>
-                  </CellContents>
-                </TablixCell>
-
-                <TablixCell>
-                  <CellContents>
-                    <Textbox Name="TxtVotos">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value>=Fields!Votos.Value</Value>
-                              <Style />
-                            </TextRun>
-                          </TextRuns>
-                        </Paragraph>
-                      </Paragraphs>
-                      <Style>
-                        <Border>
-                          <Style>Solid</Style>
-                        </Border>
-                      </Style>
-                    </Textbox>
-                  </CellContents>
-                </TablixCell>
-
-                <TablixCell>
-                  <CellContents>
-                    <Textbox Name="TxtPorcentaje">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value>=Format(Fields!Porcentaje.Value, "0.00") &amp; " %"</Value>
-                              <Style />
-                            </TextRun>
-                          </TextRuns>
-                        </Paragraph>
-                      </Paragraphs>
-                      <Style>
-                        <Border>
-                          <Style>Solid</Style>
-                        </Border>
-                      </Style>
-                    </Textbox>
-                  </CellContents>
-                </TablixCell>
-
-              </TablixCells>
-            </TablixRow>
-          </TablixRows>
-        </TablixBody>
-
-        <TablixColumnHierarchy>
-          <TablixMembers>
-            <TablixMember />
-            <TablixMember />
-            <TablixMember />
-          </TablixMembers>
-        </TablixColumnHierarchy>
-
-        <TablixRowHierarchy>
-          <TablixMembers>
-            <TablixMember>
-              <KeepWithGroup>After</KeepWithGroup>
-              <RepeatOnNewPage>true</RepeatOnNewPage>
-            </TablixMember>
-            <TablixMember>
-              <Group Name="DetallePlanchaGanadora" />
-            </TablixMember>
-          </TablixMembers>
-        </TablixRowHierarchy>
-
-        <DataSetName>DataSetPlanchaGanadora</DataSetName>
-        <Top>1in</Top>
-        <Left>0.6in</Left>
-        <Height>0.67in</Height>
-        <Width>6.3in</Width>
-        <Style>
-          <Border>
-            <Style>None</Style>
-          </Border>
-        </Style>
-      </Tablix>
-
-    </ReportItems>
-    <Height>2.2in</Height>
-    <Style />
-  </Body>
-
-  <Width>7.6in</Width>
-
-  <Page>
-    <PageHeight>11in</PageHeight>
-    <PageWidth>8.5in</PageWidth>
-    <LeftMargin>0.5in</LeftMargin>
-    <RightMargin>0.5in</RightMargin>
-    <TopMargin>0.5in</TopMargin>
-    <BottomMargin>0.5in</BottomMargin>
-    <Style />
-  </Page>
-
-  <AutoRefresh>0</AutoRefresh>
-  <rd:ReportUnitType>Inch</rd:ReportUnitType>
-  <rd:ReportID>44444444-4444-4444-4444-444444444444</rd:ReportID>
-
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2008/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <DataSources><DataSource Name="DataSourcePlanchaGanadora"><ConnectionProperties><DataProvider>System.Data.DataSet</DataProvider><ConnectString /></ConnectionProperties><rd:DataSourceID>44444444-4444-4444-4444-444444444444</rd:DataSourceID></DataSource></DataSources>
+  <DataSets><DataSet Name="DataSetPlanchaGanadora"><Fields><Field Name="Plancha"><DataField>Plancha</DataField><rd:TypeName>System.String</rd:TypeName></Field><Field Name="Votos"><DataField>Votos</DataField><rd:TypeName>System.Int32</rd:TypeName></Field><Field Name="Porcentaje"><DataField>Porcentaje</DataField><rd:TypeName>System.Decimal</rd:TypeName></Field></Fields><Query><DataSourceName>DataSourcePlanchaGanadora</DataSourceName><CommandText /></Query></DataSet></DataSets>
+  <Body><ReportItems><Textbox Name="BoxHeader_ReportePlanchaGanadora">
+  <CanGrow>false</CanGrow><KeepTogether>true</KeepTogether>
+  <Paragraphs><Paragraph><TextRuns><TextRun><Value></Value><Style><FontFamily>Segoe UI</FontFamily><FontSize>10pt</FontSize><Color>#1F2937</Color><BackgroundColor>#0A265F</BackgroundColor></Style></TextRun></TextRuns><Style><TextAlign>Left</TextAlign></Style></Paragraph></Paragraphs>
+  <Top>0in</Top><Left>0in</Left><Height>1.05in</Height><Width>10.2in</Width>
+  <Style><Border><Color>#0A265F</Color><Style>Solid</Style></Border><PaddingLeft>3pt</PaddingLeft><PaddingRight>3pt</PaddingRight><PaddingTop>2pt</PaddingTop><PaddingBottom>2pt</PaddingBottom><VerticalAlign>Middle</VerticalAlign></Style>
+</Textbox><Textbox Name="TxtSistema_ReportePlanchaGanadora">
+  <CanGrow>true</CanGrow><KeepTogether>true</KeepTogether>
+  <Paragraphs><Paragraph><TextRuns><TextRun><Value>SISTEMA DE VOTACIONES ESCOLARES</Value><Style><FontFamily>Segoe UI</FontFamily><FontSize>10pt</FontSize><FontWeight>Bold</FontWeight><Color>#FFD75A</Color></Style></TextRun></TextRuns><Style><TextAlign>Center</TextAlign></Style></Paragraph></Paragraphs>
+  <Top>0.13in</Top><Left>0.25in</Left><Height>0.25in</Height><Width>9.7in</Width>
+  <Style><BackgroundColor>#0A265F</BackgroundColor><Border><Style>None</Style></Border><PaddingLeft>3pt</PaddingLeft><PaddingRight>3pt</PaddingRight><PaddingTop>2pt</PaddingTop><PaddingBottom>2pt</PaddingBottom><VerticalAlign>Middle</VerticalAlign></Style>
+</Textbox><Textbox Name="TxtTitle_ReportePlanchaGanadora">
+  <CanGrow>true</CanGrow><KeepTogether>true</KeepTogether>
+  <Paragraphs><Paragraph><TextRuns><TextRun><Value>Reporte de Plancha Ganadora</Value><Style><FontFamily>Segoe UI</FontFamily><FontSize>20pt</FontSize><FontWeight>Bold</FontWeight><Color>White</Color></Style></TextRun></TextRuns><Style><TextAlign>Center</TextAlign></Style></Paragraph></Paragraphs>
+  <Top>0.38in</Top><Left>0.25in</Left><Height>0.35in</Height><Width>9.7in</Width>
+  <Style><BackgroundColor>#0A265F</BackgroundColor><Border><Style>None</Style></Border><PaddingLeft>3pt</PaddingLeft><PaddingRight>3pt</PaddingRight><PaddingTop>2pt</PaddingTop><PaddingBottom>2pt</PaddingBottom><VerticalAlign>Middle</VerticalAlign></Style>
+</Textbox><Textbox Name="TxtSub_ReportePlanchaGanadora">
+  <CanGrow>true</CanGrow><KeepTogether>true</KeepTogether>
+  <Paragraphs><Paragraph><TextRuns><TextRun><Value>Resultado principal según la mayor cantidad de votos válidos</Value><Style><FontFamily>Segoe UI</FontFamily><FontSize>9pt</FontSize><FontWeight>Bold</FontWeight><Color>#DDE7FF</Color></Style></TextRun></TextRuns><Style><TextAlign>Center</TextAlign></Style></Paragraph></Paragraphs>
+  <Top>0.76in</Top><Left>0.25in</Left><Height>0.22in</Height><Width>9.7in</Width>
+  <Style><BackgroundColor>#0A265F</BackgroundColor><Border><Style>None</Style></Border><PaddingLeft>3pt</PaddingLeft><PaddingRight>3pt</PaddingRight><PaddingTop>2pt</PaddingTop><PaddingBottom>2pt</PaddingBottom><VerticalAlign>Middle</VerticalAlign></Style>
+</Textbox><Textbox Name="TxtFecha_ReportePlanchaGanadora">
+  <CanGrow>true</CanGrow><KeepTogether>true</KeepTogether>
+  <Paragraphs><Paragraph><TextRuns><TextRun><Value>="Generado: " &amp; Format(Now(), "dd/MM/yyyy hh:mm tt")</Value><Style><FontFamily>Segoe UI</FontFamily><FontSize>9pt</FontSize><FontWeight>Bold</FontWeight><Color>#64748B</Color></Style></TextRun></TextRuns><Style><TextAlign>Left</TextAlign></Style></Paragraph></Paragraphs>
+  <Top>1.20in</Top><Left>0.35in</Left><Height>0.28in</Height><Width>3.4in</Width>
+  <Style><BackgroundColor>#F5F8FF</BackgroundColor><Border><Style>None</Style></Border><PaddingLeft>3pt</PaddingLeft><PaddingRight>3pt</PaddingRight><PaddingTop>2pt</PaddingTop><PaddingBottom>2pt</PaddingBottom><VerticalAlign>Middle</VerticalAlign></Style>
+</Textbox><Textbox Name="TxtDoc_ReportePlanchaGanadora">
+  <CanGrow>true</CanGrow><KeepTogether>true</KeepTogether>
+  <Paragraphs><Paragraph><TextRuns><TextRun><Value>Documento generado automáticamente</Value><Style><FontFamily>Segoe UI</FontFamily><FontSize>9pt</FontSize><FontWeight>Bold</FontWeight><Color>#64748B</Color></Style></TextRun></TextRuns><Style><TextAlign>Right</TextAlign></Style></Paragraph></Paragraphs>
+  <Top>1.20in</Top><Left>6.35in</Left><Height>0.28in</Height><Width>3.5in</Width>
+  <Style><BackgroundColor>#F5F8FF</BackgroundColor><Border><Style>None</Style></Border><PaddingLeft>3pt</PaddingLeft><PaddingRight>3pt</PaddingRight><PaddingTop>2pt</PaddingTop><PaddingBottom>2pt</PaddingBottom><VerticalAlign>Middle</VerticalAlign></Style>
+</Textbox><Tablix Name="Tabla_ReportePlanchaGanadora">
+  <TablixBody>
+    <TablixColumns><TablixColumn><Width>4.2in</Width></TablixColumn><TablixColumn><Width>2.0in</Width></TablixColumn><TablixColumn><Width>2.2in</Width></TablixColumn></TablixColumns>
+    <TablixRows>
+      <TablixRow><Height>0.32in</Height><TablixCells><TablixCell><CellContents><Textbox Name="Hdr_Tabla_ReportePlanchaGanadora0">
+  <CanGrow>true</CanGrow><KeepTogether>true</KeepTogether>
+  <Paragraphs><Paragraph><TextRuns><TextRun><Value>Plancha Ganadora</Value><Style><FontFamily>Segoe UI</FontFamily><FontSize>9pt</FontSize><Color>White</Color><FontWeight>Bold</FontWeight></Style></TextRun></TextRuns><Style><TextAlign>Left</TextAlign></Style></Paragraph></Paragraphs>
+  <Style><BackgroundColor>#0A265F</BackgroundColor><Border><Color>#D7DEE8</Color><Style>Solid</Style></Border><PaddingLeft>4pt</PaddingLeft><PaddingRight>4pt</PaddingRight><PaddingTop>3pt</PaddingTop><PaddingBottom>3pt</PaddingBottom><VerticalAlign>Middle</VerticalAlign></Style>
+</Textbox></CellContents></TablixCell><TablixCell><CellContents><Textbox Name="Hdr_Tabla_ReportePlanchaGanadora1">
+  <CanGrow>true</CanGrow><KeepTogether>true</KeepTogether>
+  <Paragraphs><Paragraph><TextRuns><TextRun><Value>Votos</Value><Style><FontFamily>Segoe UI</FontFamily><FontSize>9pt</FontSize><Color>White</Color><FontWeight>Bold</FontWeight></Style></TextRun></TextRuns><Style><TextAlign>Center</TextAlign></Style></Paragraph></Paragraphs>
+  <Style><BackgroundColor>#0A265F</BackgroundColor><Border><Color>#D7DEE8</Color><Style>Solid</Style></Border><PaddingLeft>4pt</PaddingLeft><PaddingRight>4pt</PaddingRight><PaddingTop>3pt</PaddingTop><PaddingBottom>3pt</PaddingBottom><VerticalAlign>Middle</VerticalAlign></Style>
+</Textbox></CellContents></TablixCell><TablixCell><CellContents><Textbox Name="Hdr_Tabla_ReportePlanchaGanadora2">
+  <CanGrow>true</CanGrow><KeepTogether>true</KeepTogether>
+  <Paragraphs><Paragraph><TextRuns><TextRun><Value>Porcentaje</Value><Style><FontFamily>Segoe UI</FontFamily><FontSize>9pt</FontSize><Color>White</Color><FontWeight>Bold</FontWeight></Style></TextRun></TextRuns><Style><TextAlign>Center</TextAlign></Style></Paragraph></Paragraphs>
+  <Style><BackgroundColor>#0A265F</BackgroundColor><Border><Color>#D7DEE8</Color><Style>Solid</Style></Border><PaddingLeft>4pt</PaddingLeft><PaddingRight>4pt</PaddingRight><PaddingTop>3pt</PaddingTop><PaddingBottom>3pt</PaddingBottom><VerticalAlign>Middle</VerticalAlign></Style>
+</Textbox></CellContents></TablixCell></TablixCells></TablixRow>
+      <TablixRow><Height>0.30in</Height><TablixCells><TablixCell><CellContents><Textbox Name="Txt_Tabla_ReportePlanchaGanadora0">
+  <CanGrow>true</CanGrow><KeepTogether>true</KeepTogether>
+  <Paragraphs><Paragraph><TextRuns><TextRun><Value>=Fields!Plancha.Value</Value><Style><FontFamily>Segoe UI</FontFamily><FontSize>8.5pt</FontSize><Color>#1F2937</Color></Style></TextRun></TextRuns><Style><TextAlign>Left</TextAlign></Style></Paragraph></Paragraphs>
+  <Style><BackgroundColor>=IIF(RowNumber(Nothing) Mod 2 = 0, "#F2F4F8", "White")</BackgroundColor><Border><Color>#D7DEE8</Color><Style>Solid</Style></Border><PaddingLeft>4pt</PaddingLeft><PaddingRight>4pt</PaddingRight><PaddingTop>3pt</PaddingTop><PaddingBottom>3pt</PaddingBottom><VerticalAlign>Middle</VerticalAlign></Style>
+</Textbox></CellContents></TablixCell><TablixCell><CellContents><Textbox Name="Txt_Tabla_ReportePlanchaGanadora1">
+  <CanGrow>true</CanGrow><KeepTogether>true</KeepTogether>
+  <Paragraphs><Paragraph><TextRuns><TextRun><Value>=Fields!Votos.Value</Value><Style><FontFamily>Segoe UI</FontFamily><FontSize>8.5pt</FontSize><Color>#1F2937</Color></Style></TextRun></TextRuns><Style><TextAlign>Center</TextAlign></Style></Paragraph></Paragraphs>
+  <Style><BackgroundColor>=IIF(RowNumber(Nothing) Mod 2 = 0, "#F2F4F8", "White")</BackgroundColor><Border><Color>#D7DEE8</Color><Style>Solid</Style></Border><PaddingLeft>4pt</PaddingLeft><PaddingRight>4pt</PaddingRight><PaddingTop>3pt</PaddingTop><PaddingBottom>3pt</PaddingBottom><VerticalAlign>Middle</VerticalAlign></Style>
+</Textbox></CellContents></TablixCell><TablixCell><CellContents><Textbox Name="Txt_Tabla_ReportePlanchaGanadora2">
+  <CanGrow>true</CanGrow><KeepTogether>true</KeepTogether>
+  <Paragraphs><Paragraph><TextRuns><TextRun><Value>=Format(Fields!Porcentaje.Value, "0.00") &amp; " %"</Value><Style><FontFamily>Segoe UI</FontFamily><FontSize>8.5pt</FontSize><Color>#1F2937</Color></Style></TextRun></TextRuns><Style><TextAlign>Center</TextAlign></Style></Paragraph></Paragraphs>
+  <Style><BackgroundColor>=IIF(RowNumber(Nothing) Mod 2 = 0, "#F2F4F8", "White")</BackgroundColor><Border><Color>#D7DEE8</Color><Style>Solid</Style></Border><PaddingLeft>4pt</PaddingLeft><PaddingRight>4pt</PaddingRight><PaddingTop>3pt</PaddingTop><PaddingBottom>3pt</PaddingBottom><VerticalAlign>Middle</VerticalAlign></Style>
+</Textbox></CellContents></TablixCell></TablixCells></TablixRow>
+    </TablixRows>
+  </TablixBody>
+  <TablixColumnHierarchy><TablixMembers><TablixMember /><TablixMember /><TablixMember /></TablixMembers></TablixColumnHierarchy>
+  <TablixRowHierarchy><TablixMembers><TablixMember><KeepWithGroup>After</KeepWithGroup><RepeatOnNewPage>true</RepeatOnNewPage></TablixMember><TablixMember><Group Name="Detail_Tabla_ReportePlanchaGanadora" /></TablixMember></TablixMembers></TablixRowHierarchy>
+  <DataSetName>DataSetPlanchaGanadora</DataSetName>
+  <Top>1.65in</Top><Left>0.35in</Left><Height>0.62in</Height><Width>8.40in</Width>
+  <Style><Border><Style>None</Style></Border></Style>
+</Tablix><Textbox Name="TxtFooter_ReportePlanchaGanadora">
+  <CanGrow>true</CanGrow><KeepTogether>true</KeepTogether>
+  <Paragraphs><Paragraph><TextRuns><TextRun><Value>Sistema de Votaciones Escolares  |  Reporte oficial</Value><Style><FontFamily>Segoe UI</FontFamily><FontSize>8pt</FontSize><Color>#64748B</Color><Border><Style>None</Style></Border></Style></TextRun></TextRuns><Style><TextAlign>Center</TextAlign></Style></Paragraph></Paragraphs>
+  <Top>6.95in</Top><Left>0.35in</Left><Height>0.25in</Height><Width>9.5in</Width>
+  <Style><PaddingLeft>3pt</PaddingLeft><PaddingRight>3pt</PaddingRight><PaddingTop>2pt</PaddingTop><PaddingBottom>2pt</PaddingBottom><VerticalAlign>Middle</VerticalAlign></Style>
+</Textbox></ReportItems><Height>7.3in</Height><Style><BackgroundColor>#F5F8FF</BackgroundColor></Style></Body>
+  <Width>10.2in</Width>
+  <Page><PageHeight>8.5in</PageHeight><PageWidth>11in</PageWidth><LeftMargin>0.4in</LeftMargin><RightMargin>0.4in</RightMargin><TopMargin>0.35in</TopMargin><BottomMargin>0.35in</BottomMargin><Style /></Page>
+  <AutoRefresh>0</AutoRefresh><rd:ReportUnitType>Inch</rd:ReportUnitType><rd:ReportID>44444444-4444-4444-4444-444444444444</rd:ReportID>
 </Report>

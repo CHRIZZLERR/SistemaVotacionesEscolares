@@ -4,7 +4,7 @@ namespace SistemaVotaciones.DAL
 {
     public class ConexionDB
     {
-        private string cadena = "Server = MSI\\SQLEXPRESS;Database=SistemaVotacionesDB;Integrated Security = True; TrustServerCertificate=True;";
+        private string cadena = @"Data Source=MSI\SQLEXPRESS;Initial Catalog=SistemaVotacionesDB;Integrated Security=True;TrustServerCertificate=True;";
 
         public SqlConnection ObtenerConexion()
         {
